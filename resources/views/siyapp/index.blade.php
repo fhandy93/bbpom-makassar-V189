@@ -26,12 +26,12 @@
                                 </div>
                             </div>
                             <div class="card-body text-center">
-                                <a href="/formulir" style="color: white;">
+                                <a href="/formulir" >
                                     <p class="card-text"><i class="fa fa-edit fa-4x"></i></p>
                                     <h4 class="h4 mb-0 mt-3">Formulir Laporan</h4>
                                 </a>
                             </div>
-                            <div class="card-footer text-center bg-gray">
+                            <div class="card-footer text-center bg-gray" style="color: white;">
                                 <div class="row">
                                     <div class="text-center">
                                         Formulir pengaduan perbaikan dan pemeliharaan peralatan
@@ -50,12 +50,12 @@
                                 </div>
                             </div>
                             <div class="card-body text-center">
-                                <a href="/laporan" style="color: white;">
+                                <a href="/laporan" >
                                     <p class="card-text"><i class="fa fa-building fa-4x"></i></p>
                                     <h4 class="h4 mb-0 mt-3">Perlengkapan Kantor</h4>
                                 </a>
                             </div>
-                            <div class="card-footer text-center bg-gray">
+                            <div class="card-footer text-center bg-gray" style="color: white;">
                                 <div class="row">
                                     <div class="text-center">
                                         Laporan kerusakan dan pemeliharaan barang/perlengkapan kantor
@@ -74,12 +74,12 @@
                                 </div>
                             </div>
                             <div class="card-body text-center">
-                                <a href="/laporan-it" style="color: white;">
+                                <a href="/laporan-it" >
                                     <p class="card-text"><i class="fa fa-laptop fa-4x"></i></p>
                                     <h4 class="h4 mb-0 mt-3">Perlengkapan IT</h4>
                                 </a>
                             </div>
-                            <div class="card-footer text-center bg-gray">
+                            <div class="card-footer text-center bg-gray" style="color: white;">
                                 <div class="row">
                                     <div class="text-center">
                                     Laporan kerusakan dan pemeliharaan barang/perlengkapan IT
@@ -98,12 +98,12 @@
                                 </div>
                             </div>
                             <div class="card-body text-center">
-                                <a href="/form-cetak" style="color: white;">
+                                <a href="/form-cetak" >
                                     <p class="card-text"><i class="fa fa-print fa-4x"></i></p>
                                     <h4 class="h4 mb-0 mt-3">Cetak Laporan</h4>
                                 </a>
                             </div>
-                            <div class="card-footer text-center bg-gray">
+                            <div class="card-footer text-center bg-gray" style="color: white;">
                                 <div class="row">
                                     <div class="text-center">
                                         Cetak laporan hasil perbaikan dan pemeliharaan
@@ -120,7 +120,7 @@
                         <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12" >
                             <div class="card overflow-hidden" >
                                 <div class="card-body pb-0 bg-recentorder">
-                                    <h5 class="card-title text-white" style="text-align: center;"><i class="breadcrumb-item" aria-current="page">SIYAPP Version: <b>2.0</b></i></h5>
+                                    <h5 class="card-title " style="text-align: center;"><i class="breadcrumb-item" aria-current="page">SIYAPP Version: <b>2.0</b></i></h5>
                                     <div class="chartjs-wrapper-demo">
                                         <canvas id="recentorders" class="chart-dropshadow" style="display: none;"></canvas>
                                     </div>

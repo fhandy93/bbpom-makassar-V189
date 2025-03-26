@@ -109,10 +109,10 @@
                             <div class="col-md-6 col-xl-6" >
                                 <div class="card">
                                     <div class="card-header bg-success br-te-3 br-ts-3">
-                                    <a href="/sudoku-did-internal-bpom-mks" ><h3 class="card-title text-white">BPOM Makassar <i class="fa fa-send fa-1x"></i></h3></a>                    
+                                    <a href="/sudoku-did-internal-bpom-mks" ><h3 class="card-title   ">BPOM Makassar <i class="fa fa-send fa-1x"></i></h3></a>                    
                                     </div>
                                     <div class="card-body">
-                                        <a href="/sudoku-did-internal-bpom-mks" style="color: white;">
+                                        <a href="/sudoku-did-internal-bpom-mks"   >
                                             <div class="row">
                                                 <div class="col-md-2" ><i class="fa fa-book fa-2x" aria-hidden="true"></i></div>
                                                 <div class="col-md-10" >Daftar Induk Dokumen Int. BBPOM Makassar</div>
@@ -126,10 +126,10 @@
                              <div class="col-md-6 col-xl-6" >
                                 <div class="card">
                                     <div class="card-header bg-success br-te-3 br-ts-3">
-                                    <a href="/sudoku-did-internal-bpom" ><h3 class="card-title text-white">BPOM <i class="fa fa-send fa-1x"></i></h3></a>                    
+                                    <a href="/sudoku-did-internal-bpom" ><h3 class="card-title   ">BPOM <i class="fa fa-send fa-1x"></i></h3></a>                    
                                     </div>
                                     <div class="card-body">
-                                        <a href="/sudoku-did-internal-bpom" style="color: white;">
+                                        <a href="/sudoku-did-internal-bpom"   >
                                             <div class="row">
                                                 <div class="col-md-2" ><i class="fa fa-book fa-2x" aria-hidden="true"></i></div>
                                                 <div class="col-md-10" >Daftar Induk Dokumen Internal BPOM</div>
@@ -144,10 +144,10 @@
                             <div class="col-md-6 col-xl-6" >
                                 <div class="card">
                                     <div class="card-header bg-success br-te-3 br-ts-3">
-                                    <a href="/sudoku-did-internal-bpom-17025"><h3 class="card-title text-white">Dokumen 17025 <i class="fa fa-send fa-1x"></i></h3></a>                    
+                                    <a href="/sudoku-did-internal-bpom-17025"><h3 class="card-title   ">Dokumen 17025 <i class="fa fa-send fa-1x"></i></h3></a>                    
                                     </div>
                                     <div class="card-body">
-                                        <a href="/sudoku-did-internal-bpom-17025" style="color: white;">
+                                        <a href="/sudoku-did-internal-bpom-17025"   >
                                             <div class="row">
                                                 <div class="col-md-2" ><i class="fa fa-book fa-2x" aria-hidden="true"></i></div>
                                                 <div class="col-md-10" >Daftar Induk Dokumen Int. BBPOM Makassar 17025</div>
@@ -161,10 +161,10 @@
                             <div class="col-md-6 col-xl-6" >
                                 <div class="card">
                                     <div class="card-header bg-success br-te-3 br-ts-3">
-                                    <a href="https://drive.google.com/drive/folders/1msBDw2O4suXueCFxPY1pyzCO8_yZJFYS" target="_new"><h3 class="card-title text-white">Dokumen <i class="fa fa-send fa-1x"></i></h3></a>                    
+                                    <a href="https://drive.google.com/drive/folders/1msBDw2O4suXueCFxPY1pyzCO8_yZJFYS" target="_new"><h3 class="card-title   ">Dokumen <i class="fa fa-send fa-1x"></i></h3></a>                    
                                     </div>
                                     <div class="card-body">
-                                        <a href="https://drive.google.com/drive/folders/1msBDw2O4suXueCFxPY1pyzCO8_yZJFYS" target="_new" style="color: white;">
+                                        <a href="https://drive.google.com/drive/folders/1msBDw2O4suXueCFxPY1pyzCO8_yZJFYS" target="_new"   >
                                             <div class="row">
                                                 <div class="col-md-2" ><i class="fa fa-book fa-2x" aria-hidden="true"></i></div>
                                                 <div class="col-md-10" >Daftar Induk Dokumen Eksternal</div>
@@ -177,10 +177,10 @@
                             <div class="col-md-4 col-xl-4" >
                                 <div class="card">
                                     <div class="card-header bg-success br-te-3 br-ts-3">
-                                    <a href="/sudoku-storage" ><h3 class="card-title text-white">File Storange <i class="fa fa-archive fa-1x"></i></h3></a>                    
+                                    <a href="/sudoku-storage" ><h3 class="card-title   ">File Storange <i class="fa fa-archive fa-1x"></i></h3></a>                    
                                     </div>
                                         <div class="card-body">
-                                            <a href="/sudoku-storage" target="_new" style="color: white;">
+                                            <a href="/sudoku-storage" target="_new"   >
                                                 <div class="row">
                                                     <div class="col-md-2" ><i class="fa fa-archive fa-2x" aria-hidden="true"></i></div>
                                                     <div class="col-md-10" >File Storage SUDOKU </div>
@@ -194,10 +194,10 @@
                             <div class="col-md-4 col-xl-4" >
                                 <div class="card">
                                     <div class="card-header bg-success br-te-3 br-ts-3">
-                                    <a href="https://www.sejda.com/id/watermark-pdf" target="_new"><h3 class="card-title text-white">Watermark <i class="fa fa-send fa-1x"></i></h3></a>                    
+                                    <a href="https://www.sejda.com/id/watermark-pdf" target="_new"><h3 class="card-title   ">Watermark <i class="fa fa-send fa-1x"></i></h3></a>                    
                                     </div>
                                     <div class="card-body">
-                                        <a href="https://www.sejda.com/id/watermark-pdf" target="_new" style="color: white;">
+                                        <a href="https://www.sejda.com/id/watermark-pdf" target="_new"   >
                                             <div class="row">
                                                 <div class="col-md-2" ><i class="fa fa-file-word-o fa-2x" aria-hidden="true"> </i></div>
                                                 <div class="col-md-10" >Watermark Dokument<p></div>
@@ -210,10 +210,10 @@
                             <div class="col-md-4 col-xl-4" >
                                 <div class="card">
                                     <div class="card-header bg-success br-te-3 br-ts-3">
-                                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfV_C2N5fuOP52HA8rL7i-uxzudY5XcCojkb5pSbUIhvUQ1Yw/viewform" target="_new"><h3 class="card-title text-white">Form <i class="fa fa-send fa-1x"></i></h3></a>                    
+                                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfV_C2N5fuOP52HA8rL7i-uxzudY5XcCojkb5pSbUIhvUQ1Yw/viewform" target="_new"><h3 class="card-title   ">Form <i class="fa fa-send fa-1x"></i></h3></a>                    
                                     </div>
                                         <div class="card-body">
-                                            <a href="https://docs.google.com/forms/d/e/1FAIpQLSfV_C2N5fuOP52HA8rL7i-uxzudY5XcCojkb5pSbUIhvUQ1Yw/viewform" target="_new" style="color: white;">
+                                            <a href="https://docs.google.com/forms/d/e/1FAIpQLSfV_C2N5fuOP52HA8rL7i-uxzudY5XcCojkb5pSbUIhvUQ1Yw/viewform" target="_new"   >
                                                 <div class="row">
                                                     <div class="col-md-2" ><i class="fa fa-edit fa-2x" aria-hidden="true"></i></div>
                                                     <div class="col-md-10" >Form Usulan Perubahan <br>Dokumen ISO/QMS</div>
@@ -235,7 +235,7 @@
                         <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12" >
                             <div class="card overflow-hidden" >
                                 <div class="card-body pb-0 bg-recentorder">
-                                    <h5 class="card-title text-white" style="text-align: center;"><i class="breadcrumb-item" aria-current="page">SUDOKU Version: <b>3.0</b></i></h5>
+                                    <h5 class="card-title   " style="text-align: center;"><i class="breadcrumb-item" aria-current="page">SUDOKU Version: <b>3.0</b></i></h5>
                                     <div class="chartjs-wrapper-demo">
                                         <canvas id="recentorders" class="chart-dropshadow" style="display: none;"></canvas>
                                     </div>

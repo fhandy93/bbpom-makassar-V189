@@ -105,11 +105,11 @@
                         <div class="card">
                             <a href="/bmn/bast-pengembalian">
                                 <div class="card-header bg-gray-dark br-te-3 br-ts-3">
-                                    <h3 class="card-title text-white">Berita Acara Serah Terima (BAST) <i class="fa fa-paper-plane"></i></h3>               
+                                    <h3 class="card-title text-white" >Berita Acara Serah Terima (BAST) <i class="fa fa-paper-plane"></i></h3>               
                                 </div>
                             </a>     
                             <div class="card-body">
-                            <a style="color:white;" href="/bmn/bast-pengembalian"><i class="fa fa-sign-in fa-3x"></i>&nbsp;&nbsp;Pegembalian</a>
+                            <a   href="/bmn/bast-pengembalian"><i class="fa fa-sign-in fa-3x"></i>&nbsp;&nbsp;Pegembalian</a>
                             </div>
                         </div>
                     </div>		
@@ -121,7 +121,7 @@
                                 </div>
                             </a>     
                             <div class="card-body">
-                            <a style="color:white;" href="/bmn/bast-peminjaman"><i class="fa fa-sign-out fa-3x"></i>&nbsp;Peminjaman</a>
+                            <a   href="/bmn/bast-peminjaman"><i class="fa fa-sign-out fa-3x"></i>&nbsp;Peminjaman</a>
                             </div>
                         </div>
                     </div>	
@@ -131,7 +131,7 @@
                             <a href="/bmn/pinjam-kendaraan"><h3 class="card-title text-white">Peminjaman <i class="fa fa-paper-plane"></i></h3></a>                    
                             </div>
                             <div class="card-body">
-                            <a href="/bmn/pinjam-kendaraan" style="color: white;"><i class="fa fa-car fa-3x"></i>&nbsp; Kendaraan</a>
+                            <a href="/bmn/pinjam-kendaraan"  ><i class="fa fa-car fa-3x"></i>&nbsp; Kendaraan</a>
                             </div>
                         </div>
                     </div>	
@@ -141,7 +141,7 @@
                             <a href="/bmn/pinjam-aula"><h3 class="card-title text-white">Peminjaman <i class="fa fa-paper-plane"></i></h3></a>                    
                             </div>
                             <div class="card-body">
-                            <a href="/bmn/pinjam-aula" style="color: white;"><i class="fa fa-university fa-3x"></i>&nbsp; AULA</a>
+                            <a href="/bmn/pinjam-aula"  ><i class="fa fa-university fa-3x"></i>&nbsp; AULA</a>
                             </div>
                         </div>
                     </div>	
@@ -151,7 +151,7 @@
                             <a href="/bmn/pinjam-non-bast"><h3 class="card-title text-white">Peminjaman<i class="fa fa-paper-plane"></i></h3></a>                    
                             </div>
                             <div class="card-body">
-                            <a href="/bmn/pinjam-non-bast" style="color: white;"><i class="fa fa-cube fa-3x"></i>&nbsp; Barang-Barang Non BAST</a>
+                            <a href="/bmn/pinjam-non-bast"  ><i class="fa fa-cube fa-3x"></i>&nbsp; Barang-Barang Non BAST</a>
                             </div>
                         </div>
                     </div>	
@@ -162,7 +162,7 @@
                         <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12" >
                             <div class="card overflow-hidden" >
                                 <div class="card-body pb-0 bg-recentorder">
-                                    <h5 class="card-title text-white" style="text-align: center;">BMN Moments<i class="breadcrumb-item" aria-current="page"> Version: <b>Beta 1.0</b></i></h5>
+                                    <h5 class="card-title " style="text-align: center;">BMN Moments<i class="breadcrumb-item" aria-current="page"> Version: <b>Beta 1.0</b></i></h5>
                                     <div class="chartjs-wrapper-demo">
                                         <canvas id="recentorders" class="chart-dropshadow" style="display: none;"></canvas>
                                     </div>

@@ -74,7 +74,7 @@
                                     <div class="row">
                                         @foreach($driver as $item)
                                         <div class="col-md-3">
-                                        <div class="card">
+                                        <div class="card bg-gray">
                                             <div class="row">
                                                 <div class="col-4">
                                                     <div class="circle-icon bg-primary text-center align-self-center box-primary-shadow bradius">
@@ -84,7 +84,7 @@
                                                 </div>
                                                 <div class="col-8">
                                                     <div class="card-body p-4">
-                                                        <h4 class="mb-2 fw-normal mt-2">{{$item->nama}} <a href="https://wa.me/{{$item->wa}}" target="_blank"><i class="fa fa-whatsapp"></i></a> </h4>
+                                                        <h4 class="mb-2 fw-normal mt-2 text-white" >{{$item->nama}} <a href="https://wa.me/{{$item->wa}}" target="_blank"><i class="fa fa-whatsapp"></i></a> </h4>
                                                         <h5 class="fw-normal mb-0"><span class="badge rounded-pill @if($item->status == 1) bg-success @else bg-danger @endif">@if($item->status == 1) Ready @else Not Available @endif</span></h5>
                                                     </div>
                                                 </div>
@@ -102,7 +102,7 @@
                                 @foreach($car as $item)
                                 <div class="col-xl-3 col-sm-12">
                                     <div class="card border p-0">
-                                        <div class="card-header">
+                                        <div class="card-header bg-gray text-white">
                                             <h4 class="card-title">{{$item->merek}}</h4>
                                             <div class="card-options">
                                                 <a href="javascript:void(0)" class="card-options-collapse" data-bs-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a>

@@ -121,58 +121,58 @@ $(function() {
     });
 
     /* Bar-Chart2*/
-    // var ctx = document.getElementById("chartBar2");
-    // var myChart = new Chart(ctx, {
-    //     type: 'bar',
-    //     data: {
-    //         labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
-    //         datasets: [{
-    //             label: "Data1",
-    //             data: [65, 59, 80, 81, 56, 55, 40],
-    //             borderColor: "#6c5ffc",
-    //             borderWidth: "0",
-    //             backgroundColor: "#6c5ffc"
-    //         }, {
-    //             label: "Data2",
-    //             data: [28, 48, 40, 19, 86, 27, 90],
-    //             borderColor: "#05c3fb",
-    //             borderWidth: "0",
-    //             backgroundColor: "#05c3fb"
-    //         }]
-    //     },
-    //     options: {
-    //         responsive: true,
-    //         maintainAspectRatio: false,
-    //         scales: {
-    //             xAxes: [{
-    //                 barPercentage: 0.4,
-    //                 barValueSpacing: 0,
-    //                 barDatasetSpacing: 0,
-    //                 barRadius: 0,
-    //                 ticks: {
-    //                     fontColor: "#9ba6b5",
-    //                 },
-    //                 gridLines: {
-    //                     color: 'rgba(119, 119, 142, 0.2)'
-    //                 }
-    //             }],
-    //             yAxes: [{
-    //                 ticks: {
-    //                     beginAtZero: true,
-    //                     fontColor: "#9ba6b5",
-    //                 },
-    //                 gridLines: {
-    //                     color: 'rgba(119, 119, 142, 0.2)'
-    //                 },
-    //             }]
-    //         },
-    //         legend: {
-    //             labels: {
-    //                 fontColor: "#9ba6b5"
-    //             },
-    //         },
-    //     }
-    // });
+    var ctx = document.getElementById("chartBar2");
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
+            datasets: [{
+                label: "Data1",
+                data: [65, 59, 80, 81, 56, 55, 40],
+                borderColor: "#6c5ffc",
+                borderWidth: "0",
+                backgroundColor: "#6c5ffc"
+            }, {
+                label: "Data2",
+                data: [28, 48, 40, 19, 86, 27, 90],
+                borderColor: "#05c3fb",
+                borderWidth: "0",
+                backgroundColor: "#05c3fb"
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                xAxes: [{
+                    barPercentage: 0.4,
+                    barValueSpacing: 0,
+                    barDatasetSpacing: 0,
+                    barRadius: 0,
+                    ticks: {
+                        fontColor: "#9ba6b5",
+                    },
+                    gridLines: {
+                        color: 'rgba(119, 119, 142, 0.2)'
+                    }
+                }],
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true,
+                        fontColor: "#9ba6b5",
+                    },
+                    gridLines: {
+                        color: 'rgba(119, 119, 142, 0.2)'
+                    },
+                }]
+            },
+            legend: {
+                labels: {
+                    fontColor: "#9ba6b5"
+                },
+            },
+        }
+    });
 
     /* Area Chart*/
     var ctx = document.getElementById("chartArea");
@@ -233,7 +233,33 @@ $(function() {
         }
     });
 
- 
+    /* Pie Chart*/
+    var datapie = {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
+        datasets: [{
+            data: [20, 20, 30, 5, 25],
+            backgroundColor: ['#6c5ffc', '#05c3fb', '#09ad95', '#1170e4', '#e82646']
+        }]
+    };
+    var optionpie = {
+        maintainAspectRatio: false,
+        responsive: true,
+        legend: {
+            display: false,
+        },
+        animation: {
+            animateScale: true,
+            animateRotate: true
+        }
+    };
+
+    /* Doughbut Chart*/
+    var ctx6 = document.getElementById('chartPie');
+    var myPieChart6 = new Chart(ctx6, {
+        type: 'doughnut',
+        data: datapie,
+        options: optionpie
+    });
 
     /* Pie Chart*/
     var ctx7 = document.getElementById('chartDonut');

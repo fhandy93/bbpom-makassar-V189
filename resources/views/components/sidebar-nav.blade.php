@@ -8,7 +8,7 @@
                     <img src="{{ asset('vendor/images/brand/logo-1.png')}}" class="header-brand-img toggle-logo"
                         alt="logo">
                     <img src="{{ asset('vendor/images/brand/logo-2.png')}}" class="header-brand-img light-logo" alt="logo">
-                    <img src="{{ asset('vendor/assets/images/brand/logo-3.png')}}" class="header-brand-img light-logo1"
+                    <img src="{{ asset('vendor/images/brand/logo-3.png')}}" class="header-brand-img light-logo1"
                         alt="logo">
                 </a>
                 <!-- LOGO -->

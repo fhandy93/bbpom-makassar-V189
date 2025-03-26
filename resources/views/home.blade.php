@@ -155,29 +155,29 @@
             <div class="row" >
                  <!-- COL END -->
                 <div class="col-md-12 col-xl-6">
-                    <div class="card text-white overflow-hidden">
+                    <div class="card ">
                         <div class="card-body ">
                             <h4 class="card-title">NOTA DINAS Petunjuk Recovery dan Reset Password Email Coorporate</h4>
-                            <p class="card-text"><a style="color:yellow;" target="_new" href="https://drive.google.com/file/d/1gljRdMwR07Cl7J8JuAmxGF5YmlDiHbTS/view?usp=sharing">Download File PDF <i class="fa fa-download"></i></a></p>
+                            <p class="card-text"><a  target="_new" href="https://drive.google.com/file/d/1gljRdMwR07Cl7J8JuAmxGF5YmlDiHbTS/view?usp=sharing">Download File PDF <i class="fa fa-download"></i></a></p>
                         </div>
                     </div>
                 </div>
                 <!-- COL END -->
                 <!-- COL END -->
                 <div class="col-md-12 col-xl-6">
-                    <div class="card text-white overflow-hidden">
+                    <div class="card ">
                         <div class="card-body ">
                             <h4 class="card-title">Video Tutorial Recovery dan Reset Password Email Coorporate</h4>
-                            <p class="card-text"><a style="color:yellow;" target="_new" href="https://drive.google.com/file/d/1nkjOT95-UFYS_XqAHRZQts3ORVBLZl3G/view?usp=share_link">Download/Streaming <i class="fa fa-download"></i></a></p>
+                            <p class="card-text"><a target="_new" href="https://drive.google.com/file/d/1nkjOT95-UFYS_XqAHRZQts3ORVBLZl3G/view?usp=share_link">Download/Streaming <i class="fa fa-download"></i></a></p>
                         </div>
                     </div>
                 </div>
                 
                 <!-- COL END -->
                 <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12" >
-                    <div class="card overflow-hidden" >
+                    <div class="card " >
                         <div class="card-body pb-0 bg-recentorder">
-                            <h5 class="card-title text-white" style="text-align: center;"><i class="breadcrumb-item" aria-current="page">Version: <b>{{ getVersion() }}</b></i></h5>
+                            <h5 class="card-title " style="text-align: center;"><i class="breadcrumb-item" aria-current="page">Version: <b>{{ getVersion() }}</b></i></h5>
                             <div class="chartjs-wrapper-demo">
                                 <canvas id="recentorders" class="chart-dropshadow" style="display: none;"></canvas>
                             </div>

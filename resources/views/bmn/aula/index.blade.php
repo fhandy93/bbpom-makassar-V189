@@ -70,8 +70,8 @@
                                 @foreach($aula as $item)
                                 <div class="col-xl-6 col-sm-12">
                                     <div class="card border p-0">
-                                        <div class="card-header">
-                                            <h4 class="card-title">{{$item->nm_aula}}</h4>
+                                        <div class="card-header bg-gray">
+                                            <h4 class="card-title text-white">{{$item->nm_aula}}</h4>
                                             <div class="card-options">
                                                 <a href="javascript:void(0)" class="card-options-collapse" data-bs-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a>
                                                 <a href="javascript:void(0)" class="card-options-remove" data-bs-toggle="card-remove"><i class="fe fe-x"></i></a>

@@ -31,7 +31,7 @@
                                                         <a href="/smile-input" ><h3 class="card-title text-white">Form <i class="fa fa-send fa-1x"></i></h3></a>                    
                                                         </div>
                                                         <div class="card-body">
-                                                            <a href="/smile-input" style="color: white;">
+                                                            <a href="/smile-input"   >
                                                                 <div class="row">
                                                                     <div class="col-md-2" ><i class="fa fa-edit fa-2x" aria-hidden="true"> </i></div>
                                                                     <div class="col-md-10" >Form Pengajuan Lembur<p></div>
@@ -47,7 +47,7 @@
                                                         <a href="/smile-history"><h3 class="card-title text-white">History <i class="fa fa-send fa-1x"></i></h3></a>                    
                                                         </div>
                                                         <div class="card-body">
-                                                            <a href="/smile-history" style="color: white;">
+                                                            <a href="/smile-history"   >
                                                                 <div class="row">
                                                                     <div class="col-md-2" ><i class="fa fa-history fa-2x" aria-hidden="true"></i></div>
                                                                     <div class="col-md-10" >History Lembur </div>
@@ -63,7 +63,7 @@
                                                         <a href="/about-smile"><h3 class="card-title text-white">About <i class="fa fa-send fa-1x"></i></h3></a>                    
                                                         </div>
                                                         <div class="card-body">
-                                                            <a href="/about-smile" style="color: white;">
+                                                            <a href="/about-smile"   >
                                                                 <div class="row">
                                                                     <div class="col-md-2" ><i class="fa fa-info fa-2x" aria-hidden="true"></i></div>
                                                                     <div class="col-md-10" >About</div>
@@ -189,7 +189,7 @@
             <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12" >
                 <div class="card overflow-hidden" >
                     <div class="card-body pb-0 bg-recentorder">
-                        <h5 class="card-title text-white" style="text-align: center;"><i class="breadcrumb-item" aria-current="page">SMILE Version: <b>1.0</b></i></h5>
+                        <h5 class="card-title " style="text-align: center;"><i class="breadcrumb-item" aria-current="page">SMILE Version: <b>1.0</b></i></h5>
                         <div class="chartjs-wrapper-demo">
                             <canvas id="recentorders" class="chart-dropshadow" style="display: none;"></canvas>
                         </div>

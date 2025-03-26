@@ -187,7 +187,7 @@ function checkPermission($permissions){
     }
   }
   function getVersion(){
-      return "1.7.9";
+      return "1.8.10";
   }
   
   function sendImage($phone,$image,$capt){
