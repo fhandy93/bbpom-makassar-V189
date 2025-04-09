@@ -7,7 +7,7 @@
                 <!-- ROW 1 OPEN -->
 				<div class="row" style="margin-top: 30px;margin-bottom: 50px;">
                     <div class="col-md-12 text-center">
-                        <img src="{{ asset('vendor/images/media/moment.png') }}">
+                        <img src="{{ asset('vendor/images/media/bmn.png') }}">
                     </div>
                 </div>
 				
@@ -22,7 +22,7 @@
                                             <div class="text-white">
                                                 <h2 class="mb-0 number-font">{{$bastkembali}}
                                                 </h2>
-                                                <p class="text-white mb-0">BAST Pengembalian</p>
+                                                <p class="text-white mb-0">BA Pengembalian</p>
                                             </div>
                                             <div class="ms-auto"> <i class="fa fa-sign-in text-white fs-30 me-2 mt-2"></i> </div>
                                         </div>
@@ -36,7 +36,7 @@
                                         <div class="d-flex">
                                             <div class="text-white">
                                                 <h2 class="mb-0 number-font">{{$bastpinjam}}</h2>
-                                                <p class="text-white mb-0">BAST Peminjaman</p>
+                                                <p class="text-white mb-0">BA Peminjaman</p>
                                             </div>
                                             <div class="ms-auto"> <i class="fa fa-sign-out text-white fs-30 me-2 mt-2"></i> </div>
                                         </div>
@@ -78,7 +78,7 @@
                     <div class="col-lg-6 col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="card-title">Grafik Data Pelaporan BAST Tahun {{date('Y')}} </h3>
+                                <h3 class="card-title">Grafik Data Pelaporan BA Tahun {{date('Y')}} </h3>
                             </div>
                             <div class="card-body">
                                 <div class="chart-container">
@@ -105,11 +105,11 @@
                         <div class="card">
                             <a href="/bmn/bast-pengembalian">
                                 <div class="card-header bg-gray-dark br-te-3 br-ts-3">
-                                    <h3 class="card-title text-white" >Berita Acara Serah Terima (BAST) <i class="fa fa-paper-plane"></i></h3>               
+                                    <h3 class="card-title text-white" >Berita Acara (BA) <i class="fa fa-paper-plane"></i></h3>               
                                 </div>
                             </a>     
                             <div class="card-body">
-                            <a   href="/bmn/bast-pengembalian"><i class="fa fa-sign-in fa-3x"></i>&nbsp;&nbsp;Pegembalian</a>
+                            <a   href="/bmn/bast-pengembalian"><i class="fa fa-sign-in fa-3x"></i>&nbsp;&nbsp;Pengembalian</a>
                             </div>
                         </div>
                     </div>		
@@ -117,7 +117,7 @@
                         <div class="card">
                             <a href="/bmn/bast-peminjaman">
                                 <div class="card-header bg-gray-dark br-te-3 br-ts-3">
-                                    <h3 class="card-title text-white">Berita Acara Serah Terima (BAST) <i class="fa fa-paper-plane"></i></h3>               
+                                    <h3 class="card-title text-white">Berita Acara (BA) <i class="fa fa-paper-plane"></i></h3>               
                                 </div>
                             </a>     
                             <div class="card-body">
@@ -151,7 +151,7 @@
                             <a href="/bmn/pinjam-non-bast"><h3 class="card-title text-white">Peminjaman<i class="fa fa-paper-plane"></i></h3></a>                    
                             </div>
                             <div class="card-body">
-                            <a href="/bmn/pinjam-non-bast"  ><i class="fa fa-cube fa-3x"></i>&nbsp; Barang-Barang Non BAST</a>
+                            <a href="/bmn/pinjam-non-bast"  ><i class="fa fa-cube fa-3x"></i>&nbsp; Barang</a>
                             </div>
                         </div>
                     </div>	
@@ -269,7 +269,7 @@
         data: {
             labels: ["Jan", "Feb", "Mar", "Apr", "Mei", "Jun", "Jul","Agu", "Sep", "Okt", "Nov", "Des"],
             datasets: [{
-                label: "BAST Pengembalian",
+                label: "BA Pengembalian",
                 data: [
                         {{$count1}}, 
                         {{$count2}}, 
@@ -288,7 +288,7 @@
                 borderWidth: "0",
                 backgroundColor: "#6c5ffc"
             }, {
-                label: "BAST Peminjaman",
+                label: "BA Peminjaman",
                 data: [
                         {{$countpinjam1}}, 
                         {{$countpinjam2}}, 

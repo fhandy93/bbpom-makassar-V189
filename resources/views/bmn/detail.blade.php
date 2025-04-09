@@ -6,11 +6,11 @@
             <div class="main-container container-fluid">
                 <!-- PAGE-HEADER -->
                 <div class="page-header">
-                    <h1 class="page-title">Detail BAST</h1>
+                    <h1 class="page-title">Detail BA</h1>
                     <div>
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="javascript:void(0)">BMN Moments</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Detail BAST</li>
+                            <li class="breadcrumb-item active" aria-current="page">Detail BA</li>
                         </ol>
                     </div>	
                 </div>
@@ -30,7 +30,7 @@
                                     br-bs-7 br-ts-7">
                                 </div>
                                 <div class="card-header">
-                                    <h3 class="card-title">Detail BAST  {{ $bmn->jns_bst == '1' ? 'Pengembalian' : 'Peminjaman' }} </h3>
+                                    <h3 class="card-title">Detail BA {{ $bmn->jns_bst == '1' ? 'Pengembalian' : 'Peminjaman' }} </h3>
                                     <div class="card-options">
                                         <a href="javascript:void(0)" class="card-options-collapse" data-bs-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a>
                                     </div>
@@ -184,7 +184,7 @@
                                             <a href="/bmn/bast-pengembalian-nomor-edit/{{$bmn ->id}}" class="btn btn-primary"><i class="fa fa-edit me-2"></i>Edit Nomor Surat</a>
                                             @endif
                                         @endif
-                                            <a href="{{ $bmn->jns_bst == 1 ? '/bmn/bast-pengembalian-cetak/'.$bmn ->id : '/bmn/bast-peminjaman-cetak/'.$bmn->id }}" class="btn btn-info"><i class="fa fa-print me-2"></i>Cetak BAST</a>
+                                            <a href="{{ $bmn->jns_bst == 1 ? '/bmn/bast-pengembalian-cetak/'.$bmn ->id : '/bmn/bast-peminjaman-cetak/'.$bmn->id }}" class="btn btn-info"><i class="fa fa-print me-2"></i>Cetak BA</a>
                                         @endif   
                                     @endif
                                 </td>

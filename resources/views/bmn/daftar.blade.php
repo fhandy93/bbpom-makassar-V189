@@ -6,11 +6,11 @@
             <div class="main-container container-fluid">
                 <!-- PAGE-HEADER -->
                 <div class="page-header">
-                    <h1 class="page-title">Daftar BAST  {{ $jns == 1 ? 'Pengembalian' : 'Peminjaman' }}</h1>
+                    <h1 class="page-title">Daftar BA  {{ $jns == 1 ? 'Pengembalian' : 'Peminjaman' }}</h1>
                     <div>
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="javascript:void(0)">BMN Moments</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Daftar BAST {{ $jns == 1 ? 'Pengembalian' : 'Peminjaman' }}</li>
+                            <li class="breadcrumb-item active" aria-current="page">Daftar BA {{ $jns == 1 ? 'Pengembalian' : 'Peminjaman' }}</li>
                         </ol>
                     </div>
                 </div>
@@ -33,7 +33,7 @@
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="card-title">Daftar BAST {{ $jns == 1 ? 'Pengembalian' : 'Peminjaman' }}</h3>
+                                <h3 class="card-title">Daftar BA {{ $jns == 1 ? 'Pengembalian' : 'Peminjaman' }}</h3>
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">

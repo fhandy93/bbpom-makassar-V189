@@ -78,7 +78,7 @@
     
         <div id="header">
             
-            <h3><b>BERITA ACARA SERAH TERIMA</b></h3>
+            <h3><b>BERITA ACARA</b></h3>
             <div style="margin-top: -15px;">Nomor : {{ $bmn->no_surat }}</div>
         </div>
         Pada hari ini {{ $bmn->created_at->isoFormat('dddd')}} tanggal {{ $bmn->created_at->isoFormat('D MMMM Y')}}, 

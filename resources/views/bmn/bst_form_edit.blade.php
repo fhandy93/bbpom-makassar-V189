@@ -28,7 +28,7 @@
 					<div class="col-lg-10 col-md-10">
 						<div class="card">
 							<div class="card-header">
-								<h3 class="card-title">Formulir BAST  {{ $jns == 1 ? 'Pengembalian' : 'Peminjaman' }}</h3>
+								<h3 class="card-title">Formulir BA  {{ $jns == 1 ? 'Pengembalian' : 'Peminjaman' }}</h3>
 							</div>
 							<form id="signupForm" method="post" class="form-horizontal" action="{{ $jns == 1 ? '/bmn/bast-pengembalian-update/'.$bmn->id : '/bmn/bast-peminjaman-update/'.$bmn->id }}" >
                                 @csrf

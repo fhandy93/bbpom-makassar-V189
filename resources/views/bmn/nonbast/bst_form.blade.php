@@ -6,10 +6,10 @@
             <div class="main-container container-fluid">
                 <!-- PAGE-HEADER -->
                 <div class="page-header">
-                    <h1 class="page-title"> Peminjaman Barang Non BAST</h1>
+                    <h1 class="page-title"> Peminjaman Barang</h1>
                     <div>
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="javascript:void(0)">Peminjaman Non BAST</a></li>
+                            <li class="breadcrumb-item"><a href="javascript:void(0)">Peminjaman</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Input Data</li>
                         </ol>
                     </div>	
@@ -35,7 +35,7 @@
 					<div class="col-lg-10 col-md-10">
 						<div class="card">
 							<div class="card-header">
-								<h3 class="card-title">Formulir Peminjaman Non BAST</h3>
+								<h3 class="card-title">Formulir Peminjaman Barang</h3>
 							</div>
 							<form id="signupForm" method="post" class="form-horizontal" action="/bmn/pinjam-non-bast/store" >
 								<div class="card-body">				

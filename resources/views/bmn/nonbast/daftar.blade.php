@@ -6,11 +6,11 @@
             <div class="main-container container-fluid">
                 <!-- PAGE-HEADER -->
                 <div class="page-header">
-                    <h1 class="page-title">Daftar BAST  Peminjaman Non BAST</h1>
+                    <h1 class="page-title">Daftar Peminjaman Barang</h1>
                     <div>
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="javascript:void(0)">BMN Moments</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Daftar Peminjaman Non BAST</li>
+                            <li class="breadcrumb-item active" aria-current="page">Daftar Peminjaman Barang</li>
                         </ol>
                     </div>
                 </div>
@@ -33,7 +33,7 @@
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="card-title">Daftar Peminjaman Non BAST </h3>
+                                <h3 class="card-title">Daftar Peminjaman Barang</h3>
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
