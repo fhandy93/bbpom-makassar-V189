@@ -15,5 +15,8 @@ class Bmnruangan extends Model
         'nm_ruangan',
         'pj',
     ];
-    
+    public function user()
+    {
+        return $this->belongsTo(User::class,'pj');
+    }
 }

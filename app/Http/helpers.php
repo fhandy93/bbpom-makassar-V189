@@ -31,7 +31,7 @@ function checkPermission($permissions){
     
     $curl = curl_init();
     $token = "v4e1bMSSR4vjTGlfFUR5EBaoxHx3AXu59DvtX6cDH6N13AHksFVNdXhGKmX0mHXV";
-    $secret_key = "FvKiNKdk";
+    $secret_key = "FvKiNKdk--";
     $data = [
    'phone' => $no,'message' => $pesan
     ];

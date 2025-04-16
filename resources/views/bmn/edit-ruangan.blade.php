@@ -54,11 +54,16 @@
 									
 									<div class="form-row">
 										<div class="col-xl-8 mb-12 ">
-											<label for="stok" class="form-label">Penanggung Jawab Ruangan</label>
-											<input type="text" value="{{$data->pj}}"  class="form-control  @error('pj') is-invalid @enderror" id="pj" name="pj" >
-											@error('pj')
-											<span class="invalid-feedback"> {{ $message }} </span>
-											@enderror	
+											<label for="user_id" class="form-label">Nama Pegawai</label>
+											<select name="user_id" class="form-control form-select select2">
+												<option value="aa" selected disabled>Pilih Nama Pegawai ...</option>
+												@foreach($user as $item)
+												<option value="{{$item->id}}" @if($data->pj == $item->id) selected @endif>{{$item->name}}</option>
+												@endforeach
+											</select>	
+											@error('user_id')
+												<span class="text-danger"> {{ $message }} </span>
+											@enderror
 										</div>
 									</div>
                                    

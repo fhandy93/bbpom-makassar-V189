@@ -716,6 +716,9 @@ Route :: get('/bmn/admin/pinjam-non-bast',[BMNController::class,'nonBastAdmin'])
 Route :: post('/bmn/admin/pinjam-non-bast/filter',[BMNController::class,'nonBastFil'])->middleware('check-permission:superadmin|perlengkapan');
 Route :: delete('/bmn/delete-pinjam-non-bast/{id}',[BMNController::class,'nonBastDel']);
 Route :: delete('/bmn/admin/delete-pinjam-non-bast/{id}',[BMNController::class,'adminNonBastDel']);
+Route :: get('/bmn/dbr/{id}',[BMNController::class,'dbrView'])->name('bmn.dbr-view');
+Route :: post('/bmn/konfirmasi-dbr/{id}',[BMNController::class,'dbrKonf']);
+Route :: get('/bmn/dbr/download-qr/{id}',[BMNController::class,'dbrDownload'])->middleware('check-permission:superadmin|perlengkapan');
 
 Route :: get('/berakhlak',[BerakhlakController::class,'index']);
 Route :: get('/{id}/image',[BerakhlakController::class,'image']);

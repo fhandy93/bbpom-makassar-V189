@@ -55,7 +55,7 @@
                                                 <td>@if($data -> pj == null)
                                                     -
                                                     @else
-                                                    {{ $data -> pj }}
+                                                    {{ $data -> user -> name }}
                                                     @endif
                                                 </td>
                                                
@@ -63,14 +63,15 @@
                                                     <div class="d-flex align-items-center gap-2">
                                                        
                                                         <!-- Dropdown -->
-                                                      
-                                                        <a href="/bmn/admin/edit-data-ruangan/{{$data->id}}" class="btn btn-info"><i class="fa fa-edit me-2"></i>Edit</a>
+                                                        <a href="/bmn/dbr/{{$data->id}}" class="btn btn-sm btn-success"><i class="fa fa-eye me-2"></i>View DBR</a>
+                                                        <a href="/bmn/dbr/download-qr/{{$data->id}}" class="btn btn-sm btn-primary"><i class="fa fa-download me-2"></i>Download QR-Code</a>
+                                                        <a href="/bmn/admin/edit-data-ruangan/{{$data->id}}" class="btn btn-sm btn-info"><i class="fa fa-edit me-2"></i>Edit</a>
                                                         <!-- Tombol Delete -->
                                                         @if(checkPermission(['superadmin']))
                                                             <form method="POST" action="/bmn/admin/delete-ruang/{{ $data->id }}" class="d-inline">
                                                                 @csrf
                                                                 <input type="hidden" name="_method" value="DELETE">
-                                                                <button type="submit" class="btn btn-danger show_confirm">
+                                                                <button type="submit" class="btn btn-sm btn-danger show_confirm">
                                                                     <i class="fa fa-trash me-2"></i>Delete
                                                                 </button>
                                                             </form>

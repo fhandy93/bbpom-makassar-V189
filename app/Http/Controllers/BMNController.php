@@ -19,6 +19,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf as FacadePdf;
 use Carbon\Carbon;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use Illuminate\Support\Facades\Auth;
 
 class BMNController extends Controller
@@ -300,6 +301,7 @@ class BMNController extends Controller
             }else{
                 $updt ->lokasi  = $item->lokasi;
             }
+            $updt -> status = 0;
             $updt ->save();
         }  
 
@@ -331,6 +333,7 @@ class BMNController extends Controller
             }else{
                 $updt ->lokasi  = $item->lokasi;
             }
+            $updt -> status = 0;
             $updt ->save();
         }  
 
@@ -840,19 +843,20 @@ class BMNController extends Controller
         return view('bmn.daftar-ruangan',['data'=>$data]);
     }
     public function inputRuang(){
-        return view('bmn.input-ruangan');
+        $user = user :: where('isactive',1)->get(['id','name']);
+        return view('bmn.input-ruangan',['user'=>$user]);
     }
     public function inputRuangStore(Request $req){
         $req->validate([
             "nama" => "required",
-            "pj"  =>  "required"
+            "user_id"  =>  "required"
         ],[
             "nama" => "Kolom Nama Ruangan harus diisi",
-            "pj" => "Kolom Penanggung jawab ruangan harus diisi"
+            "user_id" => "Kolom Penanggung jawab ruangan harus diisi"
         ]);
         $data = new Bmnruangan();
         $data->nm_ruangan       = $req->nama;
-        $data->pj               = $req->pj;
+        $data->pj               = $req->user_id;
         $sts = $data->save();
         if($sts){
             
@@ -863,19 +867,20 @@ class BMNController extends Controller
     }
     public function ruangEdit($id){
         $data = Bmnruangan :: findOrFail($id);
-        return view('bmn.edit-ruangan',['data'=>$data]);
+        $user = user :: where('isactive',1)->get(['id','name']);
+        return view('bmn.edit-ruangan',['data'=>$data,'user'=>$user]);
     }
     public function ruangUpdate(Request $req, $id){
         $req->validate([
             "nama" => "required",
-            "pj"  =>  "required"
+            "user_id"  =>  "required"
         ],[
             "nama" => "Kolom Nama Ruangan harus diisi",
-            "pj" => "Kolom Penanggung jawab ruangan harus diisi"
+            "user_id" => "Kolom Penanggung jawab ruangan harus diisi"
         ]);
         $data = Bmnruangan :: findOrFail($id);
         $data->nm_ruangan       = $req->nama;
-        $data->pj               = $req->pj;
+        $data->pj               = $req->user_id;
         $sts = $data->save();
         if($sts){
             return redirect()->route('bmn.view-admin-daftar-ruang')->with('success', 'Data berhasil diupdate');
@@ -968,8 +973,12 @@ class BMNController extends Controller
         $data->merek            = $req->merek;
         $data->tgl_perolehan    = Carbon::createFromFormat('d/m/Y', $req->tgl)->format('Y-m-d');
         $data->nilai            = $req->nilai;
+        if($data->lokasi != $req->lokasi){
+            $data->status           = 0;    
+        }
         $data->lokasi           = $req->lokasi;
         $sts = $data->save();
+        
         if($sts){
             return redirect()->route('bmn.view-admin-daftar-barang')->with('success', 'Data berhasil diupdate');
             // session () ->flash('success','Data berhasil terupdate');
@@ -1387,5 +1396,100 @@ class BMNController extends Controller
         TransBMNnonbast :: where('nonbast_id',$id)->delete();
         
         return redirect()->route('bmn.non-bast-admin')->with('success', 'Data berhasil dihapus');
+    }
+    public function dbrView($id){
+        $ruang = Bmnruangan::where('id', $id)->first();
+        $data = Bmnbarang::where('lokasi', $id)->get();
+
+        if ($data->contains('status', 0)) {
+            if($ruang->status){
+                if ($ruang->status != 0) {
+                    $ruang->status = 0;
+                    $ruang->save();
+                }
+            }
+        }
+
+        return view('bmn.detail-dbr', ['data' => $data, 'ruang' => $ruang]);
+    }
+    public function dbrKonf($id){
+        $ruang  = Bmnruangan::findOrFail($id);
+        $ruang->status      = 1;
+        $sts = $ruang->save();
+        if($sts){
+            Bmnbarang::where('lokasi', $id)->update(['status' => 1]);
+        }
+        return redirect()->route('bmn.dbr-view',['id'=>$id])->with('success', 'Data berhasil dihapus');
+    }
+    // public function dbrDownload($id){
+    //    // Ganti ini dengan data yang mau kamu masukkan ke dalam QR
+    // $data = 'http://bbpom-makassar-local.test/bmn/dbr/' . $id;
+
+    // // Generate QR dalam format PNG
+    // $qr = QrCode::format('png')->size(300)->generate($data);
+
+    // // Tambahan pengecekan: apakah outputnya kemungkinan besar base64
+    // if (preg_match('/^iVBORw0KGgoAAA/', $qr)) {
+    //     // Jika base64, kita decode dulu
+    //     $qrBinary = base64_decode($qr);
+    // } else {
+    //     // Jika sudah binary PNG, langsung pakai
+    //     $qrBinary = $qr;
+    // }
+
+    // // Optional: Simpan QR ke file untuk debugging
+    // Storage::disk('local')->put("debug-qr-$id.png", $qrBinary);
+
+    // // Kirim sebagai file download
+    // return response($qrBinary)
+    //     ->header('Content-Type', 'image/png')
+    //     ->header('Content-Disposition', 'attachment; filename="qr-code-' . $id . '.png"');
+    // }
+
+    public function dbrDownload($id){
+        $data = 'http://bbpom-makassar-local.test/bmn/dbr/' . $id;
+
+        // 1. Generate QR PNG dan simpan sementara
+        $qrContent = QrCode::format('png')->size(400)->errorCorrection('H')->generate($data);
+        $tempQRPath = storage_path("app/temp-qr-$id.png");
+        file_put_contents($tempQRPath, $qrContent);
+    
+        // 2. Buka QR dan logo
+        $qrImage = imagecreatefrompng($tempQRPath);
+        $logoPath = public_path('logo.png');
+        $logoImage = imagecreatefrompng($logoPath);
+    
+        // 3. Resize logo agar pas di tengah
+        $qrWidth = imagesx($qrImage);
+        $qrHeight = imagesy($qrImage);
+        $logoWidth = imagesx($logoImage);
+        $logoHeight = imagesy($logoImage);
+    
+        $newLogoWidth = $qrWidth / 3.5;
+        $newLogoHeight = ($logoHeight / $logoWidth) * $newLogoWidth;
+    
+        $logoResized = imagecreatetruecolor($newLogoWidth, $newLogoHeight);
+        imagealphablending($logoResized, false);
+        imagesavealpha($logoResized, true);
+        imagecopyresampled($logoResized, $logoImage, 0, 0, 0, 0, $newLogoWidth, $newLogoHeight, $logoWidth, $logoHeight);
+    
+        // 4. Tempelkan logo di tengah QR
+        $x = ($qrWidth - $newLogoWidth) / 2;
+        $y = ($qrHeight - $newLogoHeight) / 2;
+        imagecopy($qrImage, $logoResized, $x, $y, 0, 0, $newLogoWidth, $newLogoHeight);
+    
+        // 5. Output sebagai PNG download
+        ob_start();
+        imagepng($qrImage);
+        $finalImage = ob_get_clean();
+    
+        imagedestroy($qrImage);
+        imagedestroy($logoImage);
+        imagedestroy($logoResized);
+        unlink($tempQRPath); // hapus file sementara
+    
+        return response($finalImage)
+            ->header('Content-Type', 'image/png')
+            ->header('Content-Disposition', 'attachment; filename="qr-with-logo-' . $id . '.png"');
     }
 }

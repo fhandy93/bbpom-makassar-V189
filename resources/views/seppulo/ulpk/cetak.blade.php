@@ -78,7 +78,10 @@
  <td rowspan="9">{{$item->tgl_lapor}}</td>
  <td>Nama:{{ $item->nama}}</td>
  <td rowspan="9" style="width: 200px;"> {!! $item->layanan !!} </td>
- <td rowspan="9" style="width: 1200px;">{!! $item->jawaban !!} </td>
+ <td rowspan="9" style="max-width: 1200px; word-wrap: break-word; white-space: pre-wrap;">
+    {!! $item->jawaban !!}
+</td>
+ <!-- <td rowspan="9" style="width: 1200px;">{!! $item->jawaban !!} </td> -->
 
  <td rowspan="9"> {{$item->komoditi}} </td>
  <td rowspan="9"> {{$item->user->name}} @if($item->petugas!="-") /{{$item->petugas}} @endif </td>
