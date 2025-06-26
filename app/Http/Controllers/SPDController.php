@@ -133,8 +133,15 @@ class SPDController extends Controller
         }else{
             $sppd->status              = 2;
             $pesan1 = '*Hy Bestiee* Ada SPPD Online masuk, Konfirmasi Yuukkkk 🤭 https://bbpom-makassar.com/sppd-view-admin';
+            
             $no_telpon = '6285399000189';
             sendMessage($pesan1,$no_telpon);
+
+            $fikar = '082351453553';
+            sendMessage($pesan1,$fikar);
+
+            $iccang = '082299321472';
+            sendMessage($pesan1,$iccang);
         }
         if($req->st!= ''){        
             $path = public_path().'/storage/st/';

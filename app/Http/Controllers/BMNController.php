@@ -385,7 +385,7 @@ class BMNController extends Controller
     public function cetak($id){
         $bmn = BMN :: where('id',$id)->first();
         $user = User :: where('id','=',$bmn->user_bmn)->first(['username','name']);
-        $userbmn = User :: where('id','=',$bmn->user_bmn)->first(['username','name']);
+        $userbmn = User :: where('id','=',$bmn->user_id)->first(['username','name']);
         $prof = Profile :: where('username','=',$user->username)->first(['nip','pangkat','jabatan','unit']);
         $nipbmn = Profile :: where('username','=',$userbmn->username)->first(['nip']);
         $data = TransBMN :: where('bst_id',$id)->get();
@@ -1168,11 +1168,34 @@ class BMNController extends Controller
         if($req->status == 1){
             $pesan = "*Yth Bapak/Ibu,* Pengajuan peminjaman AULA anda telah diterima ✅ ";
 
-            echo $wa = Bmnaula :: where('id',$data->aula_id)->first('wa_petugas');  
+            $wa = Bmnaula :: where('id',$data->aula_id)->first('wa_petugas');  
 
             $nama = $data->user->name;
-            $pesanPetugas = "Laporan peminjaman AULA dari *$nama* Telah dikonfirmasi oleh admin BMN untuk dilakukan pengaturan AULA sesuai dengan ketentuan peminjaman, Untuk informasi lebih lanjut silakan untuk menghubungi pihak BMN";
+            $tgl_pinjam = $data->wkt_pinjam->format('Y-m-d');  Carbon::parse($data->wkt_pinjam)->format('Y-m-d');
+            if($data ->bentuk == 1){
+                $ruang = 'U-Shape';
+                }
+            elseif($data ->bentuk == 2)
+                {$ruang = 'Class';}
+            elseif($data ->bentuk == 3)
+                {$ruang = 'Auditorium';}
+            elseif($data ->bentuk == 4)
+                {$ruang = 'Boardroom';}
+            elseif($data ->bentuk == 5)
+                {$ruang = 'Hollow Square';}
+            else
+                {$ruang = 'Banquet/Round Table';}
+
+            $jumlah = $data->jumlah;
+            $catatan = $data->catatan;
+            $pesanPetugas = "Laporan peminjaman AULA dari *$nama* pada tanggal *$tgl_pinjam* Telah dikonfirmasi oleh admin BMN untuk dilakukan pengaturan AULA dengan format ruangan *$ruang*, jumlah peserta *$jumlah orang*, catatan *$catatan*. Untuk informasi lebih lanjut silakan untuk menghubungi pihak BMN";
             sendMessage($pesanPetugas,$wa->wa_petugas);
+
+            $syahrul = '085241693776';
+            sendMessage($pesanPetugas,$syahrul);
+
+            $alwi = '08986111996';
+            sendMessage($pesanPetugas,$alwi);
 
         }else{
             $pesan = "*Yth Bapak/Ibu,* Pengajuan peminjaman AULA anda telah ditolak ❌, Untuk info lebih lanjut silakan menghubungi admin BMN Moments";

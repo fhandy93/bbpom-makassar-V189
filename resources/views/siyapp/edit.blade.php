@@ -43,11 +43,6 @@
                                                         <td>{{$siyapp->merek}}</td>
                                                     </tr>
                                                     <tr>
-                                                        <td>3</td>
-                                                        <td>Type</td>
-                                                        <td>{{$siyapp->type}}</td>
-                                                    </tr>
-                                                    <tr>
                                                         <td>4</td>
                                                         <td>No. Inven. (NUP)</td>
                                                         <td>{{$siyapp->nup}}</td>

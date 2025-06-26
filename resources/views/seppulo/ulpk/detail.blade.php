@@ -29,100 +29,115 @@
 					<div class="col-lg-12 col-md-6">
                     <div class="table-responsive">
                         <h3 class="text-center">Detail Data Konsumen</h3>
-                                            <table class="table border text-nowrap text-md-nowrap table-striped mb-0" style="width:30 px;">
-                                                
-                                                <tbody>
-                                                    <tr>
-                                                        <td>1</td>
-                                                        <td>Nama Konsumen</td>
-                                                        <td>{{$ulpk->nama}}</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>2</td>
-                                                        <td>Umur</td>
-                                                        <td>{{$ulpk->umur}}</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>3</td>
-                                                        <td>Jenis Kelamin</td>
-                                                        <td>{{$ulpk->kelamin}}</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>4</td>
-                                                        <td>Alamat</td>
-                                                        <td>{{$ulpk->alamat}}</td>
-                                                    </tr>
-													<tr>
-                                                        <td>5</td>
-                                                        <td>No. Telp/Hp</td>
-                                                        <td>{{$ulpk->hp}}</td>
-                                                    </tr>
-													<tr>
-                                                        <td>6</td>
-                                                        <td>Email</td>
-                                                        <td>{{$ulpk->email}}</td>
-                                                    </tr>
-													<tr>
-                                                        <td>7</td>
-                                                        <td>Perusahaan</td>
-                                                        <td>{{$ulpk->perusahaan}}</td>
-                                                    </tr>
-													<tr>
-                                                        <td>8</td>
-                                                        <td>Pekerjaan</td>
-                                                        <td>{{$ulpk->pekerjaan}}</td>
-                                                    </tr>
-													<tr>
-                                                        <td>9</td>
-                                                        <td>Jenis Layanan</td>
-                                                        <td>{{$ulpk->jenis}}</td>
-                                                    </tr>
-													<tr>
-                                                        <td>10</td>
-                                                        <td>Layanan</td>
-                                                        <td>{!! $ulpk->layanan !!}</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>11</td>
-                                                        <td>Jawaban</td>
-                                                        <td>{!! $ulpk->jawaban !!}</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>12</td>
-                                                        <td>Komoditi</td>
-                                                        <td>{{$ulpk->komoditi}}</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>13</td>
-                                                        <td>Petugas 1</td>
-                                                        <td>{{$ulpk->user->name}}</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>14</td>
-                                                        <td>Petugas 2</td>
-                                                        <td>{{$ulpk->petugas}}</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>15</td>
-                                                        <td>Sarana Komunikasi</td>
-                                                        <td>{{$ulpk->sarana}}</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>16</td>
-                                                        <td>Rujuk/Tindak Lanjut</td>
-                                                        <td>
-                                                            @if($ulpk->rujuk=="1")
-                                                            Ya
-                                                            @else
-                                                            Tidak
-                                                            @endif
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>	
-                                        <p>
-                        <a href="/konsumen/{{ $ulpk->id }}/edit" class="btn btn-primary my-3">Edit Data</a>
+                        <table class="table border text-nowrap text-md-nowrap table-striped mb-0" style="width:30 px;">
+                            
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Nama Konsumen</td>
+                                    <td>{{$ulpk->nama}}</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Umur</td>
+                                    <td>{{$ulpk->umur}}</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>Jenis Kelamin</td>
+                                    <td>{{$ulpk->kelamin}}</td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>Alamat</td>
+                                    <td>{{$ulpk->alamat}}</td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>No. Telp/Hp</td>
+                                    <td>{{$ulpk->hp}}</td>
+                                </tr>
+                                <tr>
+                                    <td>6</td>
+                                    <td>Email</td>
+                                    <td>{{$ulpk->email}}</td>
+                                </tr>
+                                <tr>
+                                    <td>7</td>
+                                    <td>Perusahaan</td>
+                                    <td>{{$ulpk->perusahaan}}</td>
+                                </tr>
+                                <tr>
+                                    <td>8</td>
+                                    <td>Pekerjaan</td>
+                                    <td>{{$ulpk->pekerjaan}}</td>
+                                </tr>
+                                <tr>
+                                    <td>9</td>
+                                    <td>Jenis Layanan</td>
+                                    <td>{{$ulpk->jenis}}</td>
+                                </tr>
+                                <tr>
+                                    <td>10</td>
+                                    <td>Layanan</td>
+                                    <td>{!! $ulpk->layanan !!}</td>
+                                </tr>
+                                <tr>
+                                    <td>11</td>
+                                    <td>Jawaban</td>
+                                    <td>{!! $ulpk->jawaban !!}</td>
+                                </tr>
+                                <tr>
+                                    <td>12</td>
+                                    <td>Komoditi</td>
+                                    <td>{{$ulpk->komoditi}}</td>
+                                </tr>
+                                <tr>
+                                    <td>13</td>
+                                    <td>Petugas 1</td>
+                                    <td>{{$ulpk->user->name}}</td>
+                                </tr>
+                                <tr>
+                                    <td>14</td>
+                                    <td>Petugas 2</td>
+                                    <td>
+                                        @if($v == 1)
+                                            {{$ulpk->petugas}}
+                                        @else
+                                            @if(isset($ulpk->petugas->name))
+                                                {{$ulpk->petugas->name}}
+                                            @else
+                                                -
+                                            @endif
+                                        @endif    
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>15</td>
+                                    <td>Sarana Komunikasi</td>
+                                    <td>{{$ulpk->sarana}}</td>
+                                </tr>
+                                <tr>
+                                    <td>16</td>
+                                    <td>Rujuk/Tindak Lanjut</td>
+                                    <td>
+                                        @if($ulpk->rujuk=="1")
+                                        Ya
+                                        @else
+                                        Tidak
+                                        @endif
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>	
+                        <p>
+                        @if($v == 1)
+                            <a href="/konsumen/{{ $ulpk->id }}/edit" class="btn btn-primary my-3">Edit Data</a>
+                        @else
+                          <a href="/ulpk/{{ $ulpk->id }}/edit" class="btn btn-primary my-3">Edit Data</a>
+                        @endif    
+                        
 					</div>
 				</div>
 				<!-- ROW CLOSED -->

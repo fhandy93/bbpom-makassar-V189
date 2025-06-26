@@ -21,7 +21,7 @@
 						<div class="card-body text-center" id="success"> 
 							<span class=""><svg xmlns="http://www.w3.org/2000/svg" height="60" width="60" viewBox="0 0 24 24"><path fill="#13bfa6" d="M10.3125,16.09375a.99676.99676,0,0,1-.707-.293L6.793,12.98828A.99989.99989,0,0,1,8.207,11.57422l2.10547,2.10547L15.793,8.19922A.99989.99989,0,0,1,17.207,9.61328l-6.1875,6.1875A.99676.99676,0,0,1,10.3125,16.09375Z" opacity=".99"/><path fill="#71d8c9" d="M12,2A10,10,0,1,0,22,12,10.01146,10.01146,0,0,0,12,2Zm5.207,7.61328-6.1875,6.1875a.99963.99963,0,0,1-1.41406,0L6.793,12.98828A.99989.99989,0,0,1,8.207,11.57422l2.10547,2.10547L15.793,8.19922A.99989.99989,0,0,1,17.207,9.61328Z"/></svg></span>
 							<h4 class="h4 mb-0 mt-3">Success</h4>
-							<p class="card-text">{{ session() -> get('succes')}}</p>
+							<p class="card-text">{{ session() -> get('success')}}</p>
 						</div>
 					@endif    	
 					<div class="col-lg-2 col-md-2"></div>
@@ -45,6 +45,22 @@
 										</div>
 									</div>
 									<div class="form-row">
+										<div class="col-xl-12 mb-12 ">
+											<label for="kode" class="form-label">Kode-NUP Barang </label>
+											<select name="nup" class="form-control form-select select2" id="mySelect" style="width: 100%;">
+												<option></option> <!-- Diperlukan agar placeholder Select2 bisa muncul -->
+												<option value="-">-</option>
+												@foreach($barang as $item)
+													<option value="{{$item->id}}" {{ old('barang') == $item->id ? 'selected' : '' }}>
+														{{$item->kode}} - {{$item->nup}}
+													</option>
+												@endforeach 
+											</select>	
+											</div>
+									</div>
+									
+									<input type="text" id='kode' name="kode" value="" hidden>
+									<div class="form-row">
 										<div class="col-xl-6 mb-12 ">
 											<label for="nama_barang" class="form-label">Nama Barang</label>
 											<input type="text" value="{{old('nama_barang')}}"  class="form-control  @error('nama_barang') is-invalid @enderror" id="nama_barang" name="nama_barang" >
@@ -62,34 +78,17 @@
 											@enderror	
 										</div>
 									</div>
-									<div class="form-row">
-										<div class="col-xl-8 mb-12 ">
-											<label for="type" class="form-label">Type</label>
-											<input type="type" value="{{old('type')}}"  class="form-control  @error('type') is-invalid @enderror" id="type" name="type" >
-											@error('type')
-											<span class="invalid-feedback"> {{ $message }} </span>
-											@enderror	
-										</div>
-									</div>
-									<div class="form-row">
-										<div class="col-xl-8 mb-12 ">
-											<label for="nup" class="form-label">Nomor Inventaris (NUP)</label>
-											<input type="text" value="{{old('nup')}}"  class="form-control  @error('nup') is-invalid @enderror" id="nup" name="nup" >
-											@error('nup')
-											<span class="invalid-feedback"> {{ $message }} </span>
-											@enderror	
-										</div>
-									</div>
+								
                                     <div class="form-row">
 										<div class="col-xl-8 mb-12 ">
 											<label for="tahun" class="form-label">Tahun</label>
-											<select name="tahun" class="form-control form-select select2" >
-												<option value="aa" selected disabled>Pilih Tahun ...</option>
-												<option value="-">-</option>
-												@for($a = 0;$a<=20;$a++)
-            									<option value="{{date('Y')-$a}}">{{date("Y")-$a}}</option>
-												@endfor
-											</select>	
+											<select id="tahun" name="tahun" class="form-control form-select select2">
+											<option value="aa" selected disabled>Pilih Tahun ...</option>
+											<option value="-">-</option>
+											@for($a = 0;$a<=30;$a++)
+											<option value="{{date('Y')-$a}}">{{date("Y")-$a}}</option>
+											@endfor
+										</select>
 										</div>
 									</div>
                                     <div class="form-row">
@@ -414,4 +413,71 @@
 
  
         }
+		function showBarang1(str1) {
+	// Jika str1 adalah '-', kosongkan semua input
+	if (str1 === '-') {
+		document.getElementById('nama_barang').value = '';
+		document.getElementById('merek').value = '';
+		document.getElementById('kode').value = '';
+		return; // Hentikan eksekusi fungsi
+	}
+
+	const xhttp = new XMLHttpRequest();
+	xhttp.onload = function () {
+		var obj = JSON.parse(this.responseText);
+
+		if (Array.isArray(obj) && obj.length > 0) {
+			document.getElementById('nama_barang').value = obj[0].nm_barang;
+			document.getElementById('merek').value = obj[0].merek;
+			document.getElementById('kode').value = obj[0].kode + '-' + obj[0].nup;
+		} else {
+			document.getElementById('nama_barang').value = '';
+			document.getElementById('merek').value = '';
+			document.getElementById('kode').value = '';
+		}
+	};
+
+	xhttp.onerror = function () {
+		alert("Terjadi kesalahan saat mengambil data.");
+		document.getElementById('nama_barang').value = '';
+		document.getElementById('merek').value = '';
+		document.getElementById('kode').value = '';
+	};
+
+	xhttp.open("GET", "show-kode-barang/" + str1);
+	xhttp.send();
+	}
+	$(document).ready(function() {
+		$('#mySelect').select2({
+			placeholder: "Pilih Kode-NUP Barang",
+			allowClear: true,
+			language: {
+				noResults: function() {
+					return "Tidak ditemukan hasil";
+				}
+			}
+		});
+		$('#mySelect').on('change', function () {
+			let selectedValue = $(this).val();
+			if (selectedValue !== '-') {
+				$('#merek').prop('readonly', true);
+				$('#nama_barang').prop('readonly', true);
+			} else {
+				$('#merek').prop('readonly', false);
+				$('#nama_barang').prop('readonly', false);
+			}
+		});
+		// Tambahkan placeholder khusus untuk kolom pencarian
+		$('#mySelect').on('select2:open', function () {
+			setTimeout(function() {
+				$('.select2-search__field').attr('placeholder', 'Tuliskan kata pencarian di sini');
+			}, 10);
+		});
+
+		$('#mySelect').on('change', function() {
+			var selectedValue = $(this).val();
+			showBarang1(selectedValue, '1');
+		});
+	});
+
 	</script>           

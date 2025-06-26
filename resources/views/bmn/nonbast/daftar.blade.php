@@ -64,7 +64,7 @@
                                                     <a href="/bmn/pinjam-nonbast-detail/{{$data ->id}}" class="btn btn-success btn-sm"><i class="fa fa-eye me-2"></i>Detail</a>
                                                     @if($data -> status == 0 ) 
                                                         
-                                                    <form method="POST" action="/bmn/delete-bast-pengembalian/{{ $data->id }}" class="d-inline">
+                                                    <form method="POST" action="/bmn/delete-pinjam-non-bast/{{ $data->id }}" class="d-inline">
                                                         @csrf
                                                         <input type="hidden" name="_method" value="DELETE">
                                                         <button type="submit" class="btn btn-danger btn-sm show_confirm"><i class="fa fa-trash me-2"></i>Delete</button>

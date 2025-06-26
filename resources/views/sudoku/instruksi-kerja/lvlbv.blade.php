@@ -51,15 +51,7 @@
                                                 </td>
                                                 <td>{{$item -> instDet -> max('tgl_terbit') }}</td>
                                                 <td>{{$item -> instDet -> max('revisi') }}</td>
-                                                <td>
-                                                    @if($item -> instDet->max('waktu')==1)
-                                                    Aktif Berlaku
-                                                    @elseif($item -> instDet->max('waktu')==2)
-                                                    Aktif Tidak Berlaku
-                                                    @else
-                                                    Inaktif
-                                                    @endif
-                                                </td>
+                                                <td>Aktif Berlaku</td>
                                                 <td>{{$item -> user->username }}</td> 
                                                 <td>
                                                     <div class="btn-list">

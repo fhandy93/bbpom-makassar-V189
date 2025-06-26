@@ -62,12 +62,12 @@
 										<div class="form-group col-xl-6 mb-12 ">
 											<label class="umur">Umur</label>
 											<select name="umur" class="form-control form-select select2" data-bs-placeholder="Select Country">
-													<option value="<25 Tahun"> <25 Tahun </option>
-													<option value="25-30 Tahun">25-30 Tahun</option>
+													<option value="=<20 Tahun"> =<20 Tahun </option>
+													<option value="21-30 Tahun">21-30 Tahun</option>
 													<option value="31-40 Tahun">31-40 Tahun</option>
 													<option value="41-50 Tahun">41-50 Tahun</option>
 													<option value="51-60 Tahun">51-60 Tahun</option>
-													<option value=">60 Tahun">>60 Tahun</option>
+													<option value=">=60 Tahun">>=60 Tahun</option>
 											</select>
 										</div>
 									</div>
@@ -120,12 +120,23 @@
 										<div class="form-group col-xl-6 mb-12 ">
 											<label class="Pekerjaan">Pekerjaan</label>
 											<select name="pekerjaan" class="form-control form-select select2" data-bs-placeholder="Select Country">
-													<option value="Pegawai swasta">Pegawai swasta</option>
-													<option value="Wiraswasta">Wiraswasta</option>
-													<option value="Pelajar/Mahasiswa">Pelajar/Mahasiswa</option>
-													<option value="PNS">PNS</option>
-													<option value="Dosen/Peneliti">Dosen/Peneliti</option>
-													<option value="Lainnya">Lainnya</option>
+													<option value="Apoteker">Apoteker</option>
+													<option value="Bidan">Bidan</option>
+													<option value="Dokter">Dokter</option>
+													<option value="Dokter Gigi">Dokter Gigi</option>
+													<option value="Ibu Rumah Tangga">Ibu Rumah Tangga </option>
+													<option value="Karyawan">Karyawan</option>
+
+													<option value="LSM">LSM</option>
+													<option value="Nakes Lain">Nakes Lain</option>
+													<option value="Pelajar Mahasiswa">Pelajar Mahasiswa</option>
+													<option value="Pelaku Usaha">Pelaku Usaha</option>
+													<option value="Perawat">Perawat</option>
+													<option value="PNS/TNI/POLRI">PNS/TNI/POLRI</option>
+													<option value="Sarjana Hukum">Sarjana Hukum</option>
+													<option value="Tenaga Teknis Kefarmasian">Tenaga Teknis Kefarmasian</option>
+													<option value="Umum">Umum</option>
+													<option value="Wartawan">Wartawan</option>
 											</select>
 										</div>
 									</div>

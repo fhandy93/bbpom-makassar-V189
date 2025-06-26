@@ -65,8 +65,8 @@ class SikamaController extends Controller
             $number = '081355733866';
             break;
           case 18 :
-            //Bidang Inspeksi (Pak Djamir)
-            $number = '081342144278';
+            //Bidang Inspeksi (Pak Rahman)
+            $number = '081355497097';
             break;
           case 19 :
               //Bidang Sertifikasi(Ibu Ana)

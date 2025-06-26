@@ -212,10 +212,57 @@ class Kernel extends ConsoleKernel
                   sendMessage($pesan,$phone->telpon);
               }
             }
+            
+            
+            
+            
+              $now = now('Asia/Makassar');
+
+            $dataIzin = Sikama::whereDate('tgl_izin', $now->toDateString())
+            ->whereNull('wktu_kembali')
+            ->where('status', 2)
+            ->where('notif', 0)
+            ->get();
+        
+            foreach ($dataIzin as $izin) {
+            //     // Pecah jam jadi awal dan akhir
+                [$jamAwal, $jamAkhir] = explode('-', $izin->jam);
+                echo $jamAkhir;
+            //     // Konversi jam akhir jadi waktu lengkap
+                echo $jamAkhirCarbon = \Carbon\Carbon::createFromFormat('Y-m-d H.i', $izin->tgl_izin . ' ' . str_replace(':', '.', $jamAkhir), 'Asia/Makassar');
+        
+                if ($now->greaterThan($jamAkhirCarbon)) {
+                    $user  = User::where('id',$izin->user_id)->first();
+                    $phone = Profile::where('username',$user->username)->first();
+                    $pesan = "*Yth Bapak/Ibu* Waktu izin anda telah berakhir, Harap segera menyelesaikan izin anda di wilayah kantor *BBPOM Di Makassar* melalu link https://bbpom-makassar.com/detail-izin-sikama/".$izin ->id;
+                    // pesan untuk user
+                    sendMessage($pesan,$phone->telpon);
+                    $izin -> notif = 1;
+                    $izin ->save();
+                }
+            }
+            
         })->cron('* * * * *')->timezone('Asia/Makassar');
         
+
+        $schedule->call(function(){
+            $now = now('Asia/Makassar');
+
+            $dataIzin = Sikama::whereDate('tgl_izin', $now->toDateString())
+            ->whereNull('wktu_kembali')
+            ->where('status', 2)
+            ->get();
         
-        
+            foreach ($dataIzin as $izin) {
+           
+                    $user  = User::where('id',$izin->user_id)->first();
+                    $phone = Profile::where('username',$user->username)->first();
+                    $pesan = "*Yth Bapak/Ibu* Waktu izin anda telah berakhir, Harap segera menyelesaikan izin anda di wilayah kantor *BBPOM Di Makassar* melalu link https://bbpom-makassar.com/detail-izin-sikama/".$izin ->id;
+                    // pesan untuk user
+                    sendMessage($pesan,$phone->telpon);
+            }
+            
+        })->dailyAt('16:00')->timezone('Asia/Makassar');
         
         
         

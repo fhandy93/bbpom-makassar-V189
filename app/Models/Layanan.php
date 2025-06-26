@@ -18,6 +18,7 @@ class Layanan extends Model
         'hp',
         'email',
         'pekerjaan',
+        'status',
         'jns_sertifikasi',
     ];
     public function layanan()

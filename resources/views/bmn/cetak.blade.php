@@ -131,15 +131,17 @@
                 <td style="border: 0px;"><br>
                     Yang Menyerahkan
                     <br><br><br><br>
-                    <u>{{$bmn->userbmn->name}}</u>
+                    <u>{{$bmn->user->name}}</u>
+                    <!-- <br>{{ $prof->nip == '-' ? '': ($prof->nip == null ? '' : 'NIP. '.$prof->nip) }}   -->
                     <br>{{ $nipbmn->nip == '-' ? '': ($nipbmn->nip == null ? '' : 'NIP. '.$nipbmn->nip) }}  
                 </td>
                 <td style="border: 0px;">
                     Makassar, {{ $bmn->created_at->isoFormat('D MMMM Y')}} <br>
                     Yang Menerima
                     <br><br><br><br>
-                    <u>{{$user->name}}</u>
+                    <u>{{$bmn->userbmn->name}}</u>
                     <br>{{ $prof->nip == '-' ? '': ($prof->nip == null ? '' : 'NIP. '.$prof->nip) }}  
+                    
                 </td>
             </tr>
        </table>

@@ -124,8 +124,8 @@ Route :: get('/notif_detail/{id}',[NotifyController::class,'show']);
 
 Route :: get('/siyapp',[SiyappController::class,'index']);
 Route :: get('/formulir',[SiyappController::class,'formulir']);
-Route :: get('/laporan',[SiyappController::class,'laporan']);
-Route :: get('/laporan-it',[SiyappController::class,'it']);
+Route :: get('/laporan',[SiyappController::class,'laporan'])->name('siyapp.view-non-it');
+Route :: get('/laporan-it',[SiyappController::class,'it'])->name('siyapp.view-it');
 Route :: post('/siyappstore',[SiyappController::class,'store']);
 Route :: get('/laporan/{id}/edit',[SiyappController::class,'edit'])->middleware('check-permission:perlengkapan|superadmin|it');
 Route :: put('/laporan/{id}',[SiyappController::class,'update'])->middleware('check-permission:perlengkapan|superadmin|it');
@@ -135,6 +135,7 @@ Route :: get ('/showw/{id}',[SiyappController::class,'show'])->middleware('check
 Route :: post('/siyappcetak',[SiyappController::class,'scetak'])->middleware('check-permission:perlengkapan|superadmin|it');
 Route :: get('/detail-laporan-siyapp/{id}',[SiyappController::class,'detail']);
 Route :: post('/konfirmasi-siyapp/{id}',[SiyappController::class,'konfir'])->middleware('check-permission:perlengkapan|superadmin|it');
+Route :: get ('/show-kode-barang/{id}',[SiyappController::class,'showBarang']);
 
 Route :: get('/smap-pedoman',[SmapController::class,'pedomanLvlA']);
 Route :: get('/smap-pedoman/input-pedoman/',[SmapController::class,'pedomanLvlAInput'])->middleware('check-permission:superadmin|laboratorium');
@@ -442,11 +443,11 @@ Route :: get('/suku_formc',[SukuController::class,'formc'])->middleware('check-p
 Route :: post('/sukucetak',[SukuController::class,'sukucetak'])->middleware('check-permission:perlengkapan|superadmin');
 
 Route :: get('/ulpk',[UlpkController::class,'index']);
-Route :: get('/formulpk',[UlpkController::class,'formulpk'])->middleware('check-permission:infokom|superadmin|sertifikasi|picinfokom|picsertifikasi|pemeriksaan|pengujian|picpengujian|picpenindakan');
+Route :: get('/formulpk',[UlpkController::class,'formulir'])->middleware('check-permission:infokom|superadmin|sertifikasi|picinfokom|picsertifikasi|pemeriksaan|pengujian|picpengujian|picpenindakan');
 Route :: post('/store',[UlpkController::class,'store'])->middleware('check-permission:infokom|superadmin|sertifikasi|picinfokom|picsertifikasi|pemeriksaan|pengujian|picpengujian|picpenindakan');
 Route :: post('/updateulpk',[UlpkController::class,'updateulpk'])->middleware('check-permission:infokom|superadmin|sertifikasi|picinfokom|picsertifikasi|pemeriksaan|pengujian|picpengujian|picpenindakan');
 Route :: get('/laporanulpk',[UlpkController::class,'laporanulpk'])->middleware('check-permission:infokom|superadmin|sertifikasi|picinfokom|picsertifikasi|pemeriksaan|pengujian|picpengujian|picpenindakan');
-Route :: get('/ulpk/{id}/detail',[UlpkController::class,'ulpkdetail'])->middleware('check-permission:infokom|superadmin|sertifikasi|picinfokom|picsertifikasi|pemeriksaan|pengujian|picpengujian|picpenindakan');
+Route :: get('/ulpk/V.1/{id}/detail',[UlpkController::class,'ulpkdetail'])->middleware('check-permission:infokom|superadmin|sertifikasi|picinfokom|picsertifikasi|pemeriksaan|pengujian|picpengujian|picpenindakan');
 Route :: get('/konsumen/{id}/edit',[UlpkController::class,'edit'])->middleware('check-permission:infokom|superadmin|sertifikasi|picinfokom|picsertifikasi|pemeriksaan|pengujian|picpengujian|picpenindakan');
 Route :: put('/updateulpk/{id}',[UlpkController::class,'update'])->middleware('check-permission:infokom|superadmin|sertifikasi|picinfokom|picsertifikasi|pemeriksaan|pengujian|picpengujian|picpenindakan');
 Route :: put('/updateulpkk/{id}',[UlpkController::class,'updatee'])->middleware('check-permission:infokom|superadmin|sertifikasi|picinfokom|picsertifikasi|pemeriksaan|pengujian|picpengujian|picpenindakan');
@@ -454,6 +455,17 @@ Route :: get('/cetakulpk',[UlpkController::class,'cetak'])->middleware('check-pe
 Route :: post('/formcetak',[UlpkController::class,'formcetak'])->middleware('check-permission:infokom|superadmin|sertifikasi|picinfokom|picsertifikasi|pemeriksaan|pengujian|picpengujian|picpenindakan');
 Route :: get('/ulpkk',[UlpkController::class,'ulpk']);
 Route :: delete('/ulpk/{id}/delete',[UlpkController::class,'delete'])->middleware('check-permission:infokom|superadmin|sertifikasi|picinfokom|picsertifikasi|pemeriksaan|pengujian|picpengujian|picpenindakan');
+Route :: get('/ulpk/formulir-ulpk',[UlpkController::class,'formulir'])->middleware('check-permission:infokom|superadmin|sertifikasi|picinfokom|picsertifikasi|pemeriksaan|pengujian|picpengujian|picpenindakan');
+Route :: post('/ulpk/store',[UlpkController::class,'ulpkStore'])->middleware('check-permission:infokom|superadmin|sertifikasi|picinfokom|picsertifikasi|pemeriksaan|pengujian|picpengujian|picpenindakan');
+Route :: get('/ulpk/laporan-ulpk',[UlpkController::class,'laporanUlpkv2'])->name('ulpk.lapv2')->middleware('check-permission:infokom|superadmin|sertifikasi|picinfokom|picsertifikasi|pemeriksaan|pengujian|picpengujian|picpenindakan');
+Route :: post('/ulpk/V.1/filter',[UlpkController::class,'filterV1'])->middleware('check-permission:infokom|superadmin|sertifikasi|picinfokom|picsertifikasi|pemeriksaan|pengujian|picpengujian|picpenindakan');
+Route :: post('/ulpk/V.2/filter',[UlpkController::class,'filterV2'])->middleware('check-permission:infokom|superadmin|sertifikasi|picinfokom|picsertifikasi|pemeriksaan|pengujian|picpengujian|picpenindakan');
+Route :: get('/ulpk/V.2/{id}/detail',[UlpkController::class,'ulpkDetailV2'])->middleware('check-permission:infokom|superadmin|sertifikasi|picinfokom|picsertifikasi|pemeriksaan|pengujian|picpengujian|picpenindakan');
+Route :: get('/ulpk/{id}/edit',[UlpkController::class,'editUlpk'])->middleware('check-permission:infokom|superadmin|sertifikasi|picinfokom|picsertifikasi|pemeriksaan|pengujian|picpengujian|picpenindakan');
+Route :: put('/ulpk/update/{id}',[UlpkController::class,'ulpkUpdate'])->middleware('check-permission:infokom|superadmin|sertifikasi|picinfokom|picsertifikasi|pemeriksaan|pengujian|picpengujian|picpenindakan');
+Route :: get('/ulpk/download-ulpk',[UlpkController::class,'download'])->middleware('check-permission:infokom|superadmin|sertifikasi|picinfokom|picsertifikasi|pemeriksaan|pengujian|picpengujian|picpenindakan');
+Route :: post('/ulpk/download-proses',[UlpkController::class,'downProses'])->middleware('check-permission:infokom|superadmin|sertifikasi|picinfokom|picsertifikasi|pemeriksaan|pengujian|picpengujian|picpenindakan');
+Route :: get('/sipintar/data-tamu/{id}/ulpk',[UlpkController::class,'sipintar'])->middleware('check-permission:infokom|superadmin|sertifikasi|picinfokom|picsertifikasi|pemeriksaan|pengujian|picpengujian|picpenindakan');
 
 Route :: get('/rujukan',[RujukanController::class,'rujukan']);
 Route :: get('/formrujukan',[RujukanController::class,'formrujuk'])->middleware('check-permission:infokom|superadmin|picinfokom');
@@ -497,20 +509,20 @@ Route :: get('/v2-info-rujuk',[RujukanNewController::class,'info']);
 Route :: get('/rujukan-v3',[SeppuloRujukanController::class,'rujukan']);
 Route :: get('/v3-formrujukan',[SeppuloRujukanController::class,'formrujuk'])->middleware('check-permission:infokom|superadmin|picinfokom');
 Route :: post('/v3-rujukan-store',[SeppuloRujukanController::class,'store'])->middleware('check-permission:infokom|superadmin|picinfokom');
-Route :: get('/v3-rujukan-view',[SeppuloRujukanController::class,'view'])->middleware('check-permission:infokom|superadmin|penindakan|pemeriksaan|pengujian|kabalai|picinfokom|picpenindakan')->name('seppulov3.view');
+Route :: get('/v3-rujukan-view',[SeppuloRujukanController::class,'view'])->middleware('check-permission:infokom|superadmin|penindakan|pemeriksaan|pengujian|kabalai|picinfokom|picpenindakan|picinspeksi|picpengujian')->name('seppulov3.view');
 Route :: get('/v3-rujukan/{id}/detail',[SeppuloRujukanController::class,'show'])->middleware('check-permission:infokom|superadmin|penindakan|pemeriksaan|pengujian|kabalai|picinfokom|picpenindakan|picinspeksi|picpengujian');
 Route :: delete('/v3-rujukan/{id}/delete',[SeppuloRujukanController::class,'delete'])->middleware('check-permission:superadmin|picinfokom');
 Route :: get('/v3-rujuk-download/storage/rujukan/{id}',[SeppuloRujukanController::class,'download']);
-Route :: get('/v3-rujukan/{id}/edit',[SeppuloRujukanController::class,'edit'])->middleware('check-permission:infokom|superadmin|penindakan|pemeriksaan|pengujian|picinfokom|picpenindakan');
-Route :: put('/v3-rujukan/{id}/update',[SeppuloRujukanController::class,'update'])->middleware('check-permission:infokom|superadmin|penindakan|pemeriksaan|pengujian|picinfokom|picpenindakan');
-Route :: get('/v3-rujukan/{id}/{idhasil}/cetak',[SeppuloRujukanController::class,'cetak'])->middleware('check-permission:infokom|superadmin|penindakan|pemeriksaan|pengujian|kabalai|picinfokom|picpenindakan');
+Route :: get('/v3-rujukan/{id}/edit',[SeppuloRujukanController::class,'edit'])->middleware('check-permission:infokom|superadmin|penindakan|pemeriksaan|pengujian|picinfokom|picpenindakan|picinspeksi|picpengujian');
+Route :: put('/v3-rujukan/{id}/update',[SeppuloRujukanController::class,'update'])->middleware('check-permission:infokom|superadmin|penindakan|pemeriksaan|pengujian|picinfokom|picpenindakan|picinspeksi|picpengujian');
+Route :: get('/v3-rujukan/{id}/{idhasil}/cetak',[SeppuloRujukanController::class,'cetak'])->middleware('check-permission:infokom|superadmin|penindakan|pemeriksaan|pengujian|kabalai|picinfokom|picpenindakan|picinspeksi|picpengujian');
 Route :: post('/v3-rujukk',[SeppuloRujukanController::class,'kirim'])->middleware('check-permission:infokom|superadmin|picinfokom');
 Route :: get('/v3-formkembali/{id}',[SeppuloRujukanController::class,'kembali'])->middleware('check-permission:kabalai|superadmin');
 Route :: put('/v3-kembali/{id}',[SeppuloRujukanController::class,'kembalis'])->middleware('check-permission:kabalai|superadmin');
 Route :: post('/v3-tindak-store/{id}',[SeppuloRujukanController::class,'tindak'])->middleware('check-permission:kabalai|superadmin');
-Route :: get('/v3-rujuk-hasil/{id}/edit',[SeppuloRujukanController::class,'rujukha'])->middleware('check-permission:infokom|superadmin|penindakan|pemeriksaan|pengujian|picinfokom|picpenindakan');
-Route :: put('/v3-rujuk-hasil/{id}',[SeppuloRujukanController::class,'rujukh'])->middleware('check-permission:infokom|superadmin|penindakan|pemeriksaan|pengujian|picinfokom|picpenindakan');
-Route :: post('/v3-rujuk-kirim-hasil',[SeppuloRujukanController::class,'kirimhasil'])->middleware('check-permission:infokom|superadmin|penindakan|pemeriksaan|pengujian|picinfokom|picpenindakan');
+Route :: get('/v3-rujuk-hasil/{id}/edit',[SeppuloRujukanController::class,'rujukha'])->middleware('check-permission:infokom|superadmin|penindakan|pemeriksaan|pengujian|picinfokom|picpenindakan|picinspeksi|picpengujian');
+Route :: put('/v3-rujuk-hasil/{id}',[SeppuloRujukanController::class,'rujukh'])->middleware('check-permission:infokom|superadmin|penindakan|pemeriksaan|pengujian|picinfokom|picpenindakan|picinspeksi|picpengujian');
+Route :: post('/v3-rujuk-kirim-hasil',[SeppuloRujukanController::class,'kirimhasil'])->middleware('check-permission:infokom|superadmin|penindakan|pemeriksaan|pengujian|picinfokom|picpenindakan|picinspeksi|picpengujian');
 Route :: post('/v3-rujuk-selesai',[SeppuloRujukanController::class,'selesai'])->middleware('check-permission:kabalai|superadmin');
 Route :: get('/v3-info-rujuk',[SeppuloRujukanController::class,'info']);
 Route :: get('/v3-form-kembali-hasil/{id}',[SeppuloRujukanController::class,'kembalihasil'])->middleware('check-permission:kabalai|superadmin');
@@ -618,7 +630,7 @@ Route :: post('/smile-konfirmed-revisi-ktu/{id}',[SmileController::class,'smileK
 Route :: put('/smile-approved/{id}',[SmileController::class,'smileApproved'])->middleware('check-permission:superadmin|evaluasi');
 
 Route :: get('/sipintar-v1',[SipintarController::class,'index']);
-Route :: get('/sipintar/data-tamu',[SipintarController::class,'dataTamu'])->middleware('check-permission:infokom|superadmin|sertifikasi|picinfokom|picsertifikasi');
+Route :: get('/sipintar/data-tamu',[SipintarController::class,'dataTamu'])->name('sipintar.view-tamu')->middleware('check-permission:infokom|superadmin|sertifikasi|picinfokom|picsertifikasi');
 Route :: get('/sipintar/data-tamu/{id}/detail',[SipintarController::class,'detailTamu'])->middleware('check-permission:infokom|superadmin|sertifikasi|picinfokom|picsertifikasi');
 Route :: delete('/sipintar/data-tamu/{id}/delete',[SipintarController::class,'deleteTamu'])->middleware('check-permission:infokom|superadmin|sertifikasi|picinfokom|picsertifikasi');
 Route :: post('/sipintar/data-tamu/filter',[SipintarController::class,'filterTamu'])->middleware('check-permission:infokom|superadmin|sertifikasi|picinfokom|picsertifikasi');
@@ -631,6 +643,7 @@ Route :: get('/sipintar/data-tamu/{id}/edit',[SipintarController::class,'editTug
 Route :: put('/sipintar/petugas-update/{id}',[SipintarController::class,'updateTugas'])->middleware('check-permission:infokom|superadmin|sertifikasi|picinfokom|picsertifikasi');
 Route :: delete('/sipintar/data-petugas/{id}/delete',[SipintarController::class,'deleteTugas'])->middleware('check-permission:infokom|superadmin|sertifikasi|picinfokom|picsertifikasi');
 Route :: delete('/sipintar/data-survey/{id}/delete',[SipintarController::class,'deleteSurvey'])->middleware('check-permission:infokom|superadmin|sertifikasi|picinfokom|picsertifikasi');
+Route :: put('/sipintar/update-status/{id}',[SipintarController::class,'updateSts'])->middleware('check-permission:infokom|superadmin|sertifikasi|picinfokom|picsertifikasi');
 
 Route :: get('/bmn',[BMNController::class,'index']);
 Route :: get('/bmn/bast-pengembalian',[BMNController::class,'bstkembali'])->name('bmn.view-kembali');

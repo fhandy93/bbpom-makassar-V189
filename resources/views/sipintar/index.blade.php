@@ -77,7 +77,7 @@
                         <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12" >
                             <div class="card overflow-hidden" >
                                 <div class="card-body pb-0 bg-recentorder">
-                                    <h5 class="card-title " style="text-align: center;">SIPINTAR<i class="breadcrumb-item" aria-current="page"> Version: <b>1.0</b></i></h5>
+                                    <h5 class="card-title " style="text-align: center;">SIPINTAR<i class="breadcrumb-item" aria-current="page"> Version: <b>1.1</b></i></h5>
                                     <div class="chartjs-wrapper-demo">
                                         <canvas id="recentorders" class="chart-dropshadow" style="display: none;"></canvas>
                                     </div>

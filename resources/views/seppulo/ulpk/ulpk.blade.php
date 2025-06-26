@@ -18,7 +18,7 @@
                                 <div class="card-status card-status-left bg-success br-bs-7 br-ts-7"></div>
                                 <div class="card-body">
                                         <h5 class="card-title">Formulir Konsumen ULPK</h5>
-                                        <a href="/formulpk" class="btn btn-success">Formulir</a>
+                                        <a href="/ulpk/formulir-ulpk" class="btn btn-success ">Formulir</a>
                                     </div>
                                 </div>
                             </div>
@@ -28,7 +28,8 @@
                             <div class="card-status card-status-left bg-success br-bs-7 br-ts-7"></div>
                                 <div class="card-body">
                                         <h5 class="card-title">Laporan Konsumen ULPK</h5>
-                                        <a href="/laporanulpk" class="btn btn-success">Laporan</a>
+                                        <a href="/laporanulpk" class="btn btn-success">Laporan V1</a>
+                                        <a href="/ulpk/laporan-ulpk" class="btn btn-success">Laporan V2</a>
                                     </div>
                                 </div>
                             </div>
@@ -38,7 +39,8 @@
                             <div class="card-status card-status-left bg-success br-bs-7 br-ts-7"></div>
                                 <div class="card-body">
                                         <h5 class="card-title">Download Laporan ULPK</h5>
-                                        <a href="/cetakulpk" class="btn btn-success">Download</a>
+                                        <a href="/cetakulpk" class="btn btn-success">Download V1</a>
+                                        <a href="/ulpk/download-ulpk" class="btn btn-success">Download V2</a>
                                     </div>
                                 </div>
                             </div>
@@ -46,7 +48,22 @@
                            
 				</div>
 				<!-- ROW CLOSED -->
-			
+			 <!-- ROW 2 CLOSED -->
+                  <div class="row">	
+                        <!-- COL END -->
+                        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12" >
+                            <div class="card overflow-hidden" >
+                                <div class="card-body pb-0 bg-recentorder">
+                                    <h5 class="card-title " style="text-align: center;"><i class="breadcrumb-item" aria-current="page">ULPK Version: <b>2.0</b></i></h5>
+                                    <div class="chartjs-wrapper-demo">
+                                        <canvas id="recentorders" class="chart-dropshadow" style="display: none;"></canvas>
+                                    </div>
+                                </div>
+                                <div id="flotback-chart" class="flot-background"></div>    
+                            </div>
+                        </div>
+                        <!-- COL END -->
+            </div>
             </div>
             <!-- CONTAINER CLOSED -->
         </div>

@@ -97,6 +97,7 @@
                                         <thead>
                                             <tr>
                                                 <th class="border-bottom-0">Index</th>
+                                                <th class="border-bottom-0">Status</th>
                                                 <th class="border-bottom-0">Nama</th>
                                                 <th class="border-bottom-0">No Antrian</th>
                                                 <th class="border-bottom-0">Jenis Layanan</th>
@@ -110,20 +111,56 @@
                                             @foreach($data as $index => $tamu)
                                             <tr>
                                                 <td>{{$index + 1}}</td>
+                                                <td>
+                                                <span class="badge rounded-pill 
+                                                                                    @if($tamu->status == 0) 
+                                                                                        bg-danger 
+                                                                                    @elseif($tamu->status == 1) 
+                                                                                        bg-warning
+                                                                                    @else
+                                                                                        bg-success 
+                                                                                    @endif"> 
+                                                                                    @if($tamu->status == 0) 
+                                                                                        Dalam Antrian 
+                                                                                    @elseif($tamu->status == 1) 
+                                                                                        Diproses 
+                                                                                    @else 
+                                                                                        Selesai
+                                                                                    @endif</span>
+                                                </td>
                                                 <td>{{$tamu -> nama}}</td>
                                                 <td>{{$tamu -> no_antrian}}</td>   
                                                 <td>{{$tamu -> jns_layanan}}</td>
                                                 <td>{{$tamu -> hp}}</td>
                                                 <td>{{$tamu -> created_at}}</td>
                                                 <td>
-                                                    <div class="btn-list">
-                                                        <a href="/sipintar/data-tamu/{{$tamu -> id}}/detail"><button type="button" style="margin-right: 5px;" class="btn btn-sm btn-secondary"><span  class="fe fe-eye"> Detail</span></button></a>&nbsp;
-                                                        <a href="#"><button onclick="myFunction()" type="button" style="margin-right: 5px;" class="btn btn-sm btn-primary"><span  class="fe fe-send"> Open ULPK</span></button></a>&nbsp;
-                                                        <form method="POST" action="data-tamu/{{$tamu->id}}/delete" style="display: inline;" >
+                                                    <div class="d-flex align-items-center gap-2">
+                                                        
+                                                         <!-- Dropdown -->
+                                                         <form method="post" action="/sipintar/update-status/{{$tamu->id}}" class="inline">
+                                                            @csrf
+                                                            @method('put')
+                                                            <select name="status" 
+                                                                    class="form-control form-select form-select-sm select2" 
+                                                                    style="width: auto;" 
+                                                                    id="status-{{ $tamu->id }}" 
+                                                                    onchange="toggleUpdateButton({{ $tamu->id }}, this)">
+                                                                <option value="aa" selected disabled>Pilih Status ...</option>
+                                                                <option value="1" @if($tamu->status==1 || $tamu->status==2) disabled @endif>Proses</option>
+                                                                <option value="2" @if($tamu->status==2 || $tamu->status==0) disabled @endif>Selesai</option>
+                                                            </select>
+                                                            <button type="submit" class="btn btn-sm btn-primary" id="update-btn-{{ $tamu->id }}" disabled>Update Status</button>
+                                                        </form>
+                                                        <a href="/sipintar/data-tamu/{{$tamu -> id}}/detail"><button type="button" class="btn btn-sm btn-secondary"><span  class="fe fe-eye"> Detail</span></button></a>
+                                                        <a href="/sipintar/data-tamu/{{$tamu -> id}}/ulpk"><button type="button" class="btn btn-sm btn-success"><span  class="fa fa-paper-plane"> GET ULPK</span></button></a>
+                                                        @if(checkPermission(['superadmin']))
+                                                        <form method="POST" action="data-tamu/{{$tamu->id}}/delete"  >
                                                             @csrf
                                                             <input name="_method" type="hidden" value="DELETE">
                                                             <button type="submit" class="btn btn-sm btn-danger btn-flat show_confirm" data-toggle="tooltip" title='Delete'><span class="fe fe-trash-2"> Delete</span></button>
                                                         </form>
+                                                        @endif
+                                                         <!-- <a href="#"><button onclick="myFunction()" type="button" style="margin-right: 5px;" class="btn btn-sm btn-primary"><span  class="fe fe-send"> Open ULPK</span></button></a>&nbsp; -->
                                                     </div>
                                                 </td>
                                                
@@ -234,7 +271,15 @@
                 }
             });
         });
-       
+        function toggleUpdateButton(rowId, selectElement) {
+        const updateButton = document.getElementById(`update-btn-${rowId}`);
+        // Jika opsi selain default dipilih, aktifkan tombol
+        if (selectElement.value !== "aa") {
+            updateButton.disabled = false;
+        } else {
+            updateButton.disabled = true;
+        }
+    }
     
     </script>  
 </x-HomeLayout>

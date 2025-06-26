@@ -104,6 +104,21 @@
                                                 <td>pekerjaan</td>
                                                 <td>: {{$data->pekerjaan}}</td>
                                             </tr>
+                                            <tr>
+                                                <td>7</td>
+                                                <td>Instansi</td>
+                                                <td>: {{$data->instansi}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>8</td>
+                                                <td>Kabupaten</td>
+                                                <td>: {{$data->kabupaten}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>9</td>
+                                                <td>Alamat</td>
+                                                <td>: {{$data->alamat}}</td>
+                                            </tr>
                                         </tbody>
                                     </table><p>
                                 </div>

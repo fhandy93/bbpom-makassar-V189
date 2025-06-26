@@ -133,12 +133,12 @@ width: 120px;
                             <td class="ket">Merek</td>
                             <td style="background-color: white;border-radius: 5px;">:{{$cetak->merek}}</td>
                         </tr>
-                        <tr>
+                        <!-- <tr>
                             <td class="ket">Type</td>
                             <td style="background-color: white;border-radius: 5px;">:{{$cetak->type}}</td>
-                        </tr>
+                        </tr> -->
                         <tr>
-                            <td class="ket">Nomor NUP</td>
+                            <td class="ket">Kode-NUP</td>
                             <td style="background-color: white;border-radius: 5px;">:{{$cetak->nup}}</td>
                         </tr>
                         <tr>

@@ -13,12 +13,12 @@
                 </div>
 				
 				<!-- ROW CLOSED -->
-				
+				 
                  <!-- ROW 2 OPEN -->
                  <div class="row row-cols-4">
                     <div class="col-xl-3 col-sm-12">
                         <div class="card border p-0">
-                            <div class="card-header">
+                            <div class="card-header bg-gray">
                                 <h3 class="card-title">Formulir</h3>
                                 <div class="card-options">
                                     <a href="javascript:void(0)" class="card-options-collapse" data-bs-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a>
@@ -31,7 +31,7 @@
                                     <h4 class="h4 mb-0 mt-3">Formulir Laporan</h4>
                                 </a>
                             </div>
-                            <div class="card-footer text-center bg-gray" style="color: white;">
+                            <div class="card-footer text-center ">
                                 <div class="row">
                                     <div class="text-center">
                                         Formulir pengaduan perbaikan dan pemeliharaan peralatan
@@ -42,7 +42,7 @@
                     </div>
                     <div class="col-xl-3 col-sm-12">
                         <div class="card border p-0">
-                            <div class="card-header">
+                            <div class="card-header  bg-gray">
                                 <h3 class="card-title">Laporan</h3>
                                 <div class="card-options">
                                     <a href="javascript:void(0)" class="card-options-collapse" data-bs-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a>
@@ -55,7 +55,7 @@
                                     <h4 class="h4 mb-0 mt-3">Perlengkapan Kantor</h4>
                                 </a>
                             </div>
-                            <div class="card-footer text-center bg-gray" style="color: white;">
+                            <div class="card-footer text-center" >
                                 <div class="row">
                                     <div class="text-center">
                                         Laporan kerusakan dan pemeliharaan barang/perlengkapan kantor
@@ -66,7 +66,7 @@
                     </div>
                     <div class="col-xl-3 col-sm-12">
                         <div class="card border p-0">
-                            <div class="card-header">
+                            <div class="card-header bg-gray">
                                 <h3 class="card-title">Laporan</h3>
                                 <div class="card-options">
                                     <a href="javascript:void(0)" class="card-options-collapse" data-bs-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a>
@@ -79,7 +79,7 @@
                                     <h4 class="h4 mb-0 mt-3">Perlengkapan IT</h4>
                                 </a>
                             </div>
-                            <div class="card-footer text-center bg-gray" style="color: white;">
+                            <div class="card-footer text-center">
                                 <div class="row">
                                     <div class="text-center">
                                     Laporan kerusakan dan pemeliharaan barang/perlengkapan IT
@@ -90,7 +90,7 @@
                     </div>
                     <div class="col-xl-3 col-sm-12">
                         <div class="card border p-0">
-                            <div class="card-header">
+                            <div class="card-header bg-gray">
                                 <h3 class="card-title">Cetak</h3>
                                 <div class="card-options">
                                     <a href="javascript:void(0)" class="card-options-collapse" data-bs-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a>
@@ -103,7 +103,7 @@
                                     <h4 class="h4 mb-0 mt-3">Cetak Laporan</h4>
                                 </a>
                             </div>
-                            <div class="card-footer text-center bg-gray" style="color: white;">
+                            <div class="card-footer text-center">
                                 <div class="row">
                                     <div class="text-center">
                                         Cetak laporan hasil perbaikan dan pemeliharaan
@@ -114,13 +114,36 @@
                     </div>
                     <!-- COL END -->
                 </div>
+                <!-- ROW 2 OPEN -->
+                <div class="row row-cols-12">
+                    <div class="col-xl-12 col-sm-12">
+                        <div class="card border p-0">
+                            <div class="card-header bg-gray">
+                                <h3 class="card-title">BMN Moments</h3>
+                                <div class="card-options">
+                                    <a href="javascript:void(0)" class="card-options-collapse" data-bs-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a>
+                                    <a href="javascript:void(0)" class="card-options-remove" data-bs-toggle="card-remove"><i class="fe fe-x"></i></a>
+                                </div>
+                            </div>
+                            <div class="card-body text-center">
+                                <a href="/bmn">
+                                    <img src="{{ asset('vendor/images/media/bmn.png') }}">
+                                </a>
+                            </div>
+                            <div class="card-footer text-center bg-recentorder">
+                                BMN Moments V.1
+                            </div>
+                        </div>
+                    </div>
+                 </div>
+                 <!-- ROW CLOSED -->
                 <!-- ROW 2 CLOSED -->
                   <div class="row">	
                         <!-- COL END -->
                         <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12" >
                             <div class="card overflow-hidden" >
                                 <div class="card-body pb-0 bg-recentorder">
-                                    <h5 class="card-title " style="text-align: center;"><i class="breadcrumb-item" aria-current="page">SIYAPP Version: <b>2.0</b></i></h5>
+                                    <h5 class="card-title " style="text-align: center;"><i class="breadcrumb-item" aria-current="page">SIYAPP Version: <b>2.1</b></i></h5>
                                     <div class="chartjs-wrapper-demo">
                                         <canvas id="recentorders" class="chart-dropshadow" style="display: none;"></canvas>
                                     </div>

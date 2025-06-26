@@ -58,9 +58,9 @@ class SipintarController extends Controller
                                             ));
     }
     public function dataTamu(){
-        $datamu = Layanan :: whereYear('created_at', '=', date('Y'))
+        $datamu = Layanan :: whereMonth('created_at',date('m'))->whereYear('created_at', '=', date('Y'))
                             ->orderBy('created_at', 'DESC')
-                            ->get(['id','nama','created_at','no_antrian','jns_layanan','hp']);
+                            ->get(['id','nama','created_at','no_antrian','jns_layanan','hp','status']);
         return view('sipintar.tamuv',['data'=>$datamu]);
     }
     public function detailTamu($id){
@@ -234,5 +234,15 @@ class SipintarController extends Controller
         }else{
             return back()->with('unsuccess', 'Data gagal dihapus');
         }
+    }
+    public function updateSts($id, Request $req){
+        $data = Layanan :: findOrFail($id);
+        $data->status       = $req->status;
+        $sts = $data->save();
+        if($sts){
+            return redirect()->route('sipintar.view-tamu')->with('success', 'Data berhasil diupdate');
+            // session () ->flash('success','Status berhasil diupdate');
+            // return $this->daftarKend();
+        }  
     }
 }

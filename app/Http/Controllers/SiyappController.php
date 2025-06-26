@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Bmnbarang;
 use App\Models\Profile;
 use App\Models\Siyapp;
 use App\Models\User;
@@ -16,7 +17,8 @@ class SiyappController extends Controller
         return view('siyapp.index');
     }
     public function formulir(){
-        return view('siyapp.formulir');
+        $barang = Bmnbarang :: get(['id','kode','nup']);
+        return view('siyapp.formulir',['barang'=>$barang]);
     }
     public function laporan(){
          $laporan = Siyapp::where('j_barang',2)->orderBy('id', 'DESC')->get();
@@ -53,21 +55,19 @@ class SiyappController extends Controller
             }
         }
 
-        $request -> validate([
-            'nama_barang' => ['required','min:2'],
-            'merek' => ['required'],
-            'type' => ['required'],
-            'nup' => ['required'],
-            'tahun' => ['required'],
-            'bidang' => ['required'],
-            'jenis' => ['required']
-        ]);
+        // $request -> validate([
+        //     'nama_barang' => ['required','min:2'],
+        //     'merek' => ['required'],
+        //     'nup' => ['required'],
+        //     'tahun' => ['required'],
+        //     'bidang' => ['required'],
+        //     'jenis' => ['required']
+        // ]);
         Siyapp :: create([
             'user_id' => Auth::user()-> id,
             'nama_barang' => $request-> nama_barang,
             'merek' => $request-> merek,
-            'type' => $request-> type,
-            'nup' => $request-> nup,
+            'nup' => $request-> kode,
             'tahun' => $request-> tahun,
             'bidang' => $request-> bidang,
             'j_barang' => $request-> barang,
@@ -118,9 +118,9 @@ class SiyappController extends Controller
             $wiwi = '6285280134882';
             sendMessage($pesan2,$wiwi);
             
-            // Pesan Untuk Nenenk
-            $nenenk = '6281234675172';
-            sendMessage($pesan2,$nenenk);
+            // Pesan Untuk ibu Amira
+            $amira = '6281355957120';
+            sendMessage($pesan2,$amira);
             
             // pesan untuk Miska
             $miska = '6285333314410';
@@ -152,77 +152,73 @@ class SiyappController extends Controller
         $wiwi = '6285280134882';
         sendMessage($pesan1,$wiwi);
         
-         // Pesan Untuk Nenenk
-        $nenenk = '6281234675172';
-        sendMessage($pesan1,$nenenk);
+        // Pesan Untuk ibu Amira
+        $amira = '6281355957120';
+        sendMessage($pesan1,$amira);
         
         // pesan untuk Miska
         $miska = '6285333314410';
         sendMessage($pesan1,$miska);
 
         }
-        //  if($request-> pemeliharaan=='Operasional Laboratorium'){
-        //       // pesan untuk ibu Mury
-        //       $curl = curl_init();
-        //       curl_setopt_array($curl, array(
-        //       CURLOPT_URL => 'https://pati.wablas.com/api/send-message',
-        //       CURLOPT_RETURNTRANSFER => true,
-        //       CURLOPT_ENCODING => '',
-        //       CURLOPT_MAXREDIRS => 10,
-        //       CURLOPT_TIMEOUT => 0,
-        //       CURLOPT_FOLLOWLOCATION => true,
-        //       CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-        //       CURLOPT_CUSTOMREQUEST => 'POST',
-        //       CURLOPT_POSTFIELDS => (['phone' => '62','message' => $pesan3]),
-        //       CURLOPT_HTTPHEADER => array(
-        //           'Authorization: pduX1OxoN5F8NCkGBfXTSRjNJ2MeiXQFR3qCkI8Zrlp8aQL5C97yU95o8RXiX1UW'
-        //       ),
-        //       ));
-        //       $response = curl_exec($curl);
-        //       curl_close($curl);
-        // }else{
-        //       // pesan untuk ibu Azika
-        //       $azika = '6287856305677';
-        //       sendMessage($pesan3,$azika);
-        // }
-        session () ->flash('succes','Input laporan berhasil, dan akan segera ditindak lanjuti');
-        return back ();
+     
+        if($request-> barang == 1){
+            return redirect()->route('siyapp.view-it')->with('success', 'Data berhasil diinput'); 
+        }else{
+            return redirect()->route('siyapp.view-non-it')->with('success', 'Data berhasil diinput'); 
+        }
+       
     }
     public function update(Request $request, $id){
-        $request -> validate([
-            'tindak_awal' => ['required'],
+        // Validasi input
+        $request->validate([
+            'tindak_awal'   => ['required'],
             'tindak_lanjut' => ['required'],
-            'uji' => ['required'],
-            'tgl_selesai' => ['required'],
-            'ket' => ['required'],
+            'uji'           => ['required'],
+            'tgl_selesai'   => ['required'],
+            'ket'           => ['required'],
         ]);
+
         $siyapp = Siyapp::findOrFail($id);
-       $siyapp->tindak_awal         = $request->tindak_awal;
-       $siyapp->tindak_lanjut       = $request->tindak_lanjut;
-       $siyapp->uji                 = $request->uji;
-       if($request->tgl_selesai != '00/00/0000'){
-        $siyapp->tgl_selesai         = $request->tgl_selesai;
-        Siyapp::where('id',$id)->update(['status'=>'2']);
-        // Pesan User 
-        $get_id   = Siyapp :: where('id','=',$id)->first();
-        $username = User::where('id','=',$get_id->user_id)->first();
-        $no_telp1 = Profile :: where('username','=',$username->username)->first();
-        if(isset($no_telp1->telpon)){
-        $pesan1 = '*Yth. Bapak/Ibu*🙏, Laporan Siyapp dengan ID Laporan : ' .$id.' telah selesai diproses ✅ ';
-        sendMessage($pesan1,$no_telp1->telpon);
+        $siyapp->tindak_awal   = $request->tindak_awal;
+        $siyapp->tindak_lanjut = $request->tindak_lanjut;
+        $siyapp->uji           = $request->uji;
+        $siyapp->ket           = $request->ket;
+
+        // Cek dan update tgl_selesai + status + kirim pesan
+        if ($request->tgl_selesai != '00/00/0000') {
+            $siyapp->tgl_selesai = $request->tgl_selesai;
+            $siyapp->status = 2; // Update langsung field status
+
+            // Ambil user dan profile sekali jalan
+            $user = User::find($siyapp->user_id);
+            $profile = Profile::where('username', $user->username)->first();
+
+            // Kirim pesan kalau nomor telepon ada
+            if (isset($profile->telpon)) {
+                $pesan = '*Yth. Bapak/Ibu*🙏, Laporan Siyapp dengan ID Laporan : ' . $id . ' telah selesai diproses ✅';
+                sendMessage($pesan, $profile->telpon);
+            }
         }
-       }
-       $siyapp->ket                 = $request->ket;
-       $siyapp->updated_at          = date('Y-m-d H:i:s');
-       $siyapp->save();
-       session () ->flash('succes','Data berhasil diupdate !!');
-       return back ();
+
+        // Save perubahan
+        $siyapp->save();
+
+        if($siyapp->j_barang == 1){
+            return redirect()->route('siyapp.view-it')->with('success', 'Data berhasil diedit'); 
+        }else{
+            return redirect()->route('siyapp.view-non-it')->with('success', 'Data berhasil diedit'); 
+        }
     }
     public function destroy($id){
         $delete = Siyapp::where('id',$id)->first();
         $delete -> delete();
         session () ->flash('succes','Data berhasil dihapus');
-        return back();
+        if($delete->j_barang == 1){
+            return redirect()->route('siyapp.view-it')->with('success', 'Data berhasil dihapus'); 
+        }else{
+            return redirect()->route('siyapp.view-non-it')->with('success', 'Data berhasil dihapus'); 
+        }
     }
     public function cetak(){
         
@@ -251,16 +247,27 @@ class SiyappController extends Controller
         return view('siyapp.detail',['data'=>$siyapp]);
     }
     public function konfir($id){
-        Siyapp::where('id',$id)->update(['status'=>'1']);
-        // Pesan User 
-        $get_id   = Siyapp :: where('id','=',$id)->first();
-        $username = User::where('id','=',$get_id->user_id)->first();
-        $no_telp1 = Profile :: where('username','=',$username->username)->first();
-        if(isset($no_telp1->telpon)){
-        $pesan1 = '*Yth. Bapak/Ibu*🙏, Laporan Siyapp dengan ID Laporan : ' .$id.' telah dikonfirmasi dan akan segera ditindak lanjuti ✅ ';
-        sendMessage($pesan1,$no_telp1->telpon);
+        $get_id = Siyapp::where('id', '=', $id)->first(); 
+        $get_id->update(['status' => '1']); 
+        
+        $username = User::where('id', '=', $get_id->user_id)->first();
+        $no_telp1 = Profile::where('username', '=', $username->username)->first();
+        
+        if (isset($no_telp1->telpon)) {
+            $pesan1 = '*Yth. Bapak/Ibu*🙏, Laporan Siyapp dengan ID Laporan : ' . $id . ' telah dikonfirmasi dan akan segera ditindak lanjuti ✅ ';
+            sendMessage($pesan1, $no_telp1->telpon);
         }
-        return back();
+        
+        if ($get_id->j_barang == 1) {
+            return redirect()->route('siyapp.view-it')->with('success', 'Data Terkonfirmasi');
+        } else {
+            return redirect()->route('siyapp.view-non-it')->with('success', 'Data Terkonfirmasi');
+        }
+        
+    }
+    public function showBarang($id){
+        $barang = Bmnbarang :: where('id',$id)->first(['kode','nup','nm_barang','merek']);
+        return response()->json([$barang]);
     }
 }
 
