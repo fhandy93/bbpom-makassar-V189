@@ -92,17 +92,33 @@
                                                 @elseif($user -> is_permission==16)
                                                     <td>KABALAI</td>
                                                 @elseif($user -> is_permission==17)
-                                                    <td>PIC Infokom</td>
+                                                    <td>PIC Infokom NON PN</td>
                                                 @elseif($user -> is_permission==18)
-                                                    <td>PIC Inspeksi</td>
+                                                    <td>PIC Insp. Dep. 1</td>
                                                 @elseif($user -> is_permission==19)
                                                     <td>PIC Sertifikasi</td>
                                                 @elseif($user -> is_permission==20)
-                                                    <td>PIC Pengujian</td>
+                                                    <td>PIC Uji Obat</td>
                                                 @elseif($user -> is_permission==21)
                                                     <td>PIC Penindakan</td>
                                                 @elseif($user -> is_permission==22)
                                                     <td>PIC Kepegawaian</td>
+                                                @elseif($user -> is_permission==23)
+                                                    <td>PIC SAKIP</td>
+                                                @elseif($user -> is_permission==24)
+                                                    <td>PIC Uji Pangan</td>
+                                                @elseif($user -> is_permission==25)
+                                                    <td>PIC Uji Kosmetik</td>
+                                                @elseif($user -> is_permission==26)
+                                                    <td>PIC Uji Mikro</td>
+                                                @elseif($user -> is_permission==27)
+                                                    <td>PIC Uji OT</td>
+                                                @elseif($user -> is_permission==28)
+                                                    <td>PIC Insp. Dep. 2</td>
+                                                @elseif($user -> is_permission==29)
+                                                    <td>PIC Insp. Dep. 2</td>
+                                                @elseif($user -> is_permission==30)
+                                                    <td>PIC Infokom Pro PN</td>
                                                 @endif
                                                 
                                                 <td>

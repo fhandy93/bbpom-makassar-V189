@@ -284,6 +284,7 @@
                                                     <option value="Analis Pemeriksa Sarana dan Penyidik Obat dan Makanan">Analis Pemeriksa Sarana dan Penyidik Obat dan Makanan</option>
                                                     <option value="Pengawas Farmasi dan Makanan Terampil">Pengawas Farmasi dan Makanan Terampil</option>
                                                     <option value="Pengelola Pengadaan Barang/Jasa">Pengelola Pengadaan Barang/Jasa</option>
+                                                    <option value="Penata Layanan Operasional">Penata Layanan Operasional</option>
                                                     <option value="Analis Keuangan">Analis Keuangan</option>
                                                     <option value="Perencana Pertama">Perencana Pertama</option>
 												</select>	
@@ -313,6 +314,7 @@
 													<option value="Pengatur, II/c">Pengatur, II/c</option>
 													<option value="Pengatur Tingkat 1, II/d">Pengatur Tingkat 1, II/d</option>
 													<option value="Penata Muda, III/a">Penata Muda, III/a</option>
+                                                    <option value="IX">IX</option>
 													<option value="Penata Muda Tingkat 1, III/b">Penata Muda Tingkat 1, III/b</option>
 													<option value="Penata, III/c">Penata, III/c</option>
 													<option value="Penata Tingkat 1, III/d">Penata Tingkat 1, III/d</option>
@@ -331,7 +333,7 @@
                                                         @if($data['user']->type==0)
                                                         -
                                                         @elseif ($data['user']->type==1)
-                                                        ASN/PNS
+                                                        PNS/PPPK
                                                         @elseif ($data['user']->type==2)
                                                         PPNPN
                                                         @elseif ($data['user']->type==3)
@@ -339,7 +341,7 @@
                                                         @endif
                                                     </option>
                                                     <option value="0">-</option>
-													<option value="1">ASN/PNS</option>
+													<option value="1">PNS/PPPK</option>
 													<option value="2">PPNPN</option>
 													
 												</select>	

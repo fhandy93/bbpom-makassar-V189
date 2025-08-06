@@ -58,10 +58,10 @@
                                 class="side-menu__label">BBPOM Melayani</span><i
                                 class="angle fe fe-chevron-right"></i></a>
                         <ul class="slide-menu">
-                            <li><a href="/siyapp" class="slide-item">Siyapp</a></li>
-                            <li><a href="/sinonim" class="slide-item">Sinonim</a></li>
-                            <li><a href="/sudoku" class="slide-item">Sudoku</a></li>
-                            <li><a href="/sappaiadmin" class="slide-item">Sappai</a></li>
+                            <li><a href="/siyapp" class="slide-item">SIYAPP</a></li>
+                            <li><a href="/sinonim" class="slide-item">SINONIM</a></li>
+                            <li><a href="/sudoku" class="slide-item">SUDOKU</a></li>
+                            <li><a href="/sappaiadmin" class="slide-item">SAPPAI</a></li>
                             
                         </ul>
                     </li>
@@ -97,6 +97,9 @@
                        
                         <ul class="slide-menu">
                             <li><a href="/sipintar-v1" class="slide-item">SIPINTAR</a></li>
+                        </ul>
+                         <ul class="slide-menu">
+                            <li><a href="/info-pom" class="slide-item">INFOPOM</a></li>
                         </ul>
                     </li>
                     <li class="slide">

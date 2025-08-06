@@ -1,0 +1,227 @@
+<x-HomeLayout>
+    <!--app-content open-->
+    <div class="main-content app-content mt-0">
+        <div class="side-app">
+            <!-- CONTAINER -->
+            <div class="main-container container-fluid">
+                <!-- PAGE-HEADER -->
+                <div class="page-header">
+                    <h1 class="page-title">Rekapitulasi Izin Pegawai</h1>
+                    <div>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="javascript:void(0)">SIIKMA</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Rekap Izin</li>
+                        </ol>
+                    </div>
+                </div>
+                <!-- PAGE-HEADER END -->
+                <div class="row row-sm">
+                    @if (session() -> has('succes'))
+                        <div class="card-body text-center" id="success"> 
+                            <span class=""><svg xmlns="http://www.w3.org/2000/svg" height="60" width="60" viewBox="0 0 24 24"><path fill="#13bfa6" d="M10.3125,16.09375a.99676.99676,0,0,1-.707-.293L6.793,12.98828A.99989.99989,0,0,1,8.207,11.57422l2.10547,2.10547L15.793,8.19922A.99989.99989,0,0,1,17.207,9.61328l-6.1875,6.1875A.99676.99676,0,0,1,10.3125,16.09375Z" opacity=".99"/><path fill="#71d8c9" d="M12,2A10,10,0,1,0,22,12,10.01146,10.01146,0,0,0,12,2Zm5.207,7.61328-6.1875,6.1875a.99963.99963,0,0,1-1.41406,0L6.793,12.98828A.99989.99989,0,0,1,8.207,11.57422l2.10547,2.10547L15.793,8.19922A.99989.99989,0,0,1,17.207,9.61328Z"/></svg></span>
+                            <h4 class="h4 mb-0 mt-3">Success</h4>
+                            <p class="card-text">{{ session() -> get('succes')}}</p>
+                        </div>
+                    @endif 
+                    <div class="col-lg-12">
+                        <div class="card">
+							<div class="card-header ">
+								<h3 class="card-title">Filter Data</h3>
+                                <div class="card-options ">
+                                    <a href="javascript:void(0)" class="card-options-collapse" data-bs-toggle="card-collapse"><i class="fe fe-chevron-up text-white"></i></a>
+                                    <a href="javascript:void(0)" class="card-options-remove" data-bs-toggle="card-remove"><i class="fe fe-x text-white"></i></a>
+                                </div>
+							</div>
+							<div class="card-body">
+								<form id="signupForm" method="post" class="form-horizontal" action="/siikma/rekap-izin/filter" >
+									@csrf
+									@method('post')		
+									
+                                    <div class="form-group m-0">
+                                            <div class="row ">
+                                                <div class="col-5">
+                                                        <select name="bulan" class="form-control form-select select2" data-bs-placeholder="Select Month">
+                                                            <option label="Select Month">Pilih Bulan</option>
+                                                            <option value="01">Januari</option>
+                                                            <option value="02">Februari</option>
+                                                            <option value="03">Maret</option>
+                                                            <option value="04">April</option>
+                                                            <option value="05">Mei</option>
+                                                            <option value="06">Juni</option>
+                                                            <option value="07">Juli</option>
+                                                            <option value="08">Agustus</option>
+                                                            <option value="09">September</option>
+                                                            <option value="10">Oktober</option>
+                                                            <option value="11">Nopember</option>
+                                                            <option value="12">Desember</option>
+                                                        </select>
+                                                </div>
+                                                <div class="col-5">
+                                                        <select name="tahun" class="form-control form-select select2" data-bs-placeholder="Select Year">
+                                                            <option label="Select Month">Pilih Tahun</option>
+                                                            <option value="{{ Carbon\Carbon::now()->format('Y')}}">{{ Carbon\Carbon::now()->format('Y')}}</option>
+                                                            <option value="{{ Carbon\Carbon::now()->format('Y')-1}}">{{ Carbon\Carbon::now()->format('Y')-1}}</option>
+                                                            <option value="{{ Carbon\Carbon::now()->format('Y')-1}}">{{ Carbon\Carbon::now()->format('Y')-2}}</option>
+                                                        </select>
+                                                </div>
+                                                <div class="col-2">
+                                                <button type="submit" class="btn btn-primary" style="width:160px;">Filter Data</button>
+                                                </div>
+                                            </div>
+                                        </div>
+									<p>
+									
+								</form><!-- End Multi Columns Form -->
+							</div>
+						</div>
+                          <a href="/siikma/rekap-bedasarkan-jam"><button type="button" class="btn btn-danger"><i class="fa fa-clock-o me-2"></i>Tampilkan berdasarkan jumlah jam izin pegawai</button></a><p>
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">Rekapitulasi Daftar Izin Pegawai</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table id="file-datatable" class="table table-bordered text-nowrap key-buttons border-bottom">
+                                        <thead>
+                                            <tr>
+                                            <th class="border-bottom-0">Index</th>
+                                                <th class="border-bottom-0">Nama Pegawai</th>
+                                                <th class="border-bottom-0">Tanggal Izin</th>
+                                                <th class="border-bottom-0">Jam Izin</th>
+                                                <th class="border-bottom-0">Jam Kembali</th>
+                                                <th class="border-bottom-0">Status Izin</th>
+                                                <th class="border-bottom-0">Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        
+                                            
+                                            @foreach($izin as $index => $izin)
+                                            <tr>
+                                                <td>{{$index + 1}}</td>
+                                                <td>{{ $izin -> user->name }}</td>
+                                                <td>{{$izin -> tgl_izin}}</td>
+                                                <td>{{$izin -> jam1}} - {{$izin -> jam2}}</td>
+                                                <td>{{$izin -> wktu_kembali}}</td>
+                                                <td>
+                                                    @if($izin -> status == 1)
+                                                    <span class="badge rounded-pill bg-info">Izin Diterima</span></td>
+                                                    @elseif($izin -> status == 2)
+                                                    <span class="badge rounded-pill bg-success">Izin selesai</span></td>
+                                                    @endif
+                                                </td>
+
+                                                <td>
+                                                    <a href="/siikma/detail-izin/{{$izin ->id}}" class="btn btn-success btn-sm"><i class="fa fa-eye me-2"></i>Detail Izin</a>
+                                                    @if($izin -> status == 2)  
+                                                    <a href="/siikma/cetak-izin/{{$izin -> id}}"><button type="button"  class="btn btn-sm btn-secondary"><i class="fa fa-print me-2"></i>Cetak SK</button></a>
+                                                    @endif
+                                                    <form method="POST" action="konfir/{{ $izin -> id }}" style="display: inline;" >
+                                                            @csrf
+                                                            <input name="_method" type="hidden" value="DELETE">
+                                                            <button type="submit" class="btn btn-sm btn-danger" data-toggle="tooltip" title='Delete'><i class="fa fa-trash me-2"></i>Delete</button>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                            @endforeach
+                                       
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                     
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+    <!-- CONTAINER CLOSED -->
+
+    <!-- JQUERY JS -->
+    <script src="{{ asset('vendor/js/jquery.min.js')}}"></script>
+
+    <!-- BOOTSTRAP JS -->
+    <script src="{{ asset('vendor/plugins/bootstrap/js/popper.min.js')}}"></script>
+    <script src="{{ asset('vendor/plugins/bootstrap/js/bootstrap.min.js')}}"></script>
+
+    <!-- SPARKLINE JS-->
+    <script src="{{ asset('vendor/js/jquery.sparkline.min.js')}}"></script>
+
+    <!-- CHART-CIRCLE JS-->
+    <script src="{{ asset('vendor/js/circle-progress.min.js')}}"></script>
+
+    <!-- C3 CHART JS -->
+    <script src="{{ asset('vendor/plugins/charts-c3/d3.v5.min.js')}}"></script>
+    <script src="{{ asset('vendor/plugins/charts-c3/c3-chart.js')}}"></script>
+
+    <!-- INPUT MASK JS-->
+    <script src="{{ asset('vendor/plugins/input-mask/jquery.mask.min.js')}}"></script>
+
+    <!-- SIDE-MENU JS -->
+    <script src="{{ asset('vendor/plugins/sidemenu/sidemenu.js')}}"></script>
+
+    <!-- INTERNAL SELECT2 JS -->
+    <script src="{{ asset('vendor/plugins/select2/select2.full.min.js')}}"></script>
+
+    <!-- DATA TABLE JS-->
+    <script src="{{ asset('vendor/plugins/datatable/js/jquery.dataTables.min.js')}}"></script>
+    <script src="{{ asset('vendor/plugins/datatable/js/dataTables.bootstrap5.js')}}"></script>
+    <script src="{{ asset('vendor/plugins/datatable/js/dataTables.buttons.min.js')}}"></script>
+    <script src="{{ asset('vendor/plugins/datatable/js/buttons.bootstrap5.min.js')}}"></script>
+    <script src="{{ asset('vendor/plugins/datatable/js/jszip.min.js')}}"></script>
+    <script src="{{ asset('vendor/plugins/datatable/pdfmake/pdfmake.min.js')}}"></script>
+    <script src="{{ asset('vendor/plugins/datatable/pdfmake/vfs_fonts.js')}}"></script>
+    <script src="{{ asset('vendor/plugins/datatable/js/buttons.html5.min.js')}}"></script>
+    <script src="{{ asset('vendor/plugins/datatable/js/buttons.print.min.js')}}"></script>
+    <script src="{{ asset('vendor/plugins/datatable/js/buttons.colVis.min.js')}}"></script>
+    <script src="{{ asset('vendor/plugins/datatable/dataTables.responsive.min.js')}}"></script>
+    <script src="{{ asset('vendor/plugins/datatable/responsive.bootstrap5.min.js')}}"></script>
+    <script src="{{ asset('vendor/js/table-data.js')}}"></script>
+
+    <!-- SIDEBAR JS -->
+    <script src="{{ asset('vendor/plugins/sidebar/sidebar.js')}}"></script>
+
+    <!-- Perfect SCROLLBAR JS-->
+    <script src="{{ asset('vendor/plugins/p-scroll/perfect-scrollbar.js')}}"></script>
+    <script src="{{ asset('vendor/plugins/p-scroll/pscroll.js')}}"></script>
+    <script src="{{ asset('vendor/plugins/p-scroll/pscroll-1.js')}}"></script>
+
+    <!-- Color Theme js -->
+    <script src="{{ asset('vendor/js/themeColors.js')}}"></script>
+
+    <!-- Sticky js -->
+    <script src="{{ asset('vendor/js/sticky.js')}}"></script>
+
+    <!-- CUSTOM JS -->
+    <script src="{{ asset('vendor/js/custom.js')}}"></script>
+
+    <script src="{{ asset ('vendor/plugins/sweet-alert/sweetalert.min.js')}}"></script>
+   
+
+    <script type="text/javascript">
+    
+    setTimeout(function() {
+                document.getElementById('success').style.display = 'none';
+            }, 4000); // <-- time in milliseconds
+        $('.show_confirm').click(function(event) {
+            var form =  $(this).closest("form");
+            var name = $(this).data("name");
+            event.preventDefault();
+            swal({
+                title: `Anda yakin ingin menghapus data ini ?`,
+                text: "Jika anda hapus, Data akan hilang selamanya.",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+            .then((willDelete) => {
+                if (willDelete) {
+                form.submit();
+                }
+            });
+        });
+    
+        </script>  
+</x-HomeLayout>

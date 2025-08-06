@@ -10,6 +10,8 @@ use App\Models\Serambi;
 use App\Models\User;
 use Carbon\Carbon;
 use App\Models\Profile;
+use App\Models\Siikmaizin;
+use Carbon\CarbonInterval;
 
 
 class Kernel extends ConsoleKernel
@@ -165,8 +167,6 @@ class Kernel extends ConsoleKernel
             }
             
             if($day == 'Thursday'){
-                
-                
                     
                 $data = Serambi :: where('jenis','=','2')->where('status','=','0')->first();
                 $image = 'https://bbpom-makassar.com'.$data->image;
@@ -189,68 +189,48 @@ class Kernel extends ConsoleKernel
         
         
         
-        
-        
-        $schedule->call(function(){
-     
-        $exp = Sikama :: where([['created_at', '<=', Carbon::yesterday()->setTime(23, 00, 00)->toDateTimeString()],['status', '=', '1']])->get(['status','id']);
-        foreach($exp as $item){
-        $izin  = Sikama::findOrFail($item->id);
-        $izin -> status = 4;
-        $izin ->save();
-        }
-        
-        $notconfirm = Sikama :: where('bidang', '!=', 12)->where('status','=', 1)->get(['user_id','id','created_at']);
-        foreach($notconfirm as $data){
-            $time = $data->created_at->addMinutes(6)->format('H:i');
-            $dt = Carbon::now()->format('H:i');
-            if($dt==$time){
-                  $user  = User::where('id',$data->user_id)->first();
-                  $phone = Profile::where('username',$user->username)->first();
-                  $pesan = "*Yth. Bapak/Ibu*🙏 Waktu konfirmasi izin terakhir anda telah lewat dari 5 Menit, untuk mengubah izin anda menjadi izin khusus yang ditujukan kepada *Kepala Bagian Tata Usaha pada Balai Besar POM di Makassar*, silakan mengklik link berikut https://bbpom-makassar.com/daftarizin ";
-                  // pesan untuk user
-                  sendMessage($pesan,$phone->telpon);
-              }
-            }
+        $schedule->call(function () {
             
-            
-            
-            
-              $now = now('Asia/Makassar');
+            $now = now('Asia/Makassar');
 
-            $dataIzin = Sikama::whereDate('tgl_izin', $now->toDateString())
+            $dataIzin = Siikmaizin::whereDate('tgl_izin', $now->toDateString())
             ->whereNull('wktu_kembali')
-            ->where('status', 2)
+            ->where('status', 1)
             ->where('notif', 0)
             ->get();
-        
+
             foreach ($dataIzin as $izin) {
-            //     // Pecah jam jadi awal dan akhir
-                [$jamAwal, $jamAkhir] = explode('-', $izin->jam);
-                echo $jamAkhir;
-            //     // Konversi jam akhir jadi waktu lengkap
-                echo $jamAkhirCarbon = \Carbon\Carbon::createFromFormat('Y-m-d H.i', $izin->tgl_izin . ' ' . str_replace(':', '.', $jamAkhir), 'Asia/Makassar');
-        
-                if ($now->greaterThan($jamAkhirCarbon)) {
-                    $user  = User::where('id',$izin->user_id)->first();
-                    $phone = Profile::where('username',$user->username)->first();
-                    $pesan = "*Yth Bapak/Ibu* Waktu izin anda telah berakhir, Harap segera menyelesaikan izin anda di wilayah kantor *BBPOM Di Makassar* melalu link https://bbpom-makassar.com/detail-izin-sikama/".$izin ->id;
-                    // pesan untuk user
-                    sendMessage($pesan,$phone->telpon);
-                    $izin -> notif = 1;
-                    $izin ->save();
-                }
-            }
+           
+                    // Format jam2 sekarang adalah 'H:i:s' (contoh: '13:45:00')
+                    $jamAkhirCarbon = \Carbon\Carbon::createFromFormat(
+                        'Y-m-d H:i:s',
+                        $izin->tgl_izin . ' ' . $izin->jam2,
+                        'Asia/Makassar'
+                    );
+
+                    if ($now->greaterThan($jamAkhirCarbon)) {
+                        $user  = User::find($izin->user_id);
+                        $phone = Profile::where('username', $user->username)->first();
+
+                        $pesan = "*Yth Bapak/Ibu*,\nWaktu izin anda telah berakhir. Harap segera menyelesaikan izin anda di wilayah kantor *BBPOM Di Makassar* melalui link:\nhttps://bbpom-makassar.com/siikma/detail-izin/{$izin->id}";
+
+                        sendMessage($pesan, $phone->telpon);
+
+                        $izin->notif = 1;
+                        $izin->save();
+                    }
             
+            }       
         })->cron('* * * * *')->timezone('Asia/Makassar');
         
-
+        
+        
         $schedule->call(function(){
             $now = now('Asia/Makassar');
 
-            $dataIzin = Sikama::whereDate('tgl_izin', $now->toDateString())
+            $dataIzin = Siikmaizin::whereDate('tgl_izin', $now->toDateString())
             ->whereNull('wktu_kembali')
-            ->where('status', 2)
+            ->where('status', 1)
             ->get();
         
             foreach ($dataIzin as $izin) {
@@ -261,11 +241,97 @@ class Kernel extends ConsoleKernel
                     // pesan untuk user
                     sendMessage($pesan,$phone->telpon);
             }
-            
-        })->dailyAt('16:00')->timezone('Asia/Makassar');
+        })->cron('0 16 * * 1-4')->timezone('Asia/Makassar');
         
+      // Senin - Kamis jam 16:30
+        $schedule->call(function () {
+            $dt = Carbon::now('Asia/Makassar');
+            $data = Siikmaizin::where('status', 1)->get();
+
+            foreach ($data as $item) {
+                $jamAwal = Carbon::parse($item->jam1);
+                $jamAkhir = $dt;
+
+                // Lewati jika jamAwal lebih dari jam sekarang
+                if ($jamAkhir->lt($jamAwal)) {
+                    continue;
+                }
+
+                $startBreak = Carbon::parse($jamAwal->toDateString() . ' 12:00:00');
+                $endBreak   = Carbon::parse($jamAwal->toDateString() . ' 13:00:00');
+
+                $totalMinutes = $jamAwal->diffInMinutes($jamAkhir);
+
+                // Koreksi waktu istirahat
+                if ($jamAwal->lt($startBreak) && $jamAkhir->gt($endBreak)) {
+                    $totalMinutes -= 60;
+                } elseif ($jamAwal->between($startBreak, $endBreak) && $jamAkhir->gt($endBreak)) {
+                    $totalMinutes -= $jamAwal->diffInMinutes($endBreak);
+                } elseif ($jamAwal->lt($startBreak) && $jamAkhir->between($startBreak, $endBreak)) {
+                    $totalMinutes -= $startBreak->diffInMinutes($jamAkhir);
+                } elseif ($jamAwal->between($startBreak, $endBreak) && $jamAkhir->between($startBreak, $endBreak)) {
+                    $totalMinutes = 0;
+                }
+
+                // Pastikan tidak negatif
+                $interval = CarbonInterval::minutes(max(0, $totalMinutes))->cascade();
+                $jumlahTime = $interval->format('%H:%I:%S');
+
+                $item->status = 2;
+                $item->wktu_kembali = $jamAkhir;
+                $item->lat = '-';
+                $item->lon = '-'; 
+                $item->jumlah = $jumlahTime;
+                $item->save();
+            }
+        })->cron('30 16 * * 1-4')->timezone('Asia/Makassar');
+
+       // Jumat jam 16:00
+        $schedule->call(function () {
+            $dt = Carbon::now('Asia/Makassar');
+            $data = Siikmaizin::where('status', 1)->get();
         
+            foreach ($data as $item) {
+                $jamAwal = Carbon::parse($item->jam1);
+                $jamAkhir = $dt;
         
+                if ($jamAkhir->lt($jamAwal)) {
+                    continue;
+                }
+        
+                $startBreak = Carbon::parse($jamAwal->toDateString() . ' 12:00:00');
+                $endBreak   = Carbon::parse($jamAwal->toDateString() . ' 13:00:00');
+        
+                $totalMinutes = $jamAwal->diffInMinutes($jamAkhir);
+        
+                // Koreksi waktu istirahat
+                if ($jamAwal->lt($startBreak) && $jamAkhir->gt($endBreak)) {
+                    $totalMinutes -= 60;
+                } elseif ($jamAwal->between($startBreak, $endBreak) && $jamAkhir->gt($endBreak)) {
+                    $totalMinutes -= $jamAwal->diffInMinutes($endBreak);
+                } elseif ($jamAwal->lt($startBreak) && $jamAkhir->between($startBreak, $endBreak)) {
+                    $totalMinutes -= $startBreak->diffInMinutes($jamAkhir);
+                } elseif ($jamAwal->between($startBreak, $endBreak) && $jamAkhir->between($startBreak, $endBreak)) {
+                    $totalMinutes = 0;
+                }
+        
+                $interval = CarbonInterval::minutes(max(0, $totalMinutes))->cascade();
+                $jumlahTime = $interval->format('%H:%I:%S');
+        
+                $item->status = 2;
+                $item->wktu_kembali = $jamAkhir;
+                $item->lat = '-';
+                $item->lon = '-';
+                $item->jumlah = $jumlahTime;
+                try {
+                    $item->save();
+                } catch (\Exception $e) {
+                    \Log::error("Gagal simpan data ID " . $item->id . ": " . $e->getMessage());
+                }
+            }
+        })->cron('0 16 * * 5')->timezone('Asia/Makassar');
+
+    
     }
 
     /**

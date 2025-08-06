@@ -30,8 +30,8 @@ function checkPermission($permissions){
     
     
     $curl = curl_init();
-    $token = "v4e1bMSSR4vjTGlfFUR5EBaoxHx3AXu59DvtX6cDH6N13AHksFVNdXhGKmX0mHXV";
-    $secret_key = "FvKiNKdk--";
+    $token = "T8mpIvRIX2Ce9KZOxBmDMuKhfguk7VNSUGwXqo4x1AKRg5UcDLLkpkN";
+    $secret_key = "K1d5z6mA";
     $data = [
    'phone' => $no,'message' => $pesan
     ];
@@ -153,6 +153,30 @@ function checkPermission($permissions){
       case 22:
         return 'pickepegawaian';
         break;
+      case 23:
+        return 'picsakip';
+        break;
+      case 24:
+        return 'picujipangan';
+        break;
+      case 25:
+        return 'picujikos';
+        break;
+      case 26:
+        return 'picujimic';
+        break;
+      case 27:
+        return 'picujiot';
+        break;
+      case 28:
+        return 'picserdep2';
+        break;
+      case 29:
+        return 'picserdep3';
+        break;
+      case 30:
+        return 'picinfopn';
+        break;
       default:
         return 'cadangan';
         break;
@@ -193,8 +217,8 @@ function checkPermission($permissions){
   function sendImage($phone,$image,$capt){
 
     $curl = curl_init();
-    $token = "v4e1bMSSR4vjTGlfFUR5EBaoxHx3AXu59DvtX6cDH6N13AHksFVNdXhGKmX0mHXV";
-    $secret_key = "FvKiNKdk";
+    $token = "T8mpIvRIX2Ce9KZOxBmDMuKhfguk7VNSUGwXqo4x1AKRg5UcDLLkpkN";
+    $secret_key = "K1d5z6mA";
     $data = [
     'phone' => $phone,
     'image' => $image,
