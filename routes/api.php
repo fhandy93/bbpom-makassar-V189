@@ -47,7 +47,13 @@ Route::post('/kategory-pangan/search', [App\Http\Controllers\API\SimpulControlle
 Route::middleware('throttle:60,1')->post('/search-sub', [App\Http\Controllers\API\SimpulController::class, 'searchSub']);
 Route::get('/get-index', [App\Http\Controllers\API\SimpulController::class, 'index']);
 
-
+// API Route INFOPOM
+Route::get('/infopom/qna/umum', [App\Http\Controllers\API\InfopomController::class, 'qnaUmum']);
+Route::get('/infopom/qna/detail', [App\Http\Controllers\API\InfopomController::class, 'qnadetail']);
+Route::get('/infopom/learning/{kat}/{id}', [App\Http\Controllers\API\InfopomController::class, 'learning']);
+Route::get('/infopom/info/info-web', [App\Http\Controllers\API\InfopomController::class, 'infoWeb']);
+Route::get('/infopom/web-header/{id}', [App\Http\Controllers\API\InfopomController::class, 'webHeader']);
+Route::post('/infopom/visitor', [App\Http\Controllers\API\InfopomController::class, 'visitor']);
 
 
 

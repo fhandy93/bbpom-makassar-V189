@@ -195,12 +195,19 @@ class SiikmaController extends Controller
             // Jika jam akhir lebih besar atau sama dengan jam awal, hitung selisih waktu
             $totalMinutes = $jamAwal->diffInMinutes($jamAkhir);
 
-            // Koreksi waktu istirahat (12:00 - 13:00)
-            $startBreak = $jamAwal->copy()->setTime(12, 0);
-            $endBreak   = $jamAwal->copy()->setTime(13, 0);
+            // Tentukan waktu istirahat berdasarkan hari
+            $dayOfWeek = $jamAwal->dayOfWeek;
+            if ($dayOfWeek === 5) { // Jumat
+                $startBreak = $jamAwal->copy()->setTime(11, 45);
+                $endBreak   = $jamAwal->copy()->setTime(13, 15);
+            } else { // Senin - Kamis
+                $startBreak = $jamAwal->copy()->setTime(12, 0);
+                $endBreak   = $jamAwal->copy()->setTime(13, 0);
+            }
 
+            // Koreksi waktu istirahat
             if ($jamAkhir->gt($endBreak) && $jamAwal->lt($startBreak)) {
-                $totalMinutes -= 60;
+                $totalMinutes -= $startBreak->diffInMinutes($endBreak);
             } elseif ($jamAwal->between($startBreak, $endBreak) && $jamAkhir->gt($endBreak)) {
                 $totalMinutes -= $jamAwal->diffInMinutes($endBreak);
             } elseif ($jamAkhir->between($startBreak, $endBreak) && $jamAwal->lt($startBreak)) {
@@ -211,6 +218,7 @@ class SiikmaController extends Controller
 
             // Pastikan tidak negatif
             $totalMinutes = max($totalMinutes, 0);
+
         }
 
         // Konversi menit ke format HH:MM:SS
