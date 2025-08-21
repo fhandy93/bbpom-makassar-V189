@@ -25,15 +25,41 @@
             });
         }
         var create_notification = function() {
-                var div = $('<div>', {
-                    'id': 'ui_notifIt'
+    var div = $('<div>', { 'id': 'ui_notifIt' });
+
+    if (defaults.type === "error") {
+        if (Array.isArray(defaults.msg)) {
+            var ul = $('<ul>', { style: "margin:0; padding-left:15px;" });
+            defaults.msg.forEach(function(err) {
+                ul.append($('<li>', { text: err }));
+            });
+            div.append(ul);
+
+        } else if (typeof defaults.msg === "string") {
+            if (defaults.msg.length > 80 || defaults.msg.includes("SQLSTATE")) {
+                var pre = $('<pre>', {
+                    text: defaults.msg,
+                    css: {
+                        "white-space": "pre-wrap",
+                        "margin": 0,
+                        "font-size": "12px"
+                    }
                 });
-                var p = $('<p>', {
-                    html: defaults.msg
-                });
-                div.append(p);
-                return div;
+                div.append(pre);
+            } else {
+                div.append($('<p>', { text: defaults.msg }));
             }
+        }
+    } else {
+        div.append($('<p>', { html: defaults.msg }));
+    }
+
+    return div;
+};
+
+
+
+
             // We love jQuery
         var $ = jQuery;
         var destroy = function() {

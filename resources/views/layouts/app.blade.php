@@ -72,6 +72,7 @@
 
 <body class="app sidebar-mini ltr light-mode">
     <!-- livewire -->
+    @stack('scripts')
     @livewireScripts
     <!-- GLOBAL-LOADER -->
     <div id="global-loader">
