@@ -13,6 +13,7 @@
 				
 				<!-- ROW CLOSED -->
                 <div class="row" >
+                    <x-notify />
                     <div class="col-lg-8 col-md-5">
                         <div class="card ">
                             <div class="card-header bg-gray text-white">

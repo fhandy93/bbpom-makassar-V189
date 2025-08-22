@@ -564,7 +564,7 @@ Route :: post ('/sppd-filter',[SPDController::class,'filterp']);
 Route :: get('/sppd-nomor-edit/{id}',[SPDController::class,'nomoredit'])->middleware('check-permission:admin|superadmin');
 Route :: get('/sppd-nomor-edit-external/{id}',[SPDController::class,'nomoreditex'])->middleware('check-permission:admin|superadmin');
 
-Route :: get('/siikma',[SikamaController::class,'index'])->name('siikma.index');
+Route :: get('/siikma',[SikamaController::class,'index']);
 Route :: get('/formizin',[SikamaController::class,'form']);
 Route :: post('/izinstore',[SikamaController::class,'store']);
 Route :: get('/daftarizin',[SikamaController::class,'daftar'])->name('siikma.daftar');
@@ -579,7 +579,7 @@ Route :: get('/detail-izin-sikama/{id}',[SikamaController::class,'detail']);
 Route :: post('/akhiri-izin/{id}',[SikamaController::class,'akhir']);
 Route :: get('/acc',[SikamaController::class,'acc'])->middleware('check-permission:superadmin');
 
-Route :: get('/siikma',[SiikmaController::class,'index']);
+Route :: get('/siikma',[SiikmaController::class,'index'])->name('siikma.index');
 Route :: get('/siikma/formulir',[SiikmaController::class,'siikFom']);
 Route :: post('/siikma/izinstore',[SiikmaController::class,'siiStore']);
 Route :: get('/siikma/daftar-izin',[SiikmaController::class,'daftar'])->name('siikma.dafIzin');

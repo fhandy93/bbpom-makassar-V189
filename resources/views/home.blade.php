@@ -15,6 +15,7 @@
                     </div>
                 </div>
                 <!-- PAGE-HEADER END -->
+                 <x-notify />
                 <div class="card-header">{{ __('Welcome '). Auth::user()->name }}</div>
                     <div class="card-body">
                         @if (session('status'))

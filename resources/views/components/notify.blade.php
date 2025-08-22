@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     notif({
         type: "error",
-        msg: errorMsg,
+        msg: "Error : "+errorMsg,
         position: "center",
         width: 600,
         autohide: false,
@@ -32,10 +32,13 @@ document.addEventListener("DOMContentLoaded", function() {
 
 @if(session('warning'))
 <script>
+    document.addEventListener("DOMContentLoaded", function() {
     notif({
         msg: "<b>Warning:</b> {{ session('warning') }}",
-        type: "warning"
+        type: "warning",
+        position: "left",
     });
+});
 </script>
 @endif
 @endpush
