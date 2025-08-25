@@ -37,6 +37,7 @@ document.addEventListener("DOMContentLoaded", function() {
         msg: "<b>Warning:</b> {{ session('warning') }}",
         type: "warning",
         position: "left",
+        autohide: false
     });
 });
 </script>

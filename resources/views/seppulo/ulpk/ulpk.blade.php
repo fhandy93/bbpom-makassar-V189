@@ -12,7 +12,7 @@
                     </div>
                 </div>
 				<div class="row">
-							
+							<x-notify />
 							<div class="col-md-4 col-xl-4" >			
                                 <div class="card">
                                 <div class="card-status card-status-left bg-success br-bs-7 br-ts-7"></div>

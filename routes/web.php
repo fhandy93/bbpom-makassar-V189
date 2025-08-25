@@ -455,7 +455,7 @@ Route :: put('/updateulpk/{id}',[UlpkController::class,'update'])->middleware('c
 Route :: put('/updateulpkk/{id}',[UlpkController::class,'updatee'])->middleware('check-permission:infokom|superadmin|sertifikasi|picinfokom|picsertifikasi|pemeriksaan|pengujian|picpengujian|picpenindakan');
 Route :: get('/cetakulpk',[UlpkController::class,'cetak'])->middleware('check-permission:infokom|superadmin|sertifikasi|picinfokom|picsertifikasi|pemeriksaan|pengujian|picpengujian|picpenindakan');
 Route :: post('/formcetak',[UlpkController::class,'formcetak'])->middleware('check-permission:infokom|superadmin|sertifikasi|picinfokom|picsertifikasi|pemeriksaan|pengujian|picpengujian|picpenindakan');
-Route :: get('/ulpkk',[UlpkController::class,'ulpk']);
+Route :: get('/ulpkk',[UlpkController::class,'ulpk'])->name('ulpk.index');
 Route :: delete('/ulpk/{id}/delete',[UlpkController::class,'delete'])->middleware('check-permission:infokom|superadmin|sertifikasi|picinfokom|picsertifikasi|pemeriksaan|pengujian|picpengujian|picpenindakan');
 Route :: get('/ulpk/formulir-ulpk',[UlpkController::class,'formulir'])->middleware('check-permission:infokom|superadmin|sertifikasi|picinfokom|picsertifikasi|pemeriksaan|pengujian|picpengujian|picpenindakan');
 Route :: post('/ulpk/store',[UlpkController::class,'ulpkStore'])->middleware('check-permission:infokom|superadmin|sertifikasi|picinfokom|picsertifikasi|pemeriksaan|pengujian|picpengujian|picpenindakan');
