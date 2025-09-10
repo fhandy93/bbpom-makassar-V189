@@ -17,6 +17,7 @@
                 <!-- PAGE-HEADER END -->
                 <!-- ROW OPEN -->
 				<div class="row">
+                    <x-notify />
 					<div class="col-lg-3 col-md-3"></div>
 					<div class="col-lg-12 col-md-6">
                         <div class="table-responsive">
@@ -189,7 +190,7 @@
                                             <tr>
                                                 <td>17</td>
                                                 <td>File Surat Tugas</td>
-                                                <td>: <a href="/sppd-download{{$data->file}}"> {{$data->file}}</a></td>
+                                                <td>: <a href="/sppd-download-ex/{{$data->id}}"> Download</a></td>
                                             </tr>
                                            
                                         </tbody>

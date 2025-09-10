@@ -12,6 +12,7 @@ use App\Http\Controllers\MakroController;
 use App\Http\Controllers\BakuController;
 use App\Http\Controllers\BMNController;
 use App\Http\Controllers\FormulirController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InfopomController;
 use App\Http\Controllers\InstrumenController;
 use App\Http\Controllers\MikrobiologiController;
@@ -558,7 +559,8 @@ Route :: get('/sppd-nomor-add/{id}',[SPDController::class,'add'])->middleware('c
 Route :: get('/sppd-nomor-add-external/{id}',[SPDController::class,'addex'])->middleware('check-permission:admin|superadmin');
 Route :: put ('/sppd-nomor-store/{id}',[SPDController::class,'updatenumber']);
 Route :: put ('/sppd-nomor-store-external/{id}',[SPDController::class,'updatenumberex']);
-Route :: get('/sppd-download/storage/st/{id}',[SPDController::class,'dwn']);
+Route :: get('/sppd-download/{id}',[SPDController::class,'dwn']);
+Route :: get('/sppd-download-ex/{id}',[SPDController::class,'dwnEx']);
 Route :: post ('/sppd-filter-admin',[SPDController::class,'filteradmin']);
 Route :: post ('/sppd-filter',[SPDController::class,'filterp']);
 Route :: get('/sppd-nomor-edit/{id}',[SPDController::class,'nomoredit'])->middleware('check-permission:admin|superadmin');
@@ -810,6 +812,7 @@ Route :: delete('/serambi/{id}/delete',[SerambiController::class,'delete']);
 Route :: get('/serambi/{id}/kirim',[SerambiController::class,'send']);
 
 Route :: get('/send',[FrontController::class,'send']);
+Route :: get('/under-maintenance',[HomeController::class,'maintenance']);
 });
 
 Route :: get('/pelayanan',[BerakhlakController::class,'pelayanan']);

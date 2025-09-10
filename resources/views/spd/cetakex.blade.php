@@ -313,7 +313,7 @@ hr.new1 {
                     @elseif($data->mengetahui==8)
                     Ahmad Lalo, S.Si, Apt, M.Si.
                     @elseif($data->mengetahui==9)
-                    Dra. Andi Aisyah Andi Hapid, Apt.
+                    Drs. Hamka Hasan, Apt., M.Kes.
                     @elseif($data->mengetahui==10)
                     Sriyani Rasyid, S.Si, Apt.
                     @elseif($data->mengetahui==11)
@@ -343,7 +343,7 @@ hr.new1 {
                     @elseif($data->mengetahui==8)
                         19780209200501 1 002
                     @elseif($data->mengetahui==9)
-                        19670919199303 2 001
+                        19670509199302 1 001
                     @elseif($data->mengetahui==10)
                         19671005199803 2 001 
                     @elseif($data->mengetahui==11)

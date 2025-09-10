@@ -2,19 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Adaja;
 use App\Models\Layanan;
-use App\Models\Notification;
 use App\Models\Sikama;
 use App\Models\Siyapp;
 use App\Models\Smile;
 use App\Models\SPPDOnline;
-use App\Models\Transnotif;
 use App\Models\Ulpk;
 use App\Models\User;
 use App\Models\Visitorcounter;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -98,5 +93,8 @@ class HomeController extends Controller
         $unconfirmed = Siyapp::where('status', '=', 0)-> whereYear('created_at', '=', $year)->count();
 
     return view('home', compact('post','countLayanan', 'totalLayanan','countSiikma','totalSiikma','countSmile','totalSmile','countSppd','totalSppd','countVisit', 'confirmed', 'unconfirmed'));
+    }
+    public function maintenance(){
+        return view('layouts.maintenance');
     }
 }
