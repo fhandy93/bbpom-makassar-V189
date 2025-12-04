@@ -384,13 +384,13 @@ class UlpkController extends Controller
         try{
 
             $data  = Layanan :: where('id',$id)->first();
-            $valid = UlpkV2 :: where('nama',$data->nama)->where('umur',$data->umur)->exists();
+            // $valid = UlpkV2 :: where('nama',$data->nama)->where('umur',$data->umur)->where('created_at',$data->created_at)->exists();
             $user = User :: where('isactive',1)->get(['id','name']); 
-            if($valid){
-                return redirect()->route('sipintar.view-tamu')->with('warning','Data Pengunjung/Tamu telah diinput kedalam ULPK');
-            }else{
+            // if($valid){
+            //     return redirect()->route('sipintar.view-tamu')->with('warning','Data Pengunjung/Tamu telah diinput kedalam ULPK');
+            // }else{
                 return view('seppulo.ulpk.formsipintar',['user'=>$user, 'data'=>$data]);
-            }
+            // }
         }catch(\Throwable $e) { 
             return redirect()->route('ulpk.index')->with('error',  $e->getMessage());
         }

@@ -7,7 +7,7 @@
                 <!-- ROW 1 OPEN -->
 				<div class="row" style="margin-top: 30px;margin-bottom: 50px;">
                     <div class="col-md-12 text-center">
-                        <img src="{{ asset('vendor/images/media/bmn.png') }}">
+                        <img src="{{ asset('vendor/images/media/siyapp.png') }}">
                     </div>
                 </div>
 				
@@ -125,7 +125,7 @@
                             </div>
                         </div>
                     </div>	
-                    <div class="col-md-4" >
+                    <div class="col-md-3" >
                         <div class="card">
                             <div class="card-header bg-gray-dark br-te-3 br-ts-3">
                             <a href="/bmn/pinjam-kendaraan"><h3 class="card-title text-white">Peminjaman <i class="fa fa-paper-plane"></i></h3></a>                    
@@ -135,7 +135,7 @@
                             </div>
                         </div>
                     </div>	
-                    <div class="col-md-4" >
+                    <div class="col-md-3" >
                         <div class="card">
                             <div class="card-header bg-gray-dark br-te-3 br-ts-3">
                             <a href="/bmn/pinjam-aula"><h3 class="card-title text-white">Peminjaman <i class="fa fa-paper-plane"></i></h3></a>                    
@@ -145,13 +145,23 @@
                             </div>
                         </div>
                     </div>	
-                    <div class="col-md-4" >
+                    <div class="col-md-3" >
                         <div class="card">
                             <div class="card-header bg-gray-dark br-te-3 br-ts-3">
                             <a href="/bmn/pinjam-non-bast"><h3 class="card-title text-white">Peminjaman<i class="fa fa-paper-plane"></i></h3></a>                    
                             </div>
                             <div class="card-body">
                             <a href="/bmn/pinjam-non-bast"  ><i class="fa fa-cube fa-3x"></i>&nbsp; Barang</a>
+                            </div>
+                        </div>
+                    </div>	
+                    <div class="col-md-3" >
+                        <div class="card">
+                            <div class="card-header bg-gray-dark br-te-3 br-ts-3">
+                            <a href="/bmn-siyapp"><h3 class="card-title text-white">Perbaikan dan Pemeliharaan<i class="fa fa-paper-plane"></i></h3></a>                    
+                            </div>
+                            <div class="card-body">
+                            <a href="/bmn-siyapp"  ><i class="fa fa-wrench fa-3x"></i>&nbsp; Barang & Peralatan</a>
                             </div>
                         </div>
                     </div>	
@@ -162,7 +172,7 @@
                         <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12" >
                             <div class="card overflow-hidden" >
                                 <div class="card-body pb-0 bg-recentorder">
-                                    <h5 class="card-title " style="text-align: center;">BMN Moments<i class="breadcrumb-item" aria-current="page"> Version: <b>1.0</b></i></h5>
+                                    <h5 class="card-title " style="text-align: center;">SIYAPP<i class="breadcrumb-item" aria-current="page"> Version: <b>2.1</b></i></h5>
                                     <div class="chartjs-wrapper-demo">
                                         <canvas id="recentorders" class="chart-dropshadow" style="display: none;"></canvas>
                                     </div>

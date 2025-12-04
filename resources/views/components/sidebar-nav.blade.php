@@ -107,11 +107,7 @@
                                 class="side-menu__icon fa fa-globe"></i><span
                                 class="side-menu__label">Online SPPD</span></a>
                     </li>
-                    <li class="slide">
-                        <a class="side-menu__item" data-bs-toggle="slide" href="/bmn"><i
-                                class="side-menu__icon fa fa-suitcase"></i><span
-                                class="side-menu__label">BMN Moments</span></a>
-                    </li>
+                  
                     <li class="slide">
                         <a class="side-menu__item" data-bs-toggle="slide" href="/berakhlak"><i
                                 class="side-menu__icon fa fa-university"></i><span

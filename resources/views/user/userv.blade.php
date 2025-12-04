@@ -116,7 +116,7 @@
                                                 @elseif($user -> is_permission==28)
                                                     <td>PIC Insp. Dep. 2</td>
                                                 @elseif($user -> is_permission==29)
-                                                    <td>PIC Insp. Dep. 2</td>
+                                                    <td>PIC Insp. Dep. 3</td>
                                                 @elseif($user -> is_permission==30)
                                                     <td>PIC Infokom Pro PN</td>
                                                 @endif

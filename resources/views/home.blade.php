@@ -16,20 +16,18 @@
                 </div>
                 <!-- PAGE-HEADER END -->
                  <x-notify />
-                <div class="card-header">{{ __('Welcome '). Auth::user()->name }}</div>
+                    
+                   
+            </div>
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xl-12" style="text-align: center;">
+                    <div >{{ __('Welcome '). Auth::user()->name }}</div>
                     <div class="card-body">
-                        @if (session('status'))
-                            <div class="alert alert-success" role="alert">
-                                {{ session('status') }}
-                            </div>
-                        @endif
+                     
                         {{ __('You are logged in!') }}<p>
-                        <h5>Balla POKJA BBPOM Di Makassar</h5>
-                        <div class="breadcrumb">
-                        
-                        </div>
-                        
+                             <img style="align-items: center;" src="{{ asset('vendor/images/media/Balla_pokja.png') }}">
                     </div>
+                </div>
             </div>
              <!-- ROW-1 -->
              <div class="row">

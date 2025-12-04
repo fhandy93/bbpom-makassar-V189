@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Storage;
 
 class SiyappController extends Controller
 {
-    public function index(){
+    public function siyappBmn(){
         return view('siyapp.index');
     }
     public function formulir(){

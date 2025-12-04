@@ -8,7 +8,7 @@
                 <!-- ROW 1 OPEN -->
 				<div class="row" style="margin-top: 30px;margin-bottom: 50px;">
                     <div class="col-md-12 text-center">
-                        <img src="{{ asset('vendor/images/media/siyapp.png') }}">
+                       
                     </div>
                 </div>
 				
@@ -114,46 +114,8 @@
                     </div>
                     <!-- COL END -->
                 </div>
-                <!-- ROW 2 OPEN -->
-                <div class="row row-cols-12">
-                    <div class="col-xl-12 col-sm-12">
-                        <div class="card border p-0">
-                            <div class="card-header bg-gray">
-                                <h3 class="card-title">BMN Moments</h3>
-                                <div class="card-options">
-                                    <a href="javascript:void(0)" class="card-options-collapse" data-bs-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a>
-                                    <a href="javascript:void(0)" class="card-options-remove" data-bs-toggle="card-remove"><i class="fe fe-x"></i></a>
-                                </div>
-                            </div>
-                            <div class="card-body text-center">
-                                <a href="/bmn">
-                                    <img src="{{ asset('vendor/images/media/bmn.png') }}">
-                                </a>
-                            </div>
-                            <div class="card-footer text-center bg-recentorder">
-                                BMN Moments V.1
-                            </div>
-                        </div>
-                    </div>
-                 </div>
-                 <!-- ROW CLOSED -->
-                <!-- ROW 2 CLOSED -->
-                  <div class="row">	
-                        <!-- COL END -->
-                        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12" >
-                            <div class="card overflow-hidden" >
-                                <div class="card-body pb-0 bg-recentorder">
-                                    <h5 class="card-title " style="text-align: center;"><i class="breadcrumb-item" aria-current="page">SIYAPP Version: <b>2.1</b></i></h5>
-                                    <div class="chartjs-wrapper-demo">
-                                        <canvas id="recentorders" class="chart-dropshadow" style="display: none;"></canvas>
-                                    </div>
-                                </div>
-                                <div id="flotback-chart" class="flot-background"></div>    
-                            </div>
-                        </div>
-                        <!-- COL END -->
-            </div>
-            <!-- CONTAINER CLOSED -->
+              
+             
         </div>
     </div>
     <!--app-content closed-->

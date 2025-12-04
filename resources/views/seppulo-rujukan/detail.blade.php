@@ -17,13 +17,7 @@
                 <!-- PAGE-HEADER END -->
                 <!-- ROW OPEN -->
 				<div class="row">
-					@if (session() -> has('succes'))
-						<div class="card-body text-center" id="success"> 
-							<span class=""><svg xmlns="http://www.w3.org/2000/svg" height="60" width="60" viewBox="0 0 24 24"><path fill="#13bfa6" d="M10.3125,16.09375a.99676.99676,0,0,1-.707-.293L6.793,12.98828A.99989.99989,0,0,1,8.207,11.57422l2.10547,2.10547L15.793,8.19922A.99989.99989,0,0,1,17.207,9.61328l-6.1875,6.1875A.99676.99676,0,0,1,10.3125,16.09375Z" opacity=".99"/><path fill="#71d8c9" d="M12,2A10,10,0,1,0,22,12,10.01146,10.01146,0,0,0,12,2Zm5.207,7.61328-6.1875,6.1875a.99963.99963,0,0,1-1.41406,0L6.793,12.98828A.99989.99989,0,0,1,8.207,11.57422l2.10547,2.10547L15.793,8.19922A.99989.99989,0,0,1,17.207,9.61328Z"/></svg></span>
-							<h4 class="h4 mb-0 mt-3">Success</h4>
-							<p class="card-text">{{ session() -> get('succes')}}</p>
-						</div>
-					@endif    
+					<x-notify /> 
                    
 					<div class="col-lg-3 col-md-3"></div>
 					<div class="col-lg-12 col-md-6">
@@ -364,12 +358,12 @@
                         </div>
                         <div class="card-body">
                             <ul class="list-group">
-                                <li class="list-group-item "><i class="fa fa-download text-muted me-2" aria-hidden="true"></i><a href="/v3-rujuk-download{{ $rujuk->gambar1  }}">{{ $rujuk->gambar1  }}</a></li>
-                                <li class="list-group-item"><i class="fa fa-download text-muted me-2" aria-hidden="true"></i><a href="/v3-rujuk-download{{ $rujuk->gambar2  }}">{{ $rujuk->gambar2  }}</a></li>
-                                <li class="list-group-item"><i class="fa fa-download text-muted me-2" aria-hidden="true"></i><a href="/v3-rujuk-download{{ $rujuk->gambar3  }}">{{ $rujuk->gambar3  }}</a></li>
-                                <li class="list-group-item"><i class="fa fa-download text-muted me-2" aria-hidden="true"></i><a href="/v3-rujuk-download{{ $rujuk->gambar4  }}">{{ $rujuk->gambar4  }}</a></li>
-                                <li class="list-group-item"><i class="fa fa-download text-muted me-2" aria-hidden="true"></i><a href="/v3-rujuk-download{{ $rujuk->gambar5  }}">{{ $rujuk->gambar5  }}</a></li>
-                                <li class="list-group-item"><i class="fa fa-download text-muted me-2" aria-hidden="true"></i><a href="/v3-rujuk-download{{ $rujuk->gambar6  }}">{{ $rujuk->gambar6  }}</a></li>
+                                <li class="list-group-item "><i class="fa fa-download text-muted me-2" aria-hidden="true"></i><a href="/v3-rujuk-download/{{ $rujuk->gambar1  }}">@if(isset($rujuk->gambar1)) Download @endif</a></li>
+                                <li class="list-group-item"><i class="fa fa-download text-muted me-2" aria-hidden="true"></i><a href="/v3-rujuk-download/{{ $rujuk->gambar2  }}">@if(isset($rujuk->gambar2)) Download @endif</a></li>
+                                <li class="list-group-item"><i class="fa fa-download text-muted me-2" aria-hidden="true"></i><a href="/v3-rujuk-download/{{ $rujuk->gambar3  }}">@if(isset($rujuk->gambar3)) Download @endif</a></li>
+                                <li class="list-group-item"><i class="fa fa-download text-muted me-2" aria-hidden="true"></i><a href="/v3-rujuk-download/{{ $rujuk->gambar4  }}">@if(isset($rujuk->gambar4)) Download @endif</a></li>
+                                <li class="list-group-item"><i class="fa fa-download text-muted me-2" aria-hidden="true"></i><a href="/v3-rujuk-download/{{ $rujuk->gambar5  }}">@if(isset($rujuk->gambar5)) Download @endif</a></li>
+                                <li class="list-group-item"><i class="fa fa-download text-muted me-2" aria-hidden="true"></i><a href="/v3-rujuk-download/{{ $rujuk->gambar6  }}">@if(isset($rujuk->gambar6)) Download @endif</a></li>
                             </ul>
                             
                         </div>	
@@ -582,12 +576,12 @@
                                 </div>
                                 <div class="card-body">
                                     <ul class="list-group">
-                                        <li class="list-group-item"><i class="fa fa-download text-muted me-2" aria-hidden="true"></i><a href="/v3-rujuk-download{{ $itemhasil->gambar1  }}">{{ $itemhasil->gambar1  }}</a></li>
-                                        <li class="list-group-item"><i class="fa fa-download text-muted me-2" aria-hidden="true"></i><a href="/v3-rujuk-download{{ $itemhasil->gambar2  }}">{{ $itemhasil->gambar2  }}</a></li>
-                                        <li class="list-group-item"><i class="fa fa-download text-muted me-2" aria-hidden="true"></i><a href="/v3-rujuk-download{{ $itemhasil->gambar3  }}">{{ $itemhasil->gambar3  }}</a></li>
-                                        <li class="list-group-item"><i class="fa fa-download text-muted me-2" aria-hidden="true"></i><a href="/v3-rujuk-download{{ $itemhasil->gambar4  }}">{{ $itemhasil->gambar4  }}</a></li>
-                                        <li class="list-group-item"><i class="fa fa-download text-muted me-2" aria-hidden="true"></i><a href="/v3-rujuk-download{{ $itemhasil->gambar5  }}">{{ $itemhasil->gambar5  }}</a></li>
-                                        <li class="list-group-item"><i class="fa fa-download text-muted me-2" aria-hidden="true"></i><a href="/v3-rujuk-download{{ $itemhasil->gambar6  }}">{{ $itemhasil->gambar6  }}</a></li>
+                                        <li class="list-group-item"><i class="fa fa-download text-muted me-2" aria-hidden="true"></i><a href="/v3-rujuk-download/{{ $itemhasil->gambar1  }}">@if(isset($itemhasil->gambar1)) Download @endif</a></li>
+                                        <li class="list-group-item"><i class="fa fa-download text-muted me-2" aria-hidden="true"></i><a href="/v3-rujuk-download/{{ $itemhasil->gambar2  }}">@if(isset($itemhasil->gambar2)) Download @endif</a></li>
+                                        <li class="list-group-item"><i class="fa fa-download text-muted me-2" aria-hidden="true"></i><a href="/v3-rujuk-download/{{ $itemhasil->gambar3  }}">@if(isset($itemhasil->gambar3)) Download @endif</a></li>
+                                        <li class="list-group-item"><i class="fa fa-download text-muted me-2" aria-hidden="true"></i><a href="/v3-rujuk-download/{{ $itemhasil->gambar4  }}">@if(isset($itemhasil->gambar4)) Download @endif</a></li>
+                                        <li class="list-group-item"><i class="fa fa-download text-muted me-2" aria-hidden="true"></i><a href="/v3-rujuk-download/{{ $itemhasil->gambar5  }}">@if(isset($itemhasil->gambar5)) Download @endif</a></li>
+                                        <li class="list-group-item"><i class="fa fa-download text-muted me-2" aria-hidden="true"></i><a href="/v3-rujuk-download/{{ $itemhasil->gambar6  }}">@if(isset($itemhasil->gambar6)) Download @endif</a></li>
                                     </ul>
                                     
                                 </div>	
@@ -612,13 +606,11 @@
                                
                                 Auth::user()->is_permission == 7 && $itemhasil->tindak == 4 || 
                             
-                                Auth::user()->is_permission == 8 && $itemhasil->tindak == 5 ||
+                                Auth::user()->is_permission == 29 && $itemhasil->tindak == 5 ||
                                 
-                                Auth::user()->is_permission == 8 && $itemhasil->tindak == 6 ||
-                              
-                                Auth::user()->is_permission == 8 && $itemhasil->tindak == 8 ||
+                                Auth::user()->is_permission == 28 && $itemhasil->tindak == 8 ||
                                
-                                Auth::user()->is_permission == 18 && $itemhasil->tindak == 5 ||
+                                Auth::user()->is_permission == 18 && $itemhasil->tindak == 6 ||
                                
                                 Auth::user()->is_permission == 17 && $itemhasil->tindak == 3 || 
                               
@@ -626,7 +618,9 @@
                             
                                 Auth::user()->is_permission == 9 && $itemhasil->tindak == 7 ||
                          
-                                Auth::user()->is_permission == 20 && $itemhasil->tindak == 7 
+                                Auth::user()->is_permission == 20 && $itemhasil->tindak == 7 ||
+
+                                Auth::user()->is_permission == 25 && $itemhasil->tindak == 7
                                 ) 
 
                                 @if($itemhasil->status == 3 || $itemhasil->status == 8)

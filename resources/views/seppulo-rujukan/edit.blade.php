@@ -16,13 +16,7 @@
                 <!-- PAGE-HEADER END -->
                 <!-- ROW OPEN -->
 				<div class="row">
-					@if (session() -> has('succes'))
-						<div class="card-body text-center" id="success"> 
-							<span class=""><svg xmlns="http://www.w3.org/2000/svg" height="60" width="60" viewBox="0 0 24 24"><path fill="#13bfa6" d="M10.3125,16.09375a.99676.99676,0,0,1-.707-.293L6.793,12.98828A.99989.99989,0,0,1,8.207,11.57422l2.10547,2.10547L15.793,8.19922A.99989.99989,0,0,1,17.207,9.61328l-6.1875,6.1875A.99676.99676,0,0,1,10.3125,16.09375Z" opacity=".99"/><path fill="#71d8c9" d="M12,2A10,10,0,1,0,22,12,10.01146,10.01146,0,0,0,12,2Zm5.207,7.61328-6.1875,6.1875a.99963.99963,0,0,1-1.41406,0L6.793,12.98828A.99989.99989,0,0,1,8.207,11.57422l2.10547,2.10547L15.793,8.19922A.99989.99989,0,0,1,17.207,9.61328Z"/></svg></span>
-							<h4 class="h4 mb-0 mt-3">Success</h4>
-							<p class="card-text">{{ session() -> get('succes')}}</p>
-						</div>
-					@endif    	
+					<x-notify />
 					<div class="col-lg-12 col-md-12">
 					     @if (Auth::user()->is_permission==1 or Auth::user()->is_permission==5) 
                         <a href="/v3-rujukan-view" class="btn btn-primary my-3">View Laporan</a>
@@ -381,13 +375,13 @@
                                                             @enderror	
                                                         </div>
                                                     </div><br>
-                                                    <h3 class="text-center" style="color: #E1684E;">Edit Gambar: *Pilih gambar hanya untuk merubah gambar</h5>
+                                                    <h3 class="text-center" style="color: #E1684E;">Edit File: *Pilih File hanya untuk merubah gambar</h5>
                                                     <div class="form-group">
                                                             <label class="form-label mt-0">File 1</label>
                                                             
                                                             <input class="form-control @error('gambar1') is-invalid @enderror" type="file" name="gambar1" id="gambar1">
                                                             @if(isset($rujuk->gambar1))
-                                                            <li class="list-group-item"><i class="fa fa-download text-muted me-2" aria-hidden="true"></i><a href="/v2-rujuk-download{{ $rujuk->gambar1  }}">{{ $rujuk->gambar1  }}</a></li>
+                                                            <li class="list-group-item"><i class="fa fa-download text-muted me-2" aria-hidden="true"></i><a href="/v3-rujuk-download/{{ $rujuk->gambar1  }}">Download</a></li>
                                                             @endif
                                                             @error('gambar1')
                                                                 <span class="invalid-feedback"> {{ $message }} </span>
@@ -399,7 +393,7 @@
                                                             
                                                             <input class="form-control @error('gambar2') is-invalid @enderror" type="file" name="gambar2" id="gambar2">
                                                             @if(isset($rujuk->gambar2))
-                                                            <li class="list-group-item"><i class="fa fa-download text-muted me-2" aria-hidden="true"></i><a href="/v2-rujuk-download{{ $rujuk->gambar2  }}">{{ $rujuk->gambar2  }}</a></li>
+                                                            <li class="list-group-item"><i class="fa fa-download text-muted me-2" aria-hidden="true"></i><a href="/v3-rujuk-download/{{ $rujuk->gambar2 }}">Download</a></li>
                                                             @endif
                                                             @error('gambar2')
                                                                 <span class="invalid-feedback"> {{ $message }} </span>
@@ -411,7 +405,7 @@
                                                           
                                                             <input class="form-control @error('gambar3') is-invalid @enderror" type="file" name="gambar3" id="gambar3">
                                                             @if(isset($rujuk->gambar3))
-                                                            <li class="list-group-item"><i class="fa fa-download text-muted me-2" aria-hidden="true"></i><a href="/v2-rujuk-download{{ $rujuk->gambar3  }}">{{ $rujuk->gambar3  }}</a></li>
+                                                            <li class="list-group-item"><i class="fa fa-download text-muted me-2" aria-hidden="true"></i><a href="/v3-rujuk-download/{{ $rujuk->gambar3 }}">Download</a></li>
                                                             @endif
                                                             @error('gambar3')
                                                                 <span class="invalid-feedback"> {{ $message }} </span>
@@ -422,7 +416,7 @@
                                                             <label class="form-label mt-0">File 4</label>
                                                             <input class="form-control @error('gambar4') is-invalid @enderror" type="file" name="gambar4" id="gambar4">
                                                             @if(isset($rujuk->gambar4))
-                                                            <li class="list-group-item"><i class="fa fa-download text-muted me-2" aria-hidden="true"></i><a href="/v2-rujuk-download{{ $rujuk->gambar4  }}">{{ $rujuk->gambar4  }}</a></li>
+                                                            <li class="list-group-item"><i class="fa fa-download text-muted me-2" aria-hidden="true"></i><a href="/v3-rujuk-download/{{ $rujuk->gambar4 }}">Download</a></li>
                                                             @endif
                                                             @error('gambar4')
                                                                 <span class="invalid-feedback"> {{ $message }} </span>
@@ -433,7 +427,7 @@
                                                             <label class="form-label mt-0">File 5</label>
                                                             <input class="form-control @error('gambar5') is-invalid @enderror" type="file" name="gambar5" id="gambar5">
                                                             @if(isset($rujuk->gambar5))
-                                                            <li class="list-group-item"><i class="fa fa-download text-muted me-2" aria-hidden="true"></i><a href="/v2-rujuk-download{{ $rujuk->gambar5  }}">{{ $rujuk->gambar5  }}</a></li>
+                                                            <li class="list-group-item"><i class="fa fa-download text-muted me-2" aria-hidden="true"></i><a href="/v3-rujuk-download/{{ $rujuk->gambar5 }}">Download</a></li>
                                                             @endif
                                                             @error('gambar5')
                                                                 <span class="invalid-feedback"> {{ $message }} </span>
@@ -444,7 +438,7 @@
                                                             <label class="form-label mt-0">File 6</label>
                                                             <input class="form-control @error('gambar6') is-invalid @enderror" type="file" name="gambar6" id="gambar6">
                                                             @if(isset($rujuk->gambar6))
-                                                            <li class="list-group-item"><i class="fa fa-download text-muted me-2" aria-hidden="true"></i><a href="/v2-rujuk-download{{ $rujuk->gambar6  }}">{{ $rujuk->gambar6  }}</a></li>
+                                                            <li class="list-group-item"><i class="fa fa-download text-muted me-2" aria-hidden="true"></i><a href="/v3-rujuk-download/{{ $rujuk->gambar6 }}">Download</a></li>
                                                             @endif
                                                             @error('gambar6')
                                                                 <span class="invalid-feedback"> {{ $message }} </span>

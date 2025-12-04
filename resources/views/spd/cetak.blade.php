@@ -297,7 +297,7 @@ hr.new1 {
                     <br><br><br><br>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     @if($data->mengetahui==1)
-                    Andi Amirah Nilawati, S.Si, Apt., M.HSM.
+                    Kamaruddin, SE
                     @elseif($data->mengetahui==2)
                     Sitti Hikma Suciati, S.Si, M.Si
                     @elseif($data->mengetahui==3)
@@ -327,7 +327,7 @@ hr.new1 {
                     @endif
                     <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     @if($data->mengetahui==1)
-                        NIP.19740509200003 2 001
+                        NIP.19741212 199803 1 003
                     @elseif($data->mengetahui==2)
                         NIP.19790531200501 2 002
                     @elseif($data->mengetahui==3)

@@ -4,7 +4,7 @@
         <div class="side-app">
             <!-- CONTAINER -->
             <div class="main-container container-fluid">
-
+                <x-notify />
                 <!-- ROW OPEN -->
 				<div class="row" style="margin-top: 30px;margin-bottom: 20px;">
                     <div class="col-md-12 text-center">
