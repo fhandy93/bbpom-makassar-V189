@@ -105,10 +105,16 @@
     <td>Email : {{ $item->email}}</td>
 </tr>
 <tr>
+    <td>Jam Pelayanan : {{ $item->jam}}</td>
+</tr>
+<tr>
     <td>Nama Perusahaan : {{ $item->perusahaan}}</td>
 </tr>
 <tr>
     <td>Pekerjaan : {{ $item->pekerjaan}}</td>
+</tr>
+<tr>
+    <td>Pendidikan : {{ $item->pendidikan}}</td>
 </tr>
 <tr  style="page-break-after: always;">
     <td>Jenis Layanan : {{ $item->jenis}}</td>

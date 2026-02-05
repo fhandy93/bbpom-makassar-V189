@@ -17,13 +17,7 @@
                 <!-- PAGE-HEADER END -->
                 <!-- ROW OPEN -->
 				<div class="row">
-					@if (session() -> has('succes'))
-						<div class="card-body text-center" id="success"> 
-							<span class=""><svg xmlns="http://www.w3.org/2000/svg" height="60" width="60" viewBox="0 0 24 24"><path fill="#13bfa6" d="M10.3125,16.09375a.99676.99676,0,0,1-.707-.293L6.793,12.98828A.99989.99989,0,0,1,8.207,11.57422l2.10547,2.10547L15.793,8.19922A.99989.99989,0,0,1,17.207,9.61328l-6.1875,6.1875A.99676.99676,0,0,1,10.3125,16.09375Z" opacity=".99"/><path fill="#71d8c9" d="M12,2A10,10,0,1,0,22,12,10.01146,10.01146,0,0,0,12,2Zm5.207,7.61328-6.1875,6.1875a.99963.99963,0,0,1-1.41406,0L6.793,12.98828A.99989.99989,0,0,1,8.207,11.57422l2.10547,2.10547L15.793,8.19922A.99989.99989,0,0,1,17.207,9.61328Z"/></svg></span>
-							<h4 class="h4 mb-0 mt-3">Success</h4>
-							<p class="card-text">{{ session() -> get('succes')}}</p>
-						</div>
-					@endif    	
+				<x-notify />	
 					<div class="col-lg-3 col-md-3"></div>
 					<div class="col-lg-6 col-md-6">
 					<a href="/daftarizin" class="btn btn-primary my-3"><i class="fa fa-eye"></i> Lihat Daftar Izin</a>
@@ -66,16 +60,22 @@
 										<div class="col-xl-6 mb-12 ">
 											<label class="bidang">Bidang</label>
 											<select name="bidang" class="form-control form-select" data-bs-placeholder="Bidang">
-    											    <option value="" disabled selected>Pilih ...</option>
-													<option value="17">Infokom </option>
+    											   <option value="" disabled selected>Pilih ...</option>
+													<option value="17">Infokom Non Pro PN</option>
+													<option value="30">Infokom Pro PN</option>
 													<option value="21">Penindakan</option>
-													<option value="18">Inspeksi</option>
+													<option value="18">Inspeksi Dep. 1</option>
+													<option value="28">Inspeksi Dep. 2</option>
+													<option value="29">Inspeksi Dep. 3</option>
 													<option value="19">Sertifikasi</option>
-													<option value="20">Pengujian</option>
+													<option value="20">Pengujian Obat</option>
+													<option value="25">Pengujian Kosmetik</option>
+													<option value="26">Pengujian Mikro</option>
+													<option value="27">Pengujian OT</option>
+													<option value="24">Pengujian Pangan</option>
 													<option value="12">Tata Usaha</option>
-                                                    <option value="22">PPNPM</option>
-													<option value="22">Outshourching</option>
-                                                    <option value="12">Izin Khusus</option>
+													<option value="12">SAKIP/NKA</option>
+													<option value="16">Ketua TIM</option>
 											</select>
 											@error('bidang')
 											<span class="text-danger">{{ $message }}</span>

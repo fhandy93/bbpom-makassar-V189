@@ -97,7 +97,7 @@ class BMNController extends Controller
                                             ));
     }
     public function bstkembali(){
-        $data = BMN :: where('jns_bst',1)->orderBy('id', 'DESC')->get(); 
+        $data = BMN :: where('jns_bst',1)->orderBy('id', 'DESC')->whereYear('created_at', now()->year)->get(); 
         return view('bmn.daftar',['data'=>$data,'jns'=>1]);
     }
     public function bstkembaliinput(){
@@ -583,7 +583,7 @@ class BMNController extends Controller
         }
     }
     public function adminPinKen(){
-        $data = TransBMNcar :: whereMonth('created_at','=',date('m'))->orderBy('id', 'DESC')->get();
+        $data = TransBMNcar :: whereMonth('created_at','=',date('m'))->whereYear('created_at', date('Y'))->orderBy('id', 'DESC')->get();
         return view('bmn.kendaraan.daftar-pinjam',['data'=>$data]);
     }
     public function pinjamMobilaprov(Request $req, $id){
@@ -1157,7 +1157,7 @@ class BMNController extends Controller
         }
     }
     public function adminPinAula(){
-        $data = TransBMNaula :: whereMonth('created_at','=',date('m'))->orderBy('id', 'DESC')->get();
+        $data = TransBMNaula :: whereMonth('created_at','=',date('m'))->whereYear('created_at', date('Y'))->orderBy('id', 'DESC')->get();
         return view('bmn.aula.daftar-pinjam',['data'=>$data]);
     }
     public function pinjamAulaApprov(Request $req, $id){

@@ -20,6 +20,8 @@ class UlpkV2 extends Model
         'email',
         'perusahaan',
         'pekerjaan',
+        'pendidikan',
+        'jam',
         'jenis',
         'layanan',
         'jawaban',

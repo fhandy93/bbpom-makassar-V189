@@ -104,18 +104,23 @@
                                                 <td>pekerjaan</td>
                                                 <td>: {{$data->pekerjaan}}</td>
                                             </tr>
-                                            <tr>
+                                             <tr>
                                                 <td>7</td>
+                                                <td>Pendidikan Terakhir</td>
+                                                <td>: {{$data->pendidikan}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>8</td>
                                                 <td>Instansi</td>
                                                 <td>: {{$data->instansi}}</td>
                                             </tr>
                                             <tr>
-                                                <td>8</td>
+                                                <td>9</td>
                                                 <td>Kabupaten</td>
                                                 <td>: {{$data->kabupaten}}</td>
                                             </tr>
                                             <tr>
-                                                <td>9</td>
+                                                <td>10</td>
                                                 <td>Alamat</td>
                                                 <td>: {{$data->alamat}}</td>
                                             </tr>

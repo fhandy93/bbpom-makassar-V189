@@ -9,7 +9,7 @@
                     <h1 class="page-title">Detail Izin</h1>
                     <div>
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="javascript:void(0)">SIIKMA</a></li>
+                            <li class="breadcrumb-item"><a href="javascript:void(0)">SIKAMA</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Detail Izin</li>
                         </ol>
                     </div>	
@@ -17,13 +17,20 @@
                 <!-- PAGE-HEADER END -->
                 <!-- ROW OPEN -->
 				<div class="row">
-					<x-notify />
+					@if (session() -> has('succes'))
+						<div class="card-body text-center" id="success"> 
+							<span class=""><svg xmlns="http://www.w3.org/2000/svg" height="60" width="60" viewBox="0 0 24 24"><path fill="#13bfa6" d="M10.3125,16.09375a.99676.99676,0,0,1-.707-.293L6.793,12.98828A.99989.99989,0,0,1,8.207,11.57422l2.10547,2.10547L15.793,8.19922A.99989.99989,0,0,1,17.207,9.61328l-6.1875,6.1875A.99676.99676,0,0,1,10.3125,16.09375Z" opacity=".99"/><path fill="#71d8c9" d="M12,2A10,10,0,1,0,22,12,10.01146,10.01146,0,0,0,12,2Zm5.207,7.61328-6.1875,6.1875a.99963.99963,0,0,1-1.41406,0L6.793,12.98828A.99989.99989,0,0,1,8.207,11.57422l2.10547,2.10547L15.793,8.19922A.99989.99989,0,0,1,17.207,9.61328Z"/></svg></span>
+							<h4 class="h4 mb-0 mt-3">Success</h4>
+							<p class="card-text">{{ session() -> get('succes')}}</p>
+						</div>
+					@endif    
+                   
 					<div class="col-lg-3 col-md-3"></div>
 					<div class="col-lg-12 col-md-6">
                         <div class="table-responsive">
                             <div class="card">
                             <div class="card-status card-status-left 
-                               @if($data->status==1)
+                                @if($data->status==1)
                                 bg-secondary
                                 @elseif($data->status==2)
                                 bg-info
@@ -31,7 +38,7 @@
                                 bg-danger
                                 @elseif($data->status==4)
                                 bg-warning
-                                @elseif($data->status==5 || $data->status==6 )
+                                @elseif($data->status==5)
                                 bg-success
                                 @endif
                                 br-bs-7 br-ts-7">
@@ -55,19 +62,17 @@
                                                 <td>2</td>
                                                 <td>Status izin</td>
 
-                                             @if($data -> status == 1)
-                                                <td>: <span class="badge rounded-pill bg-secondary">Data Terkirim</span></td>
-                                                @elseif($data -> status == 2)
-                                                <td>: <span class="badge rounded-pill bg-info">Izin Diterima</span></td>
-                                                @elseif($data -> status == 3)
-                                                <td>: <span class="badge rounded-pill bg-danger">Izin Ditolak</span></td>
-                                                @elseif($data -> status == 4)
-                                                <td>: <span class="badge rounded-pill bg-warning">Izin Expired</span></td>
-                                                @elseif($data -> status == 5)
-                                                <td>: <span class="badge rounded-pill bg-success">Izin Selesai</span></td>
-                                                  @elseif($data -> status == 6)
-                                                <td>: <span class="badge rounded-pill bg-success">Izin Dibatalkan</span></td>
-                                                @endif
+                                                @if($data -> status == 1)
+                                                    <td>: <span class="badge rounded-pill bg-secondary">Data Terkirim</span></td>
+                                                    @elseif($data -> status == 2)
+                                                    <td>: <span class="badge rounded-pill bg-info">Izin Diterima</span></td>
+                                                    @elseif($data -> status == 3)
+                                                    <td>: <span class="badge rounded-pill bg-danger">Izin Ditolak</span></td>
+                                                    @elseif($data -> status == 4)
+                                                    <td>: <span class="badge rounded-pill bg-warning">Izin Expired</span></td>
+                                                    @elseif($data -> status == 5)
+                                                    <td>: <span class="badge rounded-pill bg-success">Izin Selesai</span></td>
+                                                    @endif
 
                                             </tr>
                                            
@@ -77,7 +82,7 @@
                             </div>
                             <div class="card">
                                 <div class="card-status card-status-left 
-                                  @if($data->status==1)
+                                    @if($data->status==1)
                                     bg-secondary
                                     @elseif($data->status==2)
                                     bg-info
@@ -85,7 +90,7 @@
                                     bg-danger
                                     @elseif($data->status==4)
                                     bg-warning
-                                    @elseif($data->status==5  || $data->status==6)
+                                    @elseif($data->status==5)
                                     bg-success
                                     @endif
                                     br-bs-7 br-ts-7">
@@ -108,7 +113,7 @@
                                             <tr>
                                                 <td>2</td>
                                                 <td>Jam Izin</td>
-                                                <td>: {{$data->jam1}} - {{$data->jam2}}</td>
+                                                <td>: {{$data->jam}}</td>
                                             </tr>
                                             <tr>
                                                 <td>3</td>
@@ -118,76 +123,29 @@
                                             <tr>
                                                 <td>4</td>
                                                 <td>Pemberi Izin</td>
-                                                <td>: 
-                                                     @if ($data->pemberi)
-                                                        {{ $data->pemberi }}
-                                                    @else
-                                                        -
-                                                    @endif
-                                                </td>
+                                                <td>: {{$data->pemberi}}</td>
                                             </tr>
                                             <tr>
                                                 <td>5</td>
-                                                <td>Bidang</td>
-                                                <td>:   @if($data->bidang == 21)
-                                                            Penindakan
-                                                        @elseif($data->bidang == 18)  
-                                                            Inspeksi Deputi 1
-                                                        @elseif($data->bidang == 17)  
-                                                            Infokom Non Pro PN
-                                                        @elseif($data->bidang == 19)
-                                                            Sertifikasi
-                                                        @elseif($data->bidang == 20)
-                                                            Pengujian Obat
-                                                        @elseif($data->bidang == 12)
-                                                            Tata Usaha
-                                                        @elseif($data->bidang == 16)
-                                                            Ketua TIM
-                                                        @elseif($data->bidang==23)
-                                                            SAKIP / NKA
-                                                        @elseif($data->bidang==24)
-                                                            Pengujian Pangan
-                                                        @elseif($data->bidang==25)
-                                                            Pengujian Kosmetik
-                                                        @elseif($data->bidang==26)
-                                                            Pengujian Mikro
-                                                        @elseif($data->bidang==27)
-                                                            Pengujian Obat Tradisional
-                                                        @elseif($data->bidang==28)
-                                                            Inspeksi Deputi 2
-                                                        @elseif($data->bidang==29)
-                                                            Inspeksi Deputi 3
-                                                        @elseif($data->bidang==30)
-                                                            Infokom Pro PN
-                                                        @endif
-
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>6</td>
                                                 <td>Keterangan</td>
                                                 <td>: {{$data->ket}}</td>
                                             </tr>
                                             <tr>
-                                                <td>7</td>
+                                                <td>6</td>
                                                 <td>Tanggal Input Izin</td>
                                                 <td>: {{$data->created_at}}</td>
                                             </tr>
                                             @if($data->wktu_kembali)
                                             <tr>
-                                                <td>8</td>
+                                                <td>7</td>
                                                 <td>Tanggal/Jam Kembali</td>
                                                 <td>: {{$data->wktu_kembali}}</td>
                                             </tr>
+                                            
                                             <tr>
-                                                <td>9</td>
-                                                <td>Jumlah jam izin</td>
-                                                <td>: {{$data->jumlah}} </td>
-                                            </tr>
-                                            <tr>
-                                                <td>10</td>
+                                                <td>8</td>
                                                 <td>Lokasi Kembali</td>
-                                                <td>: {{$data->lat}}  {{$data->lon}} </td>
+                                                <td>: <img src="https://maps.googleapis.com/maps/api/staticmap?center={{$data->lat}}, {{$data->lon}}&zoom=16&size=750x500&markers={{$data->lat}}, {{$data->lon}}&key=AIzaSyBEhznriNnQ-tR1xx3bCax6Nv348pQ-0Qk"></td>
                                             </tr>
                                            @endif
                                         </tbody>
@@ -199,22 +157,16 @@
                     <table>
                             <tr>
                                 <td>
-                                @if($data -> status == 1 && $data ->user_id == Auth::user()->id)
-                                    <a href="/batalkan-izin/{{$data->id}}" class="btn btn-primary"><i class="fa fa-close me-2"></i> Batalkan Izin</a>
-                                @endif
                                 @if($data -> status == 2 && $data ->user_id == Auth::user()->id)
                                 <!-- <a href="/akhiri-izin/{{$data ->id}}" class="btn btn-primary my-3 show_confirm">Akhiri Izin</a> -->
-                                <form id="signupForm" method="post" class="form-horizontal" action="/akhiri-izin/{{$data->id}}">
-                                    @csrf
-                                    <input type="text" id="lan" name="lan" hidden>
-                                    <input type="text" id="lat" name="lat" hidden>
-                                    <button id="checkLocationBtn" type="button" class="btn btn-primary show_confirm" onclick="checkLocation()">
-                                        <i class="fa fa-check me-2"></i><span id="btnText">Selesaikan Izin</span>
-                                    </button>
+                                <form id="signupForm" method="post" class="form-horizontal show_confirm" action="/akhiri-izin/{{$data ->id}}">
+                                @csrf
+                                        <input type="text" id="lan" name="lan" hidden>
+                                        <input type="text" id="lat" name="lat" hidden>
+                                        <button type="submit" class="btn btn-primary " ><i class="fa fa-check me-2"></i>Selesaikan Izin</input>
                                 </form>
                                
                                 @endif
-                                
                                 </td>
                             </tr>
                         </table>
@@ -269,79 +221,84 @@
      <script src="{{ asset ('vendor/plugins/sweet-alert/sweetalert.min.js')}}"></script>
 
 
-    <script type="text/javascript">
+<script type="text/javascript">
     setTimeout(function() {
         document.getElementById('success').style.display = 'none';
     }, 4000); // <-- time in milliseconds
     
-     let isSubmitting = false; // Mencegah submit ganda
+    var x = document.getElementById("demo");
+    var lan = document.getElementById("lan");
+    var lat = document.getElementById("lat");
+         function showLocation(position) {
+            var latitude = position.coords.latitude;
+            var longitude = position.coords.longitude;
+            var latlongvalue = position.coords.latitude + ","
+                              + position.coords.longitude;
+            var img_url = "https://maps.googleapis.com/maps/api/staticmap?center="+latlongvalue+"&zoom=16&size=750x500&markers="+latlongvalue+"&key=AIzaSyBEhznriNnQ-tR1xx3bCax6Nv348pQ-0Qk";
+            // document.getElementById("mapholder").innerHTML =
+            // "<img src ='"+img_url+"'>";
+          
+            document.getElementById("lan").value = position.coords.longitude;
+            document.getElementById("lat").value = position.coords.latitude;
 
-    function checkLocation() {
-        const btn = document.getElementById("checkLocationBtn");
 
-        if (isSubmitting) return; // Hindari double click
-        isSubmitting = true;
+         }
+         function errorHandler(err) {
+            if(err.code == 1) {
+               alert("Error: Access is denied!");
+            }else if( err.code == 2) {
+               alert("Error: Position is unavailable!");
+            }
+         }
+         
+         $(window).on('load', function() {
+            if(navigator.geolocation){
+               // timeout at 60000 milliseconds (60 seconds)
+               var options = {timeout:60000};
+               navigator.geolocation.getCurrentPosition
+               (showLocation, errorHandler, options);
+               document.getElementById('loc').style.display = 'none';
+            }else{
+               alert("Sorry, browser does not support geolocation!");
+            }
+         });
 
-        btn.disabled = true;
-        btn.innerHTML = `<span class="spinner-border spinner-border-sm me-2"></span> Mengecek lokasi...`;
 
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(function(position) {
-                const lat = position.coords.latitude;
-                const lon = position.coords.longitude;
 
-                isiLokasiDanSubmit(lat, lon);
-            }, function(error) {
-                // Fallback: Gunakan lokasi dummy (Makassar)
-                console.warn("Gagal dapat lokasi asli, gunakan dummy.");
-                const dummyLat = -5.1661;
-                const dummyLon = 119.4114;
-                alert("⚠️ Gagal mendapatkan lokasi asli. Menggunakan data dummy.");
 
-                isiLokasiDanSubmit(dummyLat, dummyLon);
-            });
-        } else {
-            alert("❌ Browser tidak mendukung Geolocation. Menggunakan data dummy.");
-            const dummyLat = -5.1661;
-            const dummyLon = 119.4114;
-            isiLokasiDanSubmit(dummyLat, dummyLon);
-        }
-    }
-
-    function isiLokasiDanSubmit(lat, lon) {
-        document.getElementById("lat").value = lat;
-        document.getElementById("lan").value = lon;
-
-        // Titik lokasi kantor yang akurat (misalnya BBPOM Makassar)
-        const kantorLat = -5.1661;
-        const kantorLon = 119.4114;
-
-       
-        
-        const jarakMeter = getDistanceFromLatLonInMeters(lat, lon, kantorLat, kantorLon);
-
-        if (jarakMeter <= 100) {
-            alert("✅ Lokasi valid! Anda berada dalam radius 100 meter dari kantor.");
-        } else {
-            alert(`❌ Lokasi Anda berada di luar area yang diizinkan! Jarak Anda: ${Math.round(jarakMeter)} meter`);
-        }
-
-        document.getElementById("signupForm").submit();
-    }
-
-    function getDistanceFromLatLonInMeters(lat1, lon1, lat2, lon2) {
-        const R = 6371000; // Radius bumi dalam meter
-        const dLat = (lat2 - lat1) * Math.PI / 180;
-        const dLon = (lon2 - lon1) * Math.PI / 180;
-        const a =
-            Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-            Math.cos(lat1 * Math.PI / 180) *
-            Math.cos(lat2 * Math.PI / 180) *
-            Math.sin(dLon / 2) * Math.sin(dLon / 2);
-        const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-        return R * c;
-    }
-    </script>  
-
+         $('.show_confirm').click(function(event) {
+        var form =  $(this).closest("form");
+        var name = $(this).data("name");
+        event.preventDefault();
+        swal({
+            title: `Anda yakin ingin mengakhiri izin ini ?`,
+            text: "Pastikan lokasi anda berada DALAM WILAYAH KANTOR, Waktu dan Lokasi saat ini akan tercatat sebagai waktu anda kembali dari izin anda.",
+            icon: "info",
+            buttons: true,
+            dangerMode: true,
+        })
+        .then((willDelete) => {
+            if (willDelete) {
+            form.submit();
+            }
+        });
+    });
+         
+</script>  
+<script src="//cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
+ <script type="text/javascript">
+    $(document).ready(function () {
+        $('.ckeditor').ckeditor();
+    });
+    CKEDITOR.replace('desc', {
+        filebrowserUploadUrl: "{{route('ckeditor.image-upload', ['_token' => csrf_token() ])}}",
+        filebrowserUploadMethod: 'form'
+    });
+    $(document).ready(function() {
+        $('.select2').select2({
+            placeholder: "Choose Some Tags"
+        });
+    });
+</script>
     </x-HomeLayout>
 	

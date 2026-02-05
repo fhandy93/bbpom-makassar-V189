@@ -12,13 +12,19 @@ class Sikama extends Model
     protected $table = 'sikama';
     use Loggable;
     protected $fillable = [
-        'user_id',
+     'user_id',
         'bidang',
         'tgl_izin',
-        'jam',
+        'jam1',
+        'jam2',
         'keperluan',
-        'pemberi'
-     
+        'status',
+        'wktu_kembali',
+        'lat',
+        'lon',
+        'notif',
+        'jumlah',
+        'ket'
     ];
     public function user()
     {

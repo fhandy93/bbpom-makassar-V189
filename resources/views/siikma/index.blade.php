@@ -68,10 +68,12 @@
                     <div class="col-md-4" >
                         <div class="card">
                             <div class="card-header bg-gray br-te-3 br-ts-3">
-                            <a href="/siikma/formulir"><h3 class="card-title text-white">Formulir Izin <i class="fa fa-paper-plane"></i></h3></a>                    
+                            <!-- <a href="/siikma/formulir"><h3 class="card-title text-white">Formulir Izin <i class="fa fa-paper-plane"></i></h3></a>                     -->
+                             <a href="/formizin"><h3 class="card-title text-white">Formulir Izin <i class="fa fa-paper-plane"></i></h3></a>                    
                             </div>
                             <div class="card-body d-flex  align-items-center gap-2">
-                                <a href="/siikma/formulir" class="text-decoration-none d-flex align-items-center">
+                                <!-- <a href="/siikma/formulir" class="text-decoration-none d-flex align-items-center"> -->
+                                <a href="/formizin" class="text-decoration-none d-flex align-items-center"> 
                                     <i class="fa fa-list-ul fa-3x" aria-hidden="true"></i>
                                     <span class="ms-2 ">Formulir</span>
                                 </a>
@@ -82,10 +84,12 @@
                     <div class="col-md-4" >
                         <div class="card">
                             <div class="card-header bg-gray br-te-3 br-ts-3">
-                            <a href="/siikma/daftar-izin"><h3 class="card-title text-white">Daftar Penggunaan SIIKMA <i class="fa fa-paper-plane"></i></h3></a>                    
+                            <a href="/daftarizin"><h3 class="card-title text-white">Daftar Penggunaan SIIKMA <i class="fa fa-paper-plane"></i></h3></a>
+                            <!-- <a href="/siikma/daftar-izin"><h3 class="card-title text-white">Daftar Penggunaan SIIKMA <i class="fa fa-paper-plane"></i></h3></a>                     -->
                             </div>
                             <div class="card-body d-flex  align-items-center gap-2">
-                                <a href="/siikma/daftar-izin" class="text-decoration-none d-flex align-items-center">
+                                <a href="/daftarizin" class="text-decoration-none d-flex align-items-center">
+                                <!-- <a href="/siikma/daftar-izin" class="text-decoration-none d-flex align-items-center"> -->
                                     <i class="fa fa-list-ul fa-3x" aria-hidden="true"></i>
                                     <span class="ms-2 ">Daftar SIIKMA</span>
                                 </a>
@@ -96,10 +100,12 @@
                     <div class="col-md-4" >
                         <div class="card">
                             <div class="card-header bg-gray br-te-3 br-ts-3">
-                            <a href="/siikma/rekap-data"><h3 class="card-title text-white">Data Rekap (Ketua Tim) <i class="fa fa-paper-plane"></i></h3></a>                    
+                            <!-- <a href="/siikma/rekap-data"><h3 class="card-title text-white">Data Rekap (Ketua Tim) <i class="fa fa-paper-plane"></i></h3></a>                     -->
+                            <a href="/rekapizin"><h3 class="card-title text-white">Data Rekap (Ketua Tim) <i class="fa fa-paper-plane"></i></h3></a>                    
                             </div>
                             <div class="card-body d-flex  align-items-center gap-2">
-                                <a href="/siikma/rekap-data" class="text-decoration-none d-flex align-items-center">
+                                <!-- <a href="/siikma/rekap-data" class="text-decoration-none d-flex align-items-center"> -->
+                                <a href="/rekapizin" class="text-decoration-none d-flex align-items-center">
                                     <i class="fa fa-list-alt fa-3x" aria-hidden="true"></i>
                                     <span class="ms-2 ">Data Rekap SIIKMA</span>
                                 </a>

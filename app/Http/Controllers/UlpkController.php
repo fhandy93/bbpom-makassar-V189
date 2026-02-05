@@ -22,7 +22,8 @@ class UlpkController extends Controller
     public function store(Request $request){
         $request -> validate([
             'nama' => ['required'],
-            'alamat' => ['required']
+            'alamat' => ['required'],
+            'jam' => ['required']
         ]);
         $dt = Carbon::now();
         $post                   = new Ulpk();
@@ -39,6 +40,8 @@ class UlpkController extends Controller
         $post->email            = $request->email ? :"-";
         $post->perusahaan       = $request->perusahaan ? :"-";
         $post->pekerjaan        = $request->pekerjaan ? :"-";
+        $post->pendidikan        = $request->pendidikan ? :"-";
+        $post->jam              = $request->jam ? :"-";
         $post->jenis            = "-";
         $post->layanan          = "-";
         $post->jawaban          = "-";
@@ -90,7 +93,8 @@ class UlpkController extends Controller
     public function update(Request $request,$id){
         $request -> validate([
             'nama' => ['required'],
-            'alamat' => ['required']
+            'alamat' => ['required'],
+            'jam' => ['required']
         ]);
         $post                   = ulpk::findOrFail($request->id);
         $post->nama             = $request->nama ;
@@ -101,6 +105,8 @@ class UlpkController extends Controller
         $post->email            = $request->email ? :"-";
         $post->perusahaan       = $request->perusahaan ? :"-";
         $post->pekerjaan        = $request->pekerjaan ? :"-";
+        $post->pendidikan        = $request->pendidikan ? :"-";
+        $post->jam              = $request->jam ? :"-";
         $post->save();
 
         $data = Ulpk::where('id',$id)->first();
@@ -169,6 +175,7 @@ class UlpkController extends Controller
             'jawaban' => ['required'],
             'hp' => ['required'],
             'email' => ['required'],
+            'jam' => ['required'],
             'perusahaan' => ['required'],
         ],[
             'nama' => 'Kolom Nama harap diisi',
@@ -177,6 +184,7 @@ class UlpkController extends Controller
             'jawaban' => 'Kolom Jawaban harap diisi',
             'hp' => 'Kolom HP/Telp harap diisi',
             'email' => 'Kolom Email harap diisi',
+            'jam' => 'Kolom Jam Pelayanan harap diisi',
             'perusahaan' => 'Kolom Perusahaan/Instansi harap diisi',
         ]);
         try{
@@ -190,6 +198,8 @@ class UlpkController extends Controller
             $post->email            = $req->email;
             $post->perusahaan       = $req->perusahaan;
             $post->pekerjaan        = $req->pekerjaan;
+            $post->pendidikan       = $req->pendidikan;
+            $post->jam              = $req->jam;
             $post->jenis            = $req->jenis;
             $post->layanan          = $req->layanan;
             $post->jawaban          = $req->jawaban;
@@ -302,6 +312,7 @@ class UlpkController extends Controller
             'jawaban' => ['required'],
             'hp' => ['required'],
             'email' => ['required'],
+            'jam' => ['required'],
             'perusahaan' => ['required'],
         ],[
             'nama' => 'Kolom Nama harap diisi',
@@ -310,6 +321,7 @@ class UlpkController extends Controller
             'jawaban' => 'Kolom Jawaban harap diisi',
             'hp' => 'Kolom HP/Telp harap diisi',
             'email' => 'Kolom Email harap diisi',
+            'jam' => 'Kolom Jam Pelayanan harap diisi',
             'perusahaan' => 'Kolom Perusahaan/Instansi harap diisi',
         ]);
         try{
@@ -323,6 +335,8 @@ class UlpkController extends Controller
             $post->email            = $req->email;
             $post->perusahaan       = $req->perusahaan;
             $post->pekerjaan        = $req->pekerjaan;
+            $post->pendidikan       = $req->pendidikan;
+            $post->jam              = $req->jam;
             $post->jenis            = $req->jenis;
             $post->layanan          = $req->layanan;
             $post->jawaban          = $req->jawaban;

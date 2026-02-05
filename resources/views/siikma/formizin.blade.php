@@ -74,7 +74,7 @@
 													<option value="27">Pengujian OT</option>
 													<option value="24">Pengujian Pangan</option>
 													<option value="12">Tata Usaha</option>
-													<option value="12">SAKIP/NKA</option>
+													<option value="23">SAKIP/NKA</option>
 													<option value="16">Ketua TIM</option>
 											</select>
 											@error('bidang')

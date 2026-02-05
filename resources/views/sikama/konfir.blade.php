@@ -57,7 +57,7 @@
                                     <div class="form-row">
 										<div class="col-xl-6 mb-12 ">
 											<label for="jam" class="form-label">Jam Izin </label>
-											<input type="text" value="{{ $data->jam }}"   class="form-control  @error('nip') is-invalid @enderror" id="jam" name="jam" readonly>
+											<input type="text" value="{{ $data->jam1 }}-{{ $data->jam2 }}"   class="form-control  @error('nip') is-invalid @enderror" id="jam" name="jam" readonly>
 											@error('jam')
 											<span class="invalid-feedback"> {{ $message }} </span>
 											@enderror	
@@ -86,7 +86,7 @@
 									<div class="form-row">
 										<div class="col-xl-12 mb-12 ">
 											<label for="ket" class="form-label">Keterangan Konfirmasi</label>
-											<textarea  class="form-control  @error('ket') is-invalid @enderror" id="ket" name="ket"  rows="5" >{{old('ket')}}</textarea>
+											<textarea  class="form-control  @error('ket') is-invalid @enderror" id="ket" name="ket"  rows="5" >Oke</textarea>
 											@error('ket')
 											<span class="invalid-feedback"> {{ $message }} </span>
 											@enderror	

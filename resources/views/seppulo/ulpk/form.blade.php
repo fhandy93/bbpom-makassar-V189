@@ -112,6 +112,15 @@
                                                             @enderror	
                                                         </div>
                                                     </div>
+                                                      <div class="form-row">
+                                                        <div class="col-xl-2 mb-12 ">
+                                                            <label for="jam" class="form-label">Jam Pelayanan</label>
+                                                            <input type="time" id="jam" name="jam" class="form-control  @error('perusahaan') is-invalid @enderror">
+                                                            @error('jam')
+                                                            <span class="invalid-feedback"> {{ $message }} </span>
+                                                            @enderror	
+                                                        </div>
+                                                    </div>
                                                     <div class="form-row">
                                                         <div class="col-xl-8 mb-12 ">
                                                             <label for="perusahaan" class="form-label">Nama Perusahaan/Instansi</label>
@@ -139,8 +148,19 @@
                                                                 <option value="PNS/TNI/POLRI">PNS/TNI/POLRI</option>
                                                                 <option value="Sarjana Hukum">Sarjana Hukum</option>
                                                                 <option value="Tenaga Teknis Kefarmasian">Tenaga Teknis Kefarmasian</option>
-                                                                <option value="Umum">Umum</option>
+                                                                <option value="Umum/Lainnya">Umum/Lainnya</option>
                                                                 <option value="Wartawan">Wartawan</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                     <div class="form-row">
+                                                        <div class="form-group col-xl-6 mb-12 ">
+                                                            <label class="Pendidikan">Pendidikan</label>
+                                                            <select name="pendidikan" class="form-control form-select select2" data-bs-placeholder="Select Country">
+                                                                <option value="SD/SMP/SMA atau Sederajat">SD/SMP/SMA atau Sederajat</option>
+                                                                <option value="D1/D2/D3">D1/D2/D3</option>
+                                                                <option value="D4/S1">D4/S1</option>
+                                                                <option value="S2/Profesi/S3">S2/Profesi/S3</option>
                                                             </select>
                                                         </div>
                                                     </div>

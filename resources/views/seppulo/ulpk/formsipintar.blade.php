@@ -112,6 +112,15 @@
                                                             @enderror	
                                                         </div>
                                                     </div>
+                                                     <div class="form-row">
+                                                        <div class="col-xl-2 mb-12 ">
+                                                            <label for="jam" class="form-label">Jam Pelayanan</label>
+                                                            <input type="time" id="jam" name="jam" class="form-control  @error('perusahaan') is-invalid @enderror">
+                                                            @error('jam')
+                                                            <span class="invalid-feedback"> {{ $message }} </span>
+                                                            @enderror	
+                                                        </div>
+                                                    </div>
                                                     <div class="form-row">
                                                         <div class="col-xl-8 mb-12 ">
                                                             <label for="perusahaan" class="form-label">Nama Perusahaan/Instansi</label>
@@ -139,14 +148,25 @@
                                                                 <option value="PNS/TNI/POLRI" {{$data->pekerjaan == 'PNS/TNI/POLRI' ? 'selected' : ''}}>PNS/TNI/POLRI</option>
                                                                 <option value="Sarjana Hukum" {{$data->pekerjaan == 'Sarjana Hukum' ? 'selected' : ''}}>Sarjana Hukum</option>
                                                                 <option value="Tenaga Teknis Kefarmasian" {{$data->pekerjaan == 'Tenaga Teknis Kefarmasian' ? 'selected' : ''}}>Tenaga Teknis Kefarmasian</option>
-                                                                <option value="Umum" {{$data->pekerjaan == 'Umum' ? 'selected' : ''}}>Umum</option>
+                                                                <option value="Umum/Lainnya" {{$data->pekerjaan == 'Umum/Lainnya' ? 'selected' : ''}}>Umum/Lainnya</option>
                                                                 <option value="Wartawan" {{$data->pekerjaan == 'Wartawan' ? 'selected' : ''}}>Wartawan</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                     <div class="form-row">
+                                                        <div class="form-group col-xl-6 mb-12 ">
+                                                            <label class="Pekerjaan">Pendidikan Terakhir</label>
+                                                            <select name="pendidikan" class="form-control form-select select2" data-bs-placeholder="Select Country">
+                                                                <option value="<= SMA atau Sederajat" {{$data->pendidikan == 'SD/SMP/SMA atau Sederajat' ? 'selected' : ''}} >SD/SMP/SMA atau Sederajat</option>
+                                                                <option value="D1/D2/D3" {{$data->pendidikan == 'D1/D2/D3' ? 'selected' : ''}}>D1/D2/D3</option>
+                                                                <option value="D4/S1" {{$data->pendidikan == 'D4/S1' ? 'selected' : ''}}>D4/S1</option>
+                                                                <option value="S2/Profesi/S3" {{$data->pendidikan == 'S2/Profesi/S3' ? 'selected' : ''}}>S2/Profesi/S3</option>
                                                             </select>
                                                         </div>
                                                     </div>
                                                     <br>
                                                 </div>
-                                                
+                                              
                                                 <div class="tab-pane" id="tab10">
                                                     <div class="form-row">
                                                         <div class="form-group col-xl-6 mb-12" >
