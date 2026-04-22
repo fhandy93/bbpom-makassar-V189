@@ -83,6 +83,7 @@
                                                 <th class="border-bottom-0">Jam Izin</th>
                                                 <th class="border-bottom-0">Jam Kembali</th>
                                                 <th class="border-bottom-0">Total Jam</th>
+                                                <th class="border-bottom-0">Pemberi Izin</th>
                                                 <th class="border-bottom-0">Status Izin</th>
                                                 <th class="border-bottom-0">Action</th>
                                             </tr>
@@ -98,6 +99,7 @@
                                                 <td>{{$izin -> jam1}} - {{$izin -> jam2}}</td>
                                                 <td>{{$izin -> wktu_kembali}}</td>
                                                 <td>{{$izin -> jumlah}}</td>
+                                                <td>{{$izin -> pemberi}}</td>
                                                 <td>
                                                     @if($izin -> status == 1)
                                                     <span class="badge rounded-pill bg-secondary">Izin Terkirim</span></td>

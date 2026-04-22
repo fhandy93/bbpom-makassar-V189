@@ -12,7 +12,7 @@ use Carbon\Carbon;
 use App\Models\Profile;
 use App\Models\Siikmaizin;
 use Carbon\CarbonInterval;
-
+use Illuminate\Support\Facades\Auth;
 
 class Kernel extends ConsoleKernel
 {
@@ -190,10 +190,87 @@ class Kernel extends ConsoleKernel
         
         
         $schedule->call(function () {
+
+
+
+
+
+
+
+
+
+            // Change
+            $notconfirm = Sikama :: where('bidang', '!=', 12)->where('status', 1)->where('created_at', '<=', now()->subMinutes(6))->get();
+            foreach($notconfirm as $data){
+                $izin  = Sikama::findOrFail($data->id);
+                if ($izin->bidang == 12) continue; // double check
+                $izin -> bidang = 12;
+                $izin ->save();
+                $pesan = "*Yth. Bapak/Ibu* 🙏, Terdapat izin melalui aplikasi *SIIKMA*  Namun *TIDAK DIKONFIRMASI* lebih dari 5 Menit oleh Ketua TIM nya, Silakan Login ke aplikasi BALLA POKJA atau dengan mengklik link https://bbpom-makassar.com/rekapizin untuk Menkonfirmasi izin";
+                //Kepala TU BBPOM 
+                $ktu = '081242033987';
+                sendMessage($pesan,$ktu);
+
+                $user  = User::where('id',$data->user_id)->first();
+                $phone = Profile::where('username',$user->username)->first();
+                $pesan = "*Yth. Bapak/Ibu*🙏 Waktu konfirmasi izin terakhir anda telah lewat dari 5 Menit,  izin anda akan otomatis menjadi izin khusus yang ditujukan kepada *Kepala Bagian Tata Usaha* pada *Balai Besar POM di Makassar*";
+                // pesan untuk user
+                sendMessage($pesan,$phone->telpon);
+            }
+
+            $notconfirmktu = Sikama :: where('bidang', '=', 12)->where('status', 1)->where('created_at', '<=', now()->subMinutes(6))->get();
+            foreach($notconfirmktu as $data){
+                $izin  = Sikama::findOrFail($data->id);
+                $izin -> status = 2;
+                $izin -> pemberi = "Approve By System";
+                $izin -> ket = "-";
+                $izin ->save();
+
+                $user  = User::where('id',$data->user_id)->first();
+                $phone = Profile::where('username',$user->username)->first();
+                $pesan = "*Yth. Bapak/Ibu*🙏 izin anda telah ter *Approve* ✅ *by system*";
+                
+                // pesan untuk user
+                sendMessage($pesan,$phone->telpon);
+
+                $pesansat = "*Yth. Bapak/Ibu*🙏 Izin telah diberikan oleh atasan kepada *".$user->name."* untuk keluar dari Wilayah kantor BBPOM Makassar";
+          
+                // Satpam Aris
+                $aris = '085146111986';
+                sendMessage($pesansat,$aris);
+
+                // Satpam Massere
+                $massere = '08875626716';
+                sendMessage($pesansat,$massere);
+
+                // Satpam Ali
+                $ali = '085341782918';
+                sendMessage($pesansat,$ali);
+
+
+                // Satpam Taufiq
+                $taufiq = '085242021996';
+                sendMessage($pesansat,$taufiq);
+                
+                // Satpam Syamsul
+                $syamsul = '085398358668';
+                sendMessage($pesansat,$syamsul);
+                
+                // Satpam muthalib
+                $muthalib = '085696422963';
+                sendMessage($pesansat,$muthalib);
+            }
+            
+            
+             // Closed Change
+
+
+
+
             
             $now = now('Asia/Makassar');
 
-            $dataIzin = Siikmaizin::whereDate('tgl_izin', $now->toDateString())
+            $dataIzin = Sikama::whereDate('tgl_izin', $now->toDateString())
             ->whereNull('wktu_kembali')
             ->where('status', 1)
             ->where('notif', 0)
@@ -243,10 +320,10 @@ class Kernel extends ConsoleKernel
             }
         })->cron('0 16 * * 1-4')->timezone('Asia/Makassar');
         
-      // Senin - Kamis jam 16:30
+      // Senin - Kamis jam 16:00
         $schedule->call(function () {
             $dt = Carbon::now('Asia/Makassar');
-            $data = Siikmaizin::where('status', 1)->get();
+            $data = Siikmaizin::where('status', 2)->get();
 
             foreach ($data as $item) {
                 $jamAwal = Carbon::parse($item->jam1);
@@ -277,19 +354,19 @@ class Kernel extends ConsoleKernel
                 $interval = CarbonInterval::minutes(max(0, $totalMinutes))->cascade();
                 $jumlahTime = $interval->format('%H:%I:%S');
 
-                $item->status = 2;
+                $item->status = 5;
                 $item->wktu_kembali = $jamAkhir;
                 $item->lat = '-';
                 $item->lon = '-'; 
                 $item->jumlah = $jumlahTime;
                 $item->save();
             }
-        })->cron('30 16 * * 1-4')->timezone('Asia/Makassar');
+        })->cron('0 16 * * 1-4')->timezone('Asia/Makassar');
 
        // Jumat jam 16:00
         $schedule->call(function () {
             $dt = Carbon::now('Asia/Makassar');
-            $data = Siikmaizin::where('status', 1)->get();
+            $data = Siikmaizin::where('status', 2)->get();
         
             foreach ($data as $item) {
                 $jamAwal = Carbon::parse($item->jam1);
@@ -318,7 +395,7 @@ class Kernel extends ConsoleKernel
                 $interval = CarbonInterval::minutes(max(0, $totalMinutes))->cascade();
                 $jumlahTime = $interval->format('%H:%I:%S');
         
-                $item->status = 2;
+                $item->status = 5;
                 $item->wktu_kembali = $jamAkhir;
                 $item->lat = '-';
                 $item->lon = '-';
@@ -329,7 +406,7 @@ class Kernel extends ConsoleKernel
                     \Log::error("Gagal simpan data ID " . $item->id . ": " . $e->getMessage());
                 }
             }
-        })->cron('0 16 * * 5')->timezone('Asia/Makassar');
+        })->cron('30 16 * * 5')->timezone('Asia/Makassar');
 
     
     }

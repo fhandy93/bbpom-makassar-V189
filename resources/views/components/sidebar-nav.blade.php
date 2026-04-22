@@ -113,6 +113,11 @@
                                 class="side-menu__icon fa fa-university"></i><span
                                 class="side-menu__label">BerAKHLAK</span></a>
                     </li>
+                     <li class="slide">
+                        <a class="side-menu__item" data-bs-toggle="slide" href="/sipatuju"><i
+                                class="side-menu__icon fa fa-university"></i><span
+                                class="side-menu__label">SIPATUJU</span></a>
+                    </li>
                      @if(checkPermission(['admin','superadmin']))
                     <li class="sub-category">
                         <h3>Admin menu</h3>

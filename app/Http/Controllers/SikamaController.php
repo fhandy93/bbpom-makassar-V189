@@ -236,7 +236,7 @@ class SikamaController extends Controller
       }
     }
     public function edit(Request $request, $id){
-      $dt = Carbon::now();
+     $dt = Carbon::now();
       $izin  = Sikama::findOrFail($id);
       $izin -> bidang = 12;
       $izin -> updated_at = $dt->toDateString();;
@@ -245,7 +245,7 @@ class SikamaController extends Controller
       "* Mengajukan Izin untuk keluar dari kantor BBPOM Makassar pada 📆tanggal *". $request->tgl.
       "* 🕐Jam *".$request->jam."* Dengan Keperluan *".$request->perlu."* Namun *TIDAK DIKONFIRMASI* lebih dari 5 Menit oleh kepala bidangnya, Silakan Login ke aplikasi BALLA POKJA atau dengan mengklik link https://bbpom-makassar.com/rekapizin untuk Menkonfirmasi izin";
         
-        //Kepala TU BBPOM (Ibu Amirah)
+        //Kepala TU BBPOM 
         $ktu = '081242033987';
         sendMessage($pesan,$ktu);
          
@@ -266,7 +266,7 @@ class SikamaController extends Controller
           if($id==1){
               $data = Sikama :: whereMonth('created_at', $bulan)->whereYear('created_at', $tahun)->where('status','!=',6)->orderBy('id', 'DESC')->get();
           }elseif($id==12){
-              $data = Sikama::whereIn('bidang', [12, 30])->whereMonth('created_at', $bulan)->whereYear('created_at', $tahun)->where('status','!=',6)->orderBy('id', 'desc')->get();      
+              $data = Sikama::whereIn('bidang', [12, 16])->whereMonth('created_at', $bulan)->whereYear('created_at', $tahun)->where('status','!=',6)->orderBy('id', 'desc')->get();      
           }else{
               $data = Sikama :: where('bidang','=',$id)->whereMonth('created_at', $bulan)->whereYear('created_at', $tahun)->where('status','!=',6)->orderBy('id', 'desc')->get(); 
           }
@@ -283,7 +283,7 @@ class SikamaController extends Controller
     public function konfirs(Request $req, $id){
       try{
         $izin  = Sikama::findOrFail($id);
-        if (in_array($izin->status, [2, 3])) {
+          if (in_array($izin->status, [2, 3])) {
            return redirect()->route('siikma.index')->with('success', 'Izin dikonfirmasi');
         }
         $izin -> status = $req->status;
@@ -313,28 +313,28 @@ class SikamaController extends Controller
           $pesansat = "*Yth. Bapak/Ibu*🙏 Izin telah diberikan oleh atasan kepada *".$user->name."* untuk keluar dari Wilayah kantor BBPOM Makassar pada jam *".$req->jam."*";
           
           // Satpam Aris
-          $aris = '0851461119866';
+          $aris = '085146111986';
           sendMessage($pesansat,$aris);
 
         // Satpam Massere
-        $massere = '088756267166';
+        $massere = '08875626716';
         sendMessage($pesansat,$massere);
 
           // Satpam Ali
-          $ali = '0853417829188';
+          $ali = '085341782918';
           sendMessage($pesansat,$ali);
 
 
           // Satpam Taufiq
-          $taufiq = '0852420219966';
+          $taufiq = '085242021996';
           sendMessage($pesansat,$taufiq);
           
           // Satpam Syamsul
-          $syamsul = '0853983586688';
+          $syamsul = '085398358668';
           sendMessage($pesansat,$syamsul);
           
           // Satpam muthalib
-          $muthalib = '0856964229633';
+          $muthalib = '085696422963';
           sendMessage($pesansat,$muthalib);
           
         }
@@ -387,7 +387,7 @@ class SikamaController extends Controller
             );
     
             if (!$isInsideArea) {
-                return redirect()->route('siikma.dafIzin')
+                return redirect()->route('siikma.daftar')
                     ->with('unsuccess', 'Izin gagal diakhiri, Anda terdeteksi masih berada di luar wilayah kantor');
             }
     

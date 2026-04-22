@@ -55,7 +55,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="form-row">
-                                                        <div class="col-xl-6 mb-12 ">
+                                                        <div class="form-group col-xl-6 mb-12 ">
                                                             <label for="nama" class="form-label">Nama</label>
                                                             <input type="text" value="{{old('nama')}}"  class="form-control  @error('nama') is-invalid @enderror" id="nama" name="nama" >
                                                             @error('nama')
@@ -64,16 +64,12 @@
                                                         </div>
                                                     </div>
                                                     <div class="form-row">
-                                                        <div class="form-group col-xl-6 mb-12 ">
+                                                        <div class="form-group col-xl-2 mb-12 ">
                                                             <label class="umur">Umur</label>
-                                                            <select name="umur" class="form-control form-select select2" data-bs-placeholder="Select Country">
-                                                                    <option value="=<20 Tahun"> =<20 Tahun </option>
-                                                                    <option value="21-30 Tahun">21-30 Tahun</option>
-                                                                    <option value="31-40 Tahun">31-40 Tahun</option>
-                                                                    <option value="41-50 Tahun">41-50 Tahun</option>
-                                                                    <option value="51-60 Tahun">51-60 Tahun</option>
-                                                                    <option value=">=60 Tahun">>=60 Tahun</option>
-                                                            </select>
+                                                            <input type="number" value="{{old('umur')}}"  class="form-control  @error('umur') is-invalid @enderror" id="umur" name="umur" >
+                                                            @error('umur')
+                                                            <span class="invalid-feedback"> {{ $message }} </span>
+                                                            @enderror	
                                                         </div>
                                                     </div>
                                                     <div class="form-row">

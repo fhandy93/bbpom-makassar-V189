@@ -168,24 +168,27 @@ class UlpkController extends Controller
         }
     }
     public function ulpkStore(Request $req){
-        $req -> validate([
+        $req->validate([
             'nama' => ['required'],
             'alamat' => ['required'],
             'layanan' => ['required'],
+            'umur' => ['required'],
             'jawaban' => ['required'],
             'hp' => ['required'],
-            'email' => ['required'],
+            'email' => ['required','email'],
             'jam' => ['required'],
             'perusahaan' => ['required'],
         ],[
-            'nama' => 'Kolom Nama harap diisi',
-            'alamat' => 'Kolom Alamat harap diisi',
-            'layanan' => 'Kolom Layanan harap diisi',
-            'jawaban' => 'Kolom Jawaban harap diisi',
-            'hp' => 'Kolom HP/Telp harap diisi',
-            'email' => 'Kolom Email harap diisi',
-            'jam' => 'Kolom Jam Pelayanan harap diisi',
-            'perusahaan' => 'Kolom Perusahaan/Instansi harap diisi',
+            'nama.required' => 'Kolom Nama harap diisi',
+            'alamat.required' => 'Kolom Alamat harap diisi',
+            'layanan.required' => 'Kolom Layanan harap diisi',
+            'umur.required' => 'Kolom Umur harap diisi',
+            'jawaban.required' => 'Kolom Jawaban harap diisi',
+            'hp.required' => 'Kolom HP/Telp harap diisi',
+            'email.required' => 'Kolom Email harap diisi',
+            'email.email' => 'Format email tidak valid',
+            'jam.required' => 'Kolom Jam Pelayanan harap diisi',
+            'perusahaan.required' => 'Kolom Perusahaan/Instansi harap diisi',
         ]);
         try{
             $post                   = new UlpkV2();

@@ -34,6 +34,8 @@ use App\Http\Controllers\RujukanNewController;
 use App\Http\Controllers\SeppuloRujukanController;
 use App\Http\Controllers\SerambiController;
 use App\Http\Controllers\SiikmaController;
+use App\Http\Controllers\SipatujuController;
+use App\Http\Controllers\SipatujuKcktController;
 use App\Http\Controllers\SipintarController;
 use App\Http\Controllers\SiyappController;
 use App\Http\Controllers\SmapController;
@@ -755,6 +757,16 @@ Route :: delete('/bmn/admin/delete-pinjam-non-bast/{id}',[BMNController::class,'
 Route :: get('/bmn/dbr/{id}',[BMNController::class,'dbrView'])->name('bmn.dbr-view');
 Route :: post('/bmn/konfirmasi-dbr/{id}',[BMNController::class,'dbrKonf']);
 Route :: get('/bmn/dbr/download-qr/{id}',[BMNController::class,'dbrDownload'])->middleware('check-permission:superadmin|perlengkapan');
+
+Route :: get('/sipatuju',[SipatujuController::class,'index'])->name('sipatuju.index');
+
+Route :: get('/sipatuju/kckt',[SipatujuKcktController::class,'index'])->name('sipatuju.kckt');
+Route :: get('/get-pustaka/{id}', [SipatujuKcktController::class, 'getPustaka']);
+Route :: get('/sipatuju/get-detail-pustaka/{id}', [SipatujuKcktController::class, 'getDetailPustaka']);
+Route :: get('/get-tipe-seri/{merek}',[SipatujuKcktController::class, 'getTipeSeri'])->name('get.tipe.seri');
+Route :: get('/get-no-kontrol/{id}',[SipatujuKcktController::class,'getNoKontrolByUji'])->name('get.no.kontrol');
+Route :: get('/get-detail-baku/{id}',[SipatujuKcktController::class, 'getDetailBaku'])->name('get.detail.baku');
+Route::get('/get-parameter-uji/{id}',[SipatujuKcktController::class, 'getParameterUji'])->name('get.parameter.uji');
 
 Route :: get('/info-pom',[InfopomController::class,'index']);
 Route :: get('/info-pom/qna/{komo}',[InfopomController::class,'qnaQuest'])->name('infopom.qna-quest');

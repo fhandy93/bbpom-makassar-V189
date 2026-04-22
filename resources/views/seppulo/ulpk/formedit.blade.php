@@ -61,7 +61,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="form-row">
-                                                        <div class="col-xl-6 mb-12 ">
+                                                        <div class="form-group col-xl-6 mb-12 ">
                                                             <label for="nama" class="form-label">Nama</label>
                                                             <input type="text" value="{{$ulpk->nama}}"  class="form-control  @error('nama') is-invalid @enderror" id="nama" name="nama" >
                                                             @error('nama')
@@ -70,16 +70,12 @@
                                                         </div>
                                                     </div>
                                                     <div class="form-row">
-                                                        <div class="form-group col-xl-6 mb-12 ">
+                                                        <div class="form-group col-xl-2 mb-12 ">
                                                             <label class="umur">Umur</label>
-                                                            <select name="umur" class="form-control form-select select2" data-bs-placeholder="Select Country">
-                                                                    <option value="=<20 Tahun" {{$ulpk->umur == '=<20 Tahun' ? 'selected' : ''}}> =<20 Tahun </option>
-                                                                    <option value="21-30 Tahun" {{$ulpk->umur == '21-30 Tahun' ? 'selected' : ''}}>21-30 Tahun</option>
-                                                                    <option value="31-40 Tahun" {{$ulpk->umur == '31-40 Tahun' ? 'selected' : ''}}>31-40 Tahun</option>
-                                                                    <option value="41-50 Tahun" {{$ulpk->umur == '41-50 Tahun' ? 'selected' : ''}}>41-50 Tahun</option>
-                                                                    <option value="51-60 Tahun" {{$ulpk->umur == '51-60 Tahun' ? 'selected' : ''}}>51-60 Tahun</option>
-                                                                    <option value=">=60 Tahun" {{$ulpk->umur == '>=60 Tahun' ? 'selected' : ''}}>>=60 Tahun</option>
-                                                            </select>
+                                                            <input type="number" value="{{$ulpk->umur}}"  class="form-control  @error('umur') is-invalid @enderror" id="umur" name="umur" >
+                                                            @error('umur')
+                                                            <span class="invalid-feedback"> {{ $message }} </span>
+                                                            @enderror	
                                                         </div>
                                                     </div>
                                                     <div class="form-row">
